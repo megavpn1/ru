@@ -388,6 +388,8 @@ $(document).ready(function() {
             },
             onInitialized: function() {
                 console.log('✅ Testimonials carousel initialized successfully!');
+                // Исправляем аватары после инициализации карусели
+                fixDesktopTestimonialAvatars();
             },
             onInitialize: function() {
                 console.log('🔄 Testimonials carousel initializing...');
@@ -595,4 +597,100 @@ function stopPhoneAnimation() {
 
     phoneDownloadMB = 0;
     phoneUploadMB = 0;
-} 
+}
+
+// Исправляем аватары в отзывах принудительно
+function fixTestimonialAvatars() {
+    console.log('🔧 Fixing testimonial avatars...');
+    
+    // Находим все аватары в отзывах
+    const avatars = document.querySelectorAll('.testimonial-avatar');
+    
+    avatars.forEach((avatar, index) => {
+        console.log(`🎯 Fixing avatar ${index + 1}:`, avatar);
+        
+        // Принудительно устанавливаем стили
+        avatar.style.cssText = `
+            width: 40px !important;
+            height: 40px !important;
+            min-width: 40px !important;
+            min-height: 40px !important;
+            max-width: 40px !important;
+            max-height: 40px !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 16px !important;
+            font-weight: 700 !important;
+            flex-shrink: 0 !important;
+            margin-right: 12px !important;
+            text-align: center !important;
+            line-height: 1 !important;
+            overflow: hidden !important;
+            box-sizing: border-box !important;
+        `;
+    });
+    
+    console.log(`✅ Fixed ${avatars.length} testimonial avatars`);
+}
+
+// Специальная функция для исправления аватаров на ДЕСКТОПЕ после инициализации карусели
+function fixDesktopTestimonialAvatars() {
+    console.log('🖥️ Desktop testimonial avatar fix...');
+    
+    // Ждём пока карусель полностью инициализируется
+    setTimeout(() => {
+        const avatars = document.querySelectorAll('.owl-item .testimonial-avatar, .testimonials-carousel .testimonial-avatar');
+        
+        avatars.forEach((avatar, index) => {
+            // Убираем все мешающие Bootstrap классы
+            avatar.classList.remove('flex-shrink-1', 'flex-grow-1');
+            
+            // Принудительно убираем проблемные классы и добавляем нужные
+            const classList = avatar.classList;
+            
+            // Логируем текущие классы для отладки
+            console.log(`🎯 Avatar ${index + 1} classes:`, Array.from(classList));
+            
+            // Устанавливаем стили через setAttribute для большей силы
+            avatar.setAttribute('style', `
+                width: 40px !important;
+                height: 40px !important;
+                min-width: 40px !important;
+                min-height: 40px !important;
+                max-width: 40px !important;
+                max-height: 40px !important;
+                border-radius: 50% !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                font-size: 16px !important;
+                font-weight: 700 !important;
+                flex-shrink: 0 !important;
+                margin-right: 12px !important;
+                text-align: center !important;
+                line-height: 1 !important;
+                overflow: hidden !important;
+                box-sizing: border-box !important;
+                flex-basis: 40px !important;
+                flex-grow: 0 !important;
+                flex-shrink: 0 !important;
+            `);
+            
+            console.log(`🎯 Desktop avatar ${index + 1} fixed with style override`);
+        });
+        
+        console.log(`✅ Fixed ${avatars.length} desktop avatars`);
+    }, 500);
+}
+
+// Исправляем аватары при изменении размера окна
+$(window).on('resize', function() {
+    setTimeout(fixTestimonialAvatars, 100);
+    
+    // Дополнительное исправление для десктопа
+    if (window.innerWidth >= 768) {
+        setTimeout(fixDesktopTestimonialAvatars, 200);
+    }
+}); 

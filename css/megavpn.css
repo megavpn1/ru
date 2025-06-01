@@ -1900,10 +1900,82 @@ body {
     gap: 15px;
 }
 
-/* Testimonial avatars */
-.testimonial-avatar {
-    width: 40px;
-    height: 40px;
+/* Testimonial avatars - МАКСИМАЛЬНАЯ СПЕЦИФИЧНОСТЬ */
+.testimonial-card .d-flex .testimonial-avatar,
+.testimonial-card .align-items-center .testimonial-avatar,
+div.testimonial-card div.d-flex div.testimonial-avatar,
+.testimonials-carousel .testimonial-card .testimonial-avatar,
+.owl-carousel .testimonial-card .testimonial-avatar,
+.owl-stage .testimonial-card .testimonial-avatar,
+.bg-primary.testimonial-avatar,
+.bg-success.testimonial-avatar, 
+.bg-warning.testimonial-avatar,
+.bg-info.testimonial-avatar,
+.bg-danger.testimonial-avatar,
+.bg-secondary.testimonial-avatar,
+.bg-dark.testimonial-avatar {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    flex-shrink: 0 !important;
+    margin-right: 12px !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+/* Дополнительная защита от любых других селекторов */
+div[class*="testimonial"] .testimonial-avatar,
+*[class*="testimonial"] .testimonial-avatar,
+.owl-item .testimonial-avatar {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    flex-shrink: 0 !important;
+    margin-right: 12px !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+/* Перебиваем Bootstrap flex классы */
+.d-flex .testimonial-avatar.rounded-circle,
+.align-items-center .testimonial-avatar.rounded-circle,
+.justify-content-center.testimonial-avatar,
+.text-white.testimonial-avatar,
+.mr-3.testimonial-avatar {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    margin-right: 12px !important;
 }
 
 /* Стили для мобильного меню collapse */
@@ -2230,4 +2302,106 @@ h5 i.fas,
 .phone-mockup i.fas {
     margin-right: 4px !important;
     vertical-align: middle !important;
+}
+
+/* ЯДЕРНАЯ ОПЦИЯ - АТРИБУТНЫЕ СЕЛЕКТОРЫ */
+[class*="testimonial-avatar"],
+div[class*="bg-"][class*="testimonial-avatar"],
+*[class~="testimonial-avatar"],
+.testimonial-card [class~="testimonial-avatar"],
+.testimonials-carousel [class~="testimonial-avatar"],
+.owl-carousel [class~="testimonial-avatar"],
+[class*="bg-primary"][class*="testimonial-avatar"],
+[class*="bg-success"][class*="testimonial-avatar"],
+[class*="bg-warning"][class*="testimonial-avatar"],
+[class*="bg-info"][class*="testimonial-avatar"],
+[class*="bg-danger"][class*="testimonial-avatar"],
+[class*="bg-secondary"][class*="testimonial-avatar"],
+[class*="bg-dark"][class*="testimonial-avatar"] {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    flex-shrink: 0 !important;
+    margin-right: 12px !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+/* СПЕЦИАЛЬНЫЕ СТИЛИ ДЛЯ ДЕСКТОПА */
+@media (min-width: 768px) {
+    /* Перебиваем ВСЕ возможные стили для аватаров на десктопе */
+    .testimonials-carousel .owl-item .testimonial-card .testimonial-avatar,
+    .owl-carousel .owl-stage .owl-item .testimonial-card .testimonial-avatar,
+    .owl-stage-outer .owl-stage .owl-item .testimonial-card .testimonial-avatar,
+    .owl-loaded .testimonial-card .testimonial-avatar,
+    .section .testimonials-carousel .testimonial-card .testimonial-avatar,
+    #testimonials .testimonials-carousel .testimonial-card .testimonial-avatar,
+    .download-section .testimonials-carousel .testimonial-card .testimonial-avatar {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        max-width: 40px !important;
+        max-height: 40px !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        flex-shrink: 0 !important;
+        margin-right: 12px !important;
+        text-align: center !important;
+        line-height: 1 !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* УБИВАЕМ КОНКРЕТНУЮ ПРОБЛЕМНУЮ КОМБИНАЦИЮ КЛАССОВ */
+.bg-success.rounded-circle.d-flex.align-items-center.justify-content-center.text-white.mr-3.testimonial-avatar,
+.bg-primary.rounded-circle.d-flex.align-items-center.justify-content-center.text-white.mr-3.testimonial-avatar,
+.bg-warning.rounded-circle.d-flex.align-items-center.justify-content-center.text-white.mr-3.testimonial-avatar,
+.bg-info.rounded-circle.d-flex.align-items-center.justify-content-center.text-white.mr-3.testimonial-avatar,
+.bg-danger.rounded-circle.d-flex.align-items-center.justify-content-center.text-white.mr-3.testimonial-avatar,
+.bg-secondary.rounded-circle.d-flex.align-items-center.justify-content-center.text-white.mr-3.testimonial-avatar,
+.bg-dark.rounded-circle.d-flex.align-items-center.justify-content-center.text-white.mr-3.testimonial-avatar,
+div.bg-success.rounded-circle.d-flex.align-items-center.justify-content-center.text-white.mr-3.testimonial-avatar,
+div.bg-primary.rounded-circle.d-flex.align-items-center.justify-content-center.text-white.mr-3.testimonial-avatar,
+div.bg-warning.rounded-circle.d-flex.align-items-center.justify-content-center.text-white.mr-3.testimonial-avatar,
+div.bg-info.rounded-circle.d-flex.align-items-center.justify-content-center.text-white.mr-3.testimonial-avatar,
+div.bg-danger.rounded-circle.d-flex.align-items-center.justify-content-center.text-white.mr-3.testimonial-avatar,
+div.bg-secondary.rounded-circle.d-flex.align-items-center.justify-content-center.text-white.mr-3.testimonial-avatar,
+div.bg-dark.rounded-circle.d-flex.align-items-center.justify-content-center.text-white.mr-3.testimonial-avatar {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    flex-shrink: 0 !important;
+    margin-right: 12px !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
 }
