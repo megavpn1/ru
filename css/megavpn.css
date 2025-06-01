@@ -39,12 +39,49 @@ body {
     margin-right: 10px;
 }
 
-/* Добавляем разделители между элементами на десктопе */
+/* Убираем разделители - элементы должны быть просто в строчку на десктопе */
 @media (min-width: 769px) {
+    .hero-content .list-inline {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        text-align: center !important;
+        gap: clamp(8px, 1.5vw, 15px) !important;
+    }
+    
+    .hero-content .list-inline-item {
+        display: inline-block !important;
+        margin-right: 0 !important;
+        margin-bottom: 0 !important;
+        /* Автоматический расчет размера шрифта от 11px до 16px в зависимости от ширины экрана */
+        font-size: clamp(11px, 1.2vw, 16px) !important;
+        flex-shrink: 1 !important;
+        word-break: keep-all !important;
+        hyphens: none !important;
+        /* Делаем элементы равной ширины для красивого расположения */
+        flex: 0 1 auto !important;
+        min-width: 0 !important;
+    }
+    
+    /* Первые два элемента в одну строку */
+    .hero-content .list-inline-item:nth-child(1),
+    .hero-content .list-inline-item:nth-child(2) {
+        flex: 0 1 calc(50% - 10px) !important;
+        max-width: calc(50% - 10px) !important;
+    }
+    
+    /* Третий элемент по центру */
+    .hero-content .list-inline-item:nth-child(3) {
+        flex: 0 1 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+    }
+    
     .hero-content .list-inline-item:not(:last-child)::after {
-        content: " • ";
-        margin-left: 10px;
-        color: rgba(255, 255, 255, 0.4);
+        content: "";
+        margin-left: 0;
     }
 }
 
@@ -1016,7 +1053,7 @@ body {
     .hero-content .list-inline {
         display: block !important;
     }
-    
+
     .hero-content .list-inline-item {
         display: block !important;
         margin-right: 0 !important;
@@ -1031,19 +1068,19 @@ body {
         overflow-wrap: break-word !important;
         hyphens: auto !important;
         line-height: 1.2 !important;
-        
+
         /* Адаптивный размер шрифта */
         font-size: 14px !important;
-        
+
         /* Гибкие отступы */
         padding: 12px 16px !important;
-        
+
         /* Центрирование текста */
         text-align: center !important;
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        
+
         /* Максимальная ширина */
         max-width: 100% !important;
         box-sizing: border-box !important;
@@ -1100,7 +1137,6 @@ body {
     .navbar .btn {
         font-size: 14px !important;
         padding: 10px 16px !important;
-        margin: 5px !important;
     }
 
     /* Кнопки в карточках */
