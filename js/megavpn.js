@@ -1,5 +1,13 @@
 // MegaVPN Scripts
 
+// Wait for jQuery to load
+$(document).ready(function() {
+    // Initialize Bootstrap collapse for navbar
+    $('.navbar-collapse').collapse({
+        toggle: false
+    });
+});
+
 // Initialize AOS
 AOS.init({
     duration: 800,
@@ -56,12 +64,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbarCollapse = document.querySelector('.navbar-collapse');
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
     
+    // Manual toggle handler for mobile menu
+    if (navbarToggler && navbarCollapse) {
+        navbarToggler.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Toggle collapse using jQuery (Bootstrap 4 way)
+            $(navbarCollapse).collapse('toggle');
+            
+            // Update aria-expanded attribute
+            const isExpanded = navbarToggler.getAttribute('aria-expanded') === 'true';
+            navbarToggler.setAttribute('aria-expanded', !isExpanded);
+        });
+    }
+    
     // Close mobile menu when clicking on a nav link
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             if (window.innerWidth < 992) {
                 if (navbarCollapse.classList.contains('show')) {
                     $(navbarCollapse).collapse('hide');
+                    navbarToggler.setAttribute('aria-expanded', 'false');
                 }
             }
         });
@@ -75,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (!isClickInsideNav && isNavOpen) {
                 $(navbarCollapse).collapse('hide');
+                navbarToggler.setAttribute('aria-expanded', 'false');
             }
         }
     });

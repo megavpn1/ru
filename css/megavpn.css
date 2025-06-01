@@ -185,7 +185,7 @@ body {
     box-shadow: 0 2px 20px rgba(0,0,0,0.1);
     padding: 15px 0;
     position: fixed;
-    top: 32px;
+    top: 2em;
     left: 0;
     right: 0;
     z-index: 1030;
@@ -998,13 +998,13 @@ body {
         height: 6px;
     }
 
-    /* Навигация на мобильных */
+    /* Навигация на мобильных - восстанавливаем стили */
     .navbar {
         position: fixed;
-        top: 32px;
+        top: 2em;
         padding: 10px 0;
         transition: all 0.3s ease;
-        background: transparent;
+        background: rgba(255,255,255,0.95);
         backdrop-filter: blur(15px);
     }
 
@@ -1013,16 +1013,6 @@ body {
         box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
     
-    /* Update toggler icon color when navbar is scrolled */
-    .navbar-scrolled .navbar-toggler {
-        border: 2px solid rgba(0,0,0,0.2);
-        background: rgba(0,0,0,0.05);
-    }
-    
-    .navbar-scrolled .navbar-toggler-icon span {
-        background: var(--dark);
-    }
-
     /* Hero секция на мобильных */
     .hero-section {
         text-align: center;
