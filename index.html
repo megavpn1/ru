@@ -363,22 +363,10 @@
             font-weight: 600;
             z-index: 1001;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .vpn-status-bar:hover {
-            opacity: 0.9;
         }
 
         .vpn-status-bar.protected {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-
-        .vpn-status-bar.demo-mode::after {
-            content: ' (клик для переключения)';
-            opacity: 0.7;
-            font-size: 11px;
         }
 
         .status-icon {
@@ -504,6 +492,46 @@
             border-radius: 50%;
             color: #10b981;
             font-size: 26px;
+        }
+
+        .status-indicator.disconnected {
+            background: rgba(239, 68, 68, 0.2);
+            border-radius: 50%;
+            color: #ef4444;
+            font-size: 26px;
+        }
+
+        .status-indicator.connecting {
+            background: rgba(245, 158, 11, 0.2);
+            border-radius: 50%;
+            color: #f59e0b;
+            font-size: 26px;
+            animation: pulse-connecting 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-connecting {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        .ping-animate {
+            animation: ping-bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes ping-bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-2px); }
+            60% { transform: translateY(-1px); }
+        }
+
+        .stat-value.counting {
+            animation: count-update 0.3s ease-in-out;
+        }
+
+        @keyframes count-update {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); color: var(--primary); }
+            100% { transform: scale(1); }
         }
 
         .pulse-ring {
@@ -689,26 +717,45 @@
             margin-bottom: 0;
         }
 
-        .testimonials-carousel .owl-dots {
+        .testimonials-carousel .custom-dots {
             text-align: center;
             margin-top: 30px;
         }
 
-        .testimonials-carousel .owl-dot {
+        .testimonials-carousel .custom-dot {
             display: inline-block;
             margin: 0 5px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(99, 102, 241, 0.3);
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            background: rgba(99, 102, 241, 0.15);
+            border: 2px solid rgba(99, 102, 241, 0.5);
             transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
         }
 
-        .testimonials-carousel .owl-dot.active,
-        .testimonials-carousel .owl-dot:hover {
+        .testimonials-carousel .custom-dot:after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 100%;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .testimonials-carousel .custom-dot.active,
+        .testimonials-carousel .custom-dot:hover {
             background: var(--primary);
+            border-color: var(--primary);
             transform: scale(1.2);
+        }
+
+        .testimonials-carousel .custom-dot:hover:after {
+            border-color: rgba(99, 102, 241, 0.3);
         }
 
         .testimonials-carousel .owl-stage-outer {
@@ -841,43 +888,43 @@
                                     </div>
                                     
                                     <div class="connection-status">
-                                        <div class="status-indicator connected">
-                                            <div class="pulse-ring"></div>
-                                            <div class="pulse-ring delay-1"></div>
-                                            <div class="pulse-ring delay-2"></div>
-                                            <i class="fas fa-check"></i>
+                                        <div class="status-indicator" id="phone-status-indicator">
+                                            <i class="fas fa-times"></i>
                                         </div>
-                                        <h5>Подключено</h5>
-                                        <p>Сервер: США 🇺🇸</p>
+                                        <h5 id="phone-status-title">Отключено</h5>
+                                        <p id="phone-status-server">Нажмите для подключения</p>
+                                        <div id="phone-timer" style="font-size: 14px; color: rgba(255,255,255,0.8); margin-top: 5px; display: none;">
+                                            00:00:00
+                                        </div>
                                     </div>
                                     
                                     <div class="connection-stats">
                                         <div class="stat">
-                                            <div class="stat-value">47ms</div>
+                                            <div class="stat-value" id="phone-ping">--</div>
                                             <div class="stat-label">Пинг</div>
                                         </div>
                                         <div class="stat">
-                                            <div class="stat-value">125MB</div>
+                                            <div class="stat-value" id="phone-download">0MB</div>
                                             <div class="stat-label">Скачано</div>
                                         </div>
                                         <div class="stat">
-                                            <div class="stat-value">45MB</div>
+                                            <div class="stat-value" id="phone-upload">0MB</div>
                                             <div class="stat-label">Загружено</div>
                                         </div>
                                     </div>
                                     
                                     <div class="quick-servers">
                                         <div class="server-item">
-                                            <span>🇺🇸 США</span>
-                                            <span class="ping">47ms</span>
+                                            <span id="phone-server-1">🇺🇸 США</span>
+                                            <span class="ping" id="phone-server-ping-1">--</span>
                                         </div>
                                         <div class="server-item">
-                                            <span>🇳🇱 Нидерланды</span>
-                                            <span class="ping">23ms</span>
+                                            <span id="phone-server-2">🇳🇱 Нидерланды</span>
+                                            <span class="ping" id="phone-server-ping-2">--</span>
                                         </div>
                                         <div class="server-item">
-                                            <span>🇸🇬 Сингапур</span>
-                                            <span class="ping">89ms</span>
+                                            <span id="phone-server-3">🇸🇬 Сингапур</span>
+                                            <span class="ping" id="phone-server-ping-3">--</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1123,7 +1170,7 @@
             <p class="section-subtitle">Реальные отзывы о MegaVPN</p>
         </div>
         
-        <div class="testimonials-carousel owl-carousel owl-theme" data-aos="fade-up">
+        <div class="testimonials-carousel owl-carousel" data-aos="fade-up">
             <!-- Отзыв 1 -->
             <div class="testimonial-card">
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
@@ -1679,18 +1726,30 @@ function checkVPNStatus() {
 
 let connectionTimer = null;
 let connectionStartTime = null;
+let currentServer = null;
 
 // Эмуляция подключения к VPN
 function simulateVPNConnection() {
     const statusBar = document.getElementById('vpn-status');
     const statusText = document.getElementById('status-text');
     
+    // Выбираем случайный сервер один раз для сессии
+    if (!currentServer) {
+        const servers = ['🇺🇸 США', '🇳🇱 Нидерланды', '🇸🇬 Сингапур', '🇩🇪 Германия', '🇯🇵 Япония'];
+        currentServer = servers[Math.floor(Math.random() * servers.length)];
+    }
+    
     // Показываем процесс подключения
     statusText.innerHTML = '🔄 Подключаемся к серверам MegaVPN...';
     
+    // Запускаем анимацию телефона одновременно
+    setTimeout(() => {
+        animatePhoneConnection();
+    }, 500);
+    
     // Эмуляция задержки подключения
     setTimeout(() => {
-        statusText.innerHTML = '🔗 Устанавливаем защищенное соединение...';
+        statusText.innerHTML = `🔗 Подключение к серверу ${currentServer}...`;
     }, 1000);
     
     setTimeout(() => {
@@ -1700,13 +1759,13 @@ function simulateVPNConnection() {
     // Успешное подключение
     setTimeout(() => {
         statusBar.classList.add('protected');
-        statusText.innerHTML = '✅ Подключено к MegaVPN! Время соединения: 00:01';
+        statusText.innerHTML = `✅ Подключено к MegaVPN | ${currentServer} | Время: 00:00:01`;
         
         // Запускаем таймер
         connectionStartTime = new Date();
         startConnectionTimer();
         
-        console.log('🟢 VPN connection simulated successfully');
+        console.log(`🟢 VPN connected to ${currentServer}`);
     }, 3500);
 }
 
@@ -1733,9 +1792,6 @@ function startConnectionTimer() {
         const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         
         const statusText = document.getElementById('status-text');
-        const randomServers = ['🇺🇸 США', '🇳🇱 Нидерланды', '🇸🇬 Сингапур', '🇩🇪 Германия', '🇯🇵 Япония'];
-        const currentServer = randomServers[Math.floor(Math.random() * randomServers.length)];
-        
         statusText.innerHTML = `🛡️ Защищено MegaVPN | ${currentServer} | Время: ${timeString}`;
     }, 1000);
 }
@@ -1754,30 +1810,7 @@ document.getElementById('vpn-status').addEventListener('click', function() {
     const statusBar = document.getElementById('vpn-status');
     const statusText = document.getElementById('status-text');
     
-    // Демо-режим: двойной клик для управления соединением
-    if (event.detail === 2) {
-        statusBar.classList.add('demo-mode');
-        
-        if (statusBar.classList.contains('protected')) {
-            // Отключаем VPN
-            statusBar.classList.remove('protected');
-            stopConnectionTimer();
-            statusText.innerHTML = '🚨 VPN отключен - подключитесь к нашим серверам MegaVPN';
-            console.log('🔴 Demo: VPN disconnected');
-            
-            // Автоматически переподключаемся через 2 секунды
-            setTimeout(() => {
-                simulateVPNConnection();
-            }, 2000);
-        } else {
-            // Запускаем подключение
-            simulateVPNConnection();
-            console.log('🟢 Demo: VPN connecting...');
-        }
-        return;
-    }
-    
-    // Обычный клик - перезапуск проверки
+    // Обычный клик - перезапуск проверки статуса
     if (statusBar.classList.contains('protected')) {
         stopConnectionTimer();
         statusBar.classList.remove('protected');
@@ -1790,17 +1823,13 @@ document.getElementById('vpn-status').addEventListener('click', function() {
     }, 1000);
 });
 
-// Добавляем подсказку при загрузке страницы
+// Загрузка страницы
 document.addEventListener('DOMContentLoaded', function() {
-    // Показываем подсказку о демо-режиме на 5 секунд
-    setTimeout(() => {
-        const statusBar = document.getElementById('vpn-status');
-        statusBar.classList.add('demo-mode');
-        
-        setTimeout(() => {
-            statusBar.classList.remove('demo-mode');
-        }, 5000);
-    }, 3000);
+    // Инициализируем телефон в отключенном состоянии
+    const phoneIndicator = document.getElementById('phone-status-indicator');
+    if (phoneIndicator) {
+        phoneIndicator.className = 'status-indicator disconnected';
+    }
     
     // Проверяем VPN статус через 2 секунды после загрузки
     setTimeout(checkVPNStatus, 2000);
@@ -1870,6 +1899,8 @@ $(document).ready(function() {
             autoplayHoverPause: true,
             nav: false,
             dots: true,
+            dotsClass: 'custom-dots',
+            dotClass: 'custom-dot',
             responsive: {
                 0: {
                     items: 1,
@@ -1897,6 +1928,165 @@ $(document).ready(function() {
         $('.testimonials-carousel .testimonial-card').show();
     }
 });
+
+let phoneConnectionTimer = null;
+let phoneDownloadMB = 0;
+let phoneUploadMB = 0;
+let phonePingIntervals = [];
+let phoneTimerInterval = null;
+let phoneStartTime = null;
+
+// Анимация телефона
+function animatePhoneConnection() {
+    const phoneIndicator = document.getElementById('phone-status-indicator');
+    const phoneTitle = document.getElementById('phone-status-title');
+    const phoneServer = document.getElementById('phone-status-server');
+    const phoneTimer = document.getElementById('phone-timer');
+    
+    // Используем тот же сервер, что и в главном VPN статусе
+    const selectedServer = currentServer || '🇺🇸 США';
+    
+    // Этап 1: Подключение
+    phoneIndicator.className = 'status-indicator connecting';
+    phoneIndicator.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    phoneTitle.textContent = 'Подключение...';
+    phoneServer.textContent = `Подключение к ${selectedServer}`;
+    phoneTimer.style.display = 'none';
+    
+    setTimeout(() => {
+        // Этап 2: Успешное подключение
+        phoneIndicator.className = 'status-indicator connected';
+        phoneIndicator.innerHTML = `
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring delay-1"></div>
+            <div class="pulse-ring delay-2"></div>
+            <i class="fas fa-check"></i>
+        `;
+        phoneTitle.textContent = 'Подключено';
+        phoneServer.textContent = `Сервер: ${selectedServer}`;
+        
+        // Показываем и запускаем таймер
+        phoneTimer.style.display = 'block';
+        startPhoneTimer();
+        
+        // Запускаем анимацию пингов и трафика
+        startPhonePingAnimation();
+        startPhoneTrafficAnimation();
+        
+    }, 2500);
+}
+
+// Запуск таймера телефона
+function startPhoneTimer() {
+    phoneStartTime = new Date();
+    
+    phoneTimerInterval = setInterval(() => {
+        const currentTime = new Date();
+        const elapsedSeconds = Math.floor((currentTime - phoneStartTime) / 1000);
+        
+        const hours = Math.floor(elapsedSeconds / 3600);
+        const minutes = Math.floor((elapsedSeconds % 3600) / 60);
+        const seconds = elapsedSeconds % 60;
+        
+        const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        const phoneTimer = document.getElementById('phone-timer');
+        phoneTimer.textContent = timeString;
+    }, 1000);
+}
+
+// Анимация пингов в телефоне
+function startPhonePingAnimation() {
+    const pingElements = [
+        { element: document.getElementById('phone-ping'), baseValue: 45, variation: 10 },
+        { element: document.getElementById('phone-server-ping-1'), baseValue: 47, variation: 8 },
+        { element: document.getElementById('phone-server-ping-2'), baseValue: 23, variation: 5 },
+        { element: document.getElementById('phone-server-ping-3'), baseValue: 89, variation: 15 }
+    ];
+    
+    pingElements.forEach((ping, index) => {
+        const interval = setInterval(() => {
+            const variation = (Math.random() - 0.5) * ping.variation;
+            const newPing = Math.round(ping.baseValue + variation);
+            
+            ping.element.classList.add('ping-animate');
+            ping.element.textContent = `${newPing}ms`;
+            
+            setTimeout(() => {
+                ping.element.classList.remove('ping-animate');
+            }, 300);
+            
+        }, 3000 + (index * 500)); // Разные интервалы для каждого пинга
+        
+        phonePingIntervals.push(interval);
+        
+        // Устанавливаем начальное значение
+        ping.element.textContent = `${ping.baseValue}ms`;
+    });
+}
+
+// Анимация трафика в телефоне
+function startPhoneTrafficAnimation() {
+    const downloadElement = document.getElementById('phone-download');
+    const uploadElement = document.getElementById('phone-upload');
+    
+    phoneConnectionTimer = setInterval(() => {
+        // Более медленные приращения трафика
+        const downloadIncrease = Math.random() * 0.3 + 0.1; // 0.1-0.4 MB (медленнее)
+        const uploadIncrease = Math.random() * 0.15 + 0.05; // 0.05-0.2 MB (медленнее)
+        
+        phoneDownloadMB += downloadIncrease;
+        phoneUploadMB += uploadIncrease;
+        
+        // Простое обновление без цветовой анимации
+        downloadElement.textContent = `${phoneDownloadMB.toFixed(0)}MB`;
+        uploadElement.textContent = `${phoneUploadMB.toFixed(0)}MB`;
+        
+    }, 4000); // Обновляем каждые 4 секунды (медленнее)
+}
+
+// Остановка анимации телефона
+function stopPhoneAnimation() {
+    const phoneIndicator = document.getElementById('phone-status-indicator');
+    const phoneTitle = document.getElementById('phone-status-title');
+    const phoneServer = document.getElementById('phone-status-server');
+    const phoneTimer = document.getElementById('phone-timer');
+    
+    phoneIndicator.className = 'status-indicator disconnected';
+    phoneIndicator.innerHTML = '<i class="fas fa-times"></i>';
+    phoneTitle.textContent = 'Отключено';
+    phoneServer.textContent = 'Нажмите для подключения';
+    phoneTimer.style.display = 'none';
+    
+    // Останавливаем все таймеры
+    if (phoneConnectionTimer) {
+        clearInterval(phoneConnectionTimer);
+        phoneConnectionTimer = null;
+    }
+    
+    if (phoneTimerInterval) {
+        clearInterval(phoneTimerInterval);
+        phoneTimerInterval = null;
+        phoneStartTime = null;
+    }
+    
+    phonePingIntervals.forEach(interval => clearInterval(interval));
+    phonePingIntervals = [];
+    
+    // Сбрасываем значения
+    document.getElementById('phone-ping').textContent = '--';
+    document.getElementById('phone-download').textContent = '0MB';
+    document.getElementById('phone-upload').textContent = '0MB';
+    document.getElementById('phone-server-ping-1').textContent = '--';
+    document.getElementById('phone-server-ping-2').textContent = '--';
+    document.getElementById('phone-server-ping-3').textContent = '--';
+    phoneTimer.textContent = '00:00:00';
+    
+    phoneDownloadMB = 0;
+    phoneUploadMB = 0;
+}
+
+// Уже объявлено выше: let connectionTimer = null;
 </script>
 
 </body>
