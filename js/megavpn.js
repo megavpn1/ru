@@ -72,10 +72,15 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Toggle collapse using jQuery (Bootstrap 4 way)
             $(navbarCollapse).collapse('toggle');
-            
-            // Update aria-expanded attribute
-            const isExpanded = navbarToggler.getAttribute('aria-expanded') === 'true';
-            navbarToggler.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Listen to Bootstrap collapse events for proper aria-expanded sync
+        $(navbarCollapse).on('show.bs.collapse', function() {
+            navbarToggler.setAttribute('aria-expanded', 'true');
+        });
+
+        $(navbarCollapse).on('hide.bs.collapse', function() {
+            navbarToggler.setAttribute('aria-expanded', 'false');
         });
     }
     
@@ -85,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (window.innerWidth < 992) {
                 if (navbarCollapse.classList.contains('show')) {
                     $(navbarCollapse).collapse('hide');
-                    navbarToggler.setAttribute('aria-expanded', 'false');
                 }
             }
         });
@@ -99,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (!isClickInsideNav && isNavOpen) {
                 $(navbarCollapse).collapse('hide');
-                navbarToggler.setAttribute('aria-expanded', 'false');
             }
         }
     });
