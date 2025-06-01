@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📱 V2Box App - Открыть приложение</title>
+    <meta name="description" content="Открыть приложение V2Box для MegaVPN или скачать из App Store/Google Play">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --success: #10b981;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .redirect-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 32px;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+            padding: 12px 32px;
+            font-weight: 600;
+            border-radius: 50px;
+            margin: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+        
+        .btn-success {
+            background: var(--success);
+            border: none;
+            padding: 12px 32px;
+            font-weight: 600;
+            border-radius: 50px;
+            margin: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-outline-primary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 24px;
+            font-weight: 600;
+            border-radius: 50px;
+            margin: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .countdown {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        .loading {
+            display: none;
+        }
+        
+        .spinner-border {
+            color: var(--primary);
+        }
+        
+        .store-badges {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .store-badge {
+            display: block;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .store-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        .store-badge img {
+            height: 50px;
+            border-radius: 8px;
+        }
+        
+        .platform-detected {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid var(--success);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        @media (max-width: 576px) {
+            .redirect-card {
+                padding: 30px 20px;
+            }
+            
+            .btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .store-badges {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-card">
+        <div class="app-icon">
+            <i class="fas fa-shield-alt"></i>
+        </div>
+        
+        <h2 class="mb-3">📱 V2Box</h2>
+        <p class="text-muted mb-4">Открыть приложение V2Box для настройки MegaVPN</p>
+        
+        <div id="auto-redirect" class="loading">
+            <div class="spinner-border mb-3" role="status">
+                <span class="visually-hidden">Загрузка...</span>
+            </div>
+            <div class="countdown">Попытка открыть приложение через <span id="seconds">3</span> секунд...</div>
+        </div>
+        
+        <div id="manual-options">
+            <div id="platform-detected" class="platform-detected" style="display: none;">
+                <h6 class="text-success mb-2">
+                    <i class="fas fa-check-circle"></i> Обнаружено устройство: <span id="detected-platform"></span>
+                </h6>
+            </div>
+            
+            <h5 class="mb-3">Выберите действие:</h5>
+            
+            <div class="d-grid gap-2 mb-4">
+                <a href="v2box://" class="btn btn-primary btn-lg" id="deeplink-btn">
+                    <i class="fas fa-mobile-alt me-2"></i>
+                    Открыть V2Box (если установлено)
+                </a>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-2">
+                        <a href="https://apps.apple.com/app/v2box/id6446814690" target="_blank" class="btn btn-outline-primary w-100" id="ios-btn">
+                            <i class="fab fa-apple me-2"></i>
+                            App Store
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <a href="https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box" target="_blank" class="btn btn-success w-100" id="android-btn">
+                            <i class="fab fa-google-play me-2"></i>
+                            Google Play
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="store-badges">
+                <a href="https://apps.apple.com/app/v2box/id6446814690" target="_blank" class="store-badge">
+                    <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1590019200&h=a4b914b28dab824baf057a0d2c8cbb5f" alt="Скачать в App Store">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box" target="_blank" class="store-badge">
+                    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Доступно в Google Play" style="height: 58px;">
+                </a>
+            </div>
+            
+            <div class="alert alert-info">
+                <strong>💡 Инструкция:</strong><br>
+                1. Если приложение установлено - нажмите "Открыть V2Box"<br>
+                2. Если нет - скачайте из App Store или Google Play<br>
+                3. После установки получите настройки в <a href="bot.html" class="text-decoration-none">Telegram боте</a>
+            </div>
+            
+            <div class="mt-4">
+                <a href="/" class="btn btn-outline-secondary me-2">
+                    ← Главная
+                </a>
+                <a href="bot.html" class="btn btn-outline-primary">
+                    🤖 Получить настройки
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Определяем платформу пользователя
+        function detectPlatform() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isMobile = /android|iphone|ipad|ipod|blackberry|iemobile|opera mini/.test(userAgent);
+            const isAndroid = /android/.test(userAgent);
+            const isIOS = /iphone|ipad|ipod/.test(userAgent);
+            const isWindows = /win/.test(userAgent);
+            const isMac = /mac/.test(userAgent);
+            
+            let platform = 'Неизвестно';
+            if (isIOS) platform = 'iOS (iPhone/iPad)';
+            else if (isAndroid) platform = 'Android';
+            else if (isMac) platform = 'macOS';
+            else if (isWindows) platform = 'Windows';
+            
+            return { 
+                isMobile, 
+                isAndroid, 
+                isIOS, 
+                platform,
+                canUseDeeplink: isMobile
+            };
+        }
+        
+        function showPlatformInfo() {
+            const platform = detectPlatform();
+            
+            if (platform.platform !== 'Неизвестно') {
+                const platformDiv = document.getElementById('platform-detected');
+                const platformSpan = document.getElementById('detected-platform');
+                
+                platformSpan.textContent = platform.platform;
+                platformDiv.style.display = 'block';
+                
+                // Выделяем подходящую кнопку
+                if (platform.isIOS) {
+                    document.getElementById('ios-btn').classList.add('btn-primary');
+                    document.getElementById('ios-btn').classList.remove('btn-outline-primary');
+                } else if (platform.isAndroid) {
+                    document.getElementById('android-btn').classList.add('btn-primary');
+                    document.getElementById('android-btn').classList.remove('btn-success');
+                }
+            }
+        }
+        
+        function tryOpenApp() {
+            const platform = detectPlatform();
+            
+            // Показываем загрузку
+            document.getElementById('auto-redirect').style.display = 'block';
+            document.getElementById('manual-options').style.display = 'none';
+            
+            let seconds = 3;
+            const countdown = setInterval(() => {
+                seconds--;
+                document.getElementById('seconds').textContent = seconds;
+                
+                if (seconds <= 0) {
+                    clearInterval(countdown);
+                    
+                    if (platform.canUseDeeplink) {
+                        // Пробуем открыть через диплинк
+                        const startTime = new Date().getTime();
+                        
+                        // Создаем невидимую ссылку для диплинка
+                        const link = document.createElement('a');
+                        link.href = 'v2box://';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        // Проверяем, открылось ли приложение
+                        setTimeout(() => {
+                            const currentTime = new Date().getTime();
+                            const timeDiff = currentTime - startTime;
+                            
+                            // Если прошло больше 2 секунд, скорее всего приложение открылось
+                            if (timeDiff < 2000) {
+                                // Приложение не открылось - показываем опции
+                                document.getElementById('auto-redirect').style.display = 'none';
+                                document.getElementById('manual-options').style.display = 'block';
+                                showPlatformInfo();
+                            }
+                        }, 1500);
+                    } else {
+                        // Десктоп - сразу показываем опции
+                        document.getElementById('auto-redirect').style.display = 'none';
+                        document.getElementById('manual-options').style.display = 'block';
+                        showPlatformInfo();
+                    }
+                }
+            }, 1000);
+        }
+        
+        // Отслеживание кликов для аналитики
+        document.querySelectorAll('a[id$="-btn"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const action = this.id.replace('-btn', '');
+                console.log(`V2Box action: ${action}`);
+                
+                // Можно добавить отправку в аналитику
+                // gtag('event', 'v2box_action', { method: action });
+            });
+        });
+        
+        // Проверяем URL параметры
+        const urlParams = new URLSearchParams(window.location.search);
+        const autoRedirect = urlParams.get('redirect');
+        
+        if (autoRedirect !== 'false') {
+            // Автоматическая попытка открыть приложение через 1 секунду
+            setTimeout(tryOpenApp, 1000);
+        } else {
+            // Показываем сразу ручные опции
+            document.getElementById('manual-options').style.display = 'block';
+            showPlatformInfo();
+        }
+        
+        // Обработка возврата на страницу
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                // Страница была восстановлена из кеша - показываем опции
+                document.getElementById('auto-redirect').style.display = 'none';
+                document.getElementById('manual-options').style.display = 'block';
+                showPlatformInfo();
+            }
+        });
+        
+        // Обработка фокуса страницы (если пользователь вернулся)
+        let hidden = false;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                hidden = true;
+            } else if (hidden) {
+                // Пользователь вернулся - возможно из приложения
+                hidden = false;
+                document.getElementById('auto-redirect').style.display = 'none';
+                document.getElementById('manual-options').style.display = 'block';
+                showPlatformInfo();
+            }
+        });
+    </script>
+</body>
+</html> 
