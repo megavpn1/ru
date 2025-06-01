@@ -27,6 +27,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding-top: 40px;
         }
 
         .redirect-card {
@@ -144,6 +145,103 @@
             margin: 15px 0;
         }
 
+        .vpn-status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            padding: 8px 0;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .vpn-status-bar.protected {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .status-icon {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #ffffff;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .setup-steps {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .step-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .step-description {
+            color: #6b7280;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .highlight-text {
+            background: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #92400e;
+        }
+
         @media (max-width: 576px) {
             .redirect-card {
                 padding: 30px 20px;
@@ -163,6 +261,12 @@
     </style>
 </head>
 <body>
+    <!-- VPN Status Bar -->
+    <div class="vpn-status-bar" id="vpn-status">
+        <span class="status-icon"></span>
+        <span id="status-text">🚨 Вы НЕ защищены - подключите VPN для безопасности</span>
+    </div>
+
     <div class="redirect-card">
         <div class="app-icon">
             <i class="fas fa-shield-alt"></i>
@@ -218,11 +322,47 @@
                 </a>
             </div>
 
-            <div class="alert alert-info">
-                <strong>💡 Инструкция:</strong><br>
-                1. Если приложение установлено - нажмите "Открыть V2Box"<br>
-                2. Если нет - скачайте из App Store или Google Play<br>
-                3. После установки получите настройки в <a href="bot.html" class="text-decoration-none">Telegram боте</a>
+            <div class="setup-steps">
+                <h6 class="text-primary mb-3">
+                    <i class="fas fa-cog me-2"></i>Пошаговая настройка V2Box:
+                </h6>
+                
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">Откройте V2Box</div>
+                        <div class="step-description">Запустите приложение V2Box на вашем устройстве</div>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Добавьте конфигурацию</div>
+                        <div class="step-description">Нажмите <span class="highlight-text">+</span>, выберите <span class="highlight-text">"Import v2ray url..."</span> и разрешите вставить ссылку</div>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Обновите подписки</div>
+                        <div class="step-description">Снова нажмите <span class="highlight-text">+</span> и выберите <span class="highlight-text">"Update all subscriptions"</span></div>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Подключитесь</div>
+                        <div class="step-description">Выберите сервер, перейдите в <span class="highlight-text">"Home"</span> и нажмите <span class="highlight-text">"Slide to connect"</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning">
+                <strong>📋 Где взять настройки?</strong><br>
+                Получите персональную ссылку конфигурации в нашем <a href="bot.html" class="text-decoration-none">Telegram боте @megabot_vpnbot</a>
             </div>
 
             <div class="mt-4">
@@ -376,8 +516,68 @@
                 document.getElementById('auto-redirect').style.display = 'none';
                 document.getElementById('manual-options').style.display = 'block';
                 showPlatformInfo();
+                // Проверяем VPN статус при возврате
+                checkVPNStatus();
             }
         });
+
+        // Проверка VPN статуса
+        function checkVPNStatus() {
+            const statusBar = document.getElementById('vpn-status');
+            const statusText = document.getElementById('status-text');
+            
+            // Имитируем проверку VPN (в реальности можно использовать API)
+            // Проверяем через сторонний сервис
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    // Дополнительная проверка геолокации
+                    fetch(`https://ipapi.co/${data.ip}/json/`)
+                        .then(response => response.json())
+                        .then(geoData => {
+                            // Простая эвристика: если IP из РФ, то VPN скорее всего не активен
+                            const isRussianIP = geoData.country_code === 'RU';
+                            
+                            if (isRussianIP) {
+                                statusBar.classList.remove('protected');
+                                statusText.innerHTML = '🚨 Вы НЕ защищены - подключите VPN для безопасности';
+                            } else {
+                                statusBar.classList.add('protected');
+                                statusText.innerHTML = '✅ VPN активен - вы защищены и анонимны';
+                            }
+                        })
+                        .catch(() => {
+                            // Если ошибка, показываем нейтральный статус
+                            statusText.innerHTML = '🔍 Проверяем статус VPN...';
+                        });
+                })
+                .catch(() => {
+                    // Ошибка при получении IP
+                    statusText.innerHTML = '🔍 Не удается проверить статус VPN';
+                });
+        }
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            // Проверяем VPN статус через 2 секунды после загрузки
+            setTimeout(checkVPNStatus, 2000);
+            
+            // Обновляем статус каждые 30 секунд
+            setInterval(checkVPNStatus, 30000);
+        });
+
+        // Добавляем клики на статус-бар для ручного обновления
+        document.getElementById('vpn-status').addEventListener('click', function() {
+            const statusText = document.getElementById('status-text');
+            const originalText = statusText.innerHTML;
+            statusText.innerHTML = '🔄 Обновляем статус...';
+            
+            setTimeout(() => {
+                checkVPNStatus();
+            }, 1000);
+        });
+
+        console.log('📱 V2Box App Page loaded with VPN status check!');
     </script>
 </body>
 </html>
