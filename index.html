@@ -411,7 +411,7 @@
         }
 
         .phone-mockup {
-            max-width: 280px;
+            max-width: 320px;
             margin: 0 auto;
         }
 
@@ -654,28 +654,36 @@
         @media (max-width: 768px) {
             .hero-section {
                 text-align: center;
-                padding: 60px 0;
+                padding: 60px 0 40px 0;
+                min-height: auto;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                line-height: 1.2;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 30px;
             }
 
             .price {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
 
             .phone-mockup {
-                max-width: 240px;
+                max-width: 280px;
+                margin-top: 30px;
             }
 
             .phone-screen {
-                min-height: 500px;
+                min-height: 480px;
                 padding: 15px 12px;
             }
 
             .app-content {
-                min-height: 430px;
+                min-height: 410px;
                 padding-bottom: 15px;
             }
 
@@ -693,10 +701,241 @@
             .hero-content .d-flex.flex-wrap {
                 gap: 10px !important;
                 align-items: center;
+                justify-content: center;
             }
 
             .hero-content .d-flex.flex-wrap .btn {
                 width: 280px;
+                max-width: 100%;
+            }
+
+            /* Навигация на мобильных */
+            .navbar {
+                padding: 10px 0;
+                margin-top: 20px;
+            }
+
+            .navbar-brand {
+                font-size: 20px;
+            }
+
+            .navbar-toggler {
+                border: none;
+                font-size: 18px;
+                padding: 4px 8px;
+            }
+
+            .navbar-collapse {
+                margin-top: 15px;
+            }
+
+            .nav-link {
+                padding: 8px 0 !important;
+                text-align: center;
+            }
+
+            .navbar .btn {
+                margin: 10px auto 0 auto;
+                display: block;
+                width: 200px;
+            }
+
+            /* VPN статус бар */
+            .vpn-status-bar {
+                font-size: 12px;
+                padding: 6px 0;
+                text-align: center;
+            }
+
+            .status-icon {
+                width: 6px;
+                height: 6px;
+            }
+
+            /* Заголовки */
+            .hero-section h1 {
+                font-size: 2.2rem;
+                line-height: 1.1;
+                margin-bottom: 20px;
+            }
+
+            .hero-section .lead {
+                font-size: 1rem;
+                margin-bottom: 25px;
+            }
+
+            .hero-section .badge {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            /* Карточки возможностей */
+            .feature-card {
+                padding: 30px 20px;
+                margin-bottom: 20px;
+            }
+
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+            }
+
+            /* Карточки приложений */
+            .app-download-card {
+                padding: 25px 20px;
+                margin-bottom: 20px;
+            }
+
+            .app-download-card h4 {
+                font-size: 1.4rem;
+            }
+
+            .app-download-card .fab {
+                font-size: 3rem !important;
+            }
+
+            /* Секция шагов */
+            .step-card {
+                padding: 25px 20px;
+                margin-bottom: 20px;
+            }
+
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            /* Отзывы */
+            .testimonial-card {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            /* Действия после скачивания */
+            .download-actions {
+                padding: 15px;
+                margin-top: 20px;
+            }
+
+            .download-actions h5 {
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+            }
+
+            .download-actions .btn {
+                width: 100%;
+                margin: 5px 0;
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            /* Кнопка "Вверх" */
+            .scroll-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            /* Секции */
+            .section {
+                padding: 50px 0;
+            }
+
+            /* Альтернативные ссылки */
+            .hero-content .mt-3 {
+                margin-top: 20px !important;
+            }
+
+            .hero-content .btn-sm {
+                font-size: 12px;
+                padding: 6px 12px;
+                margin: 2px;
+                min-width: auto;
+                width: auto;
+            }
+
+            /* Pricing card */
+            .pricing-card {
+                padding: 30px 20px;
+            }
+
+            .pricing-card h3 {
+                font-size: 1.4rem;
+            }
+
+            /* Футер */
+            footer {
+                padding: 30px 0 !important;
+            }
+
+            footer .row {
+                text-align: center;
+            }
+
+            footer .col-md-6 {
+                margin-bottom: 15px;
+            }
+
+            footer .btn {
+                width: auto;
+                margin: 5px;
+            }
+        }
+
+        /* Дополнительные стили для очень маленьких экранов */
+        @media (max-width: 480px) {
+            .hero-section h1 {
+                font-size: 1.9rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .phone-mockup {
+                max-width: 260px;
+            }
+
+            .phone-screen {
+                min-height: 440px;
+                padding: 12px 10px;
+            }
+
+            .app-content {
+                min-height: 380px;
+            }
+
+            .hero-content .d-flex.flex-wrap .btn {
+                width: 260px;
+            }
+
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .app-content .stat-value {
+                font-size: 13px;
+            }
+
+            .app-content .stat-label {
+                font-size: 9px;
+            }
+
+            .server-item {
+                font-size: 12px;
+            }
+
+            .connection-stats {
+                padding: 10px 6px;
+            }
+
+            .quick-servers {
+                padding: 10px;
             }
         }
 
@@ -1772,7 +2011,11 @@ function simulateVPNConnection() {
 
     // Запускаем анимацию телефона одновременно
     setTimeout(() => {
-        animatePhoneConnection();
+        try {
+            animatePhoneConnection();
+        } catch (error) {
+            console.error('Phone animation error:', error);
+        }
     }, 500);
 
     // Эмуляция задержки подключения
@@ -1857,6 +2100,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const phoneIndicator = document.getElementById('phone-status-indicator');
     if (phoneIndicator) {
         phoneIndicator.className = 'status-indicator disconnected';
+        phoneIndicator.innerHTML = '<i class="fas fa-times"></i>';
+    }
+    
+    // Инициализируем все элементы телефона в начальном состоянии
+    const phoneTitle = document.getElementById('phone-status-title');
+    const phoneServer = document.getElementById('phone-status-server');
+    const phoneTimer = document.getElementById('phone-timer');
+    
+    if (phoneTitle) phoneTitle.textContent = 'Отключено';
+    if (phoneServer) phoneServer.textContent = 'Нажмите для подключения';
+    if (phoneTimer) {
+        phoneTimer.style.display = 'none';
+        phoneTimer.textContent = '00:00:00';
     }
 
     // Проверяем VPN статус через 2 секунды после загрузки
@@ -1864,6 +2120,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Обновляем статус каждые 30 секунд
     setInterval(checkVPNStatus, 30000);
+    
+    // Добавляем клик по телефону для ручного запуска анимации
+    const phoneMockup = document.querySelector('.phone-mockup');
+    if (phoneMockup) {
+        phoneMockup.addEventListener('click', function() {
+            const phoneIndicator = document.getElementById('phone-status-indicator');
+            if (phoneIndicator && !phoneIndicator.classList.contains('connecting') && !phoneIndicator.classList.contains('connected')) {
+                console.log('📱 Manual phone connection triggered');
+                try {
+                    animatePhoneConnection();
+                } catch (error) {
+                    console.error('Manual phone animation error:', error);
+                }
+            }
+        });
+        
+        // Добавляем стили для интерактивности
+        phoneMockup.style.cursor = 'pointer';
+        phoneMockup.title = 'Нажмите для подключения к VPN';
+    }
 });
 
 // Управление плавающей кнопкой "Вверх"
@@ -1971,6 +2247,12 @@ function animatePhoneConnection() {
     const phoneServer = document.getElementById('phone-status-server');
     const phoneTimer = document.getElementById('phone-timer');
 
+    // Проверяем, что все элементы существуют
+    if (!phoneIndicator || !phoneTitle || !phoneServer || !phoneTimer) {
+        console.error('Phone animation elements not found');
+        return;
+    }
+
     // Используем тот же сервер, что и в главном VPN статусе
     const selectedServer = currentServer || '🇺🇸 США';
 
@@ -1981,45 +2263,61 @@ function animatePhoneConnection() {
     phoneServer.textContent = `Подключение к ${selectedServer}`;
     phoneTimer.style.display = 'none';
 
+    console.log('📱 Phone animation: connecting phase started');
+
     setTimeout(() => {
-        // Этап 2: Успешное подключение
-        phoneIndicator.className = 'status-indicator connected';
-        phoneIndicator.innerHTML = `
-            <div class="pulse-ring"></div>
-            <div class="pulse-ring delay-1"></div>
-            <div class="pulse-ring delay-2"></div>
-            <i class="fas fa-check"></i>
-        `;
-        phoneTitle.textContent = 'Подключено';
-        phoneServer.textContent = `Сервер: ${selectedServer}`;
+        try {
+            // Этап 2: Успешное подключение
+            phoneIndicator.className = 'status-indicator connected';
+            phoneIndicator.innerHTML = `
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring delay-1"></div>
+                <div class="pulse-ring delay-2"></div>
+                <i class="fas fa-check"></i>
+            `;
+            phoneTitle.textContent = 'Подключено';
+            phoneServer.textContent = `Сервер: ${selectedServer}`;
 
-        // Показываем и запускаем таймер
-        phoneTimer.style.display = 'block';
-        startPhoneTimer();
+            // Показываем и запускаем таймер
+            phoneTimer.style.display = 'block';
+            startPhoneTimer();
 
-        // Запускаем анимацию пингов и трафика
-        startPhonePingAnimation();
-        startPhoneTrafficAnimation();
+            // Запускаем анимацию пингов и трафика
+            startPhonePingAnimation();
+            startPhoneTrafficAnimation();
 
+            console.log('📱 Phone animation: connected phase completed');
+        } catch (error) {
+            console.error('Phone animation connection phase error:', error);
+        }
     }, 2500);
 }
 
 // Запуск таймера телефона
 function startPhoneTimer() {
+    const phoneTimer = document.getElementById('phone-timer');
+    if (!phoneTimer) {
+        console.error('Phone timer element not found');
+        return;
+    }
+
     phoneStartTime = new Date();
 
     phoneTimerInterval = setInterval(() => {
-        const currentTime = new Date();
-        const elapsedSeconds = Math.floor((currentTime - phoneStartTime) / 1000);
+        try {
+            const currentTime = new Date();
+            const elapsedSeconds = Math.floor((currentTime - phoneStartTime) / 1000);
 
-        const hours = Math.floor(elapsedSeconds / 3600);
-        const minutes = Math.floor((elapsedSeconds % 3600) / 60);
-        const seconds = elapsedSeconds % 60;
+            const hours = Math.floor(elapsedSeconds / 3600);
+            const minutes = Math.floor((elapsedSeconds % 3600) / 60);
+            const seconds = elapsedSeconds % 60;
 
-        const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
-        const phoneTimer = document.getElementById('phone-timer');
-        phoneTimer.textContent = timeString;
+            phoneTimer.textContent = timeString;
+        } catch (error) {
+            console.error('Phone timer error:', error);
+        }
     }, 1000);
 }
 
@@ -2033,17 +2331,26 @@ function startPhonePingAnimation() {
     ];
 
     pingElements.forEach((ping, index) => {
+        // Проверяем существование элемента
+        if (!ping.element) {
+            console.error(`Phone ping element ${index} not found`);
+            return;
+        }
+
         const interval = setInterval(() => {
-            const variation = (Math.random() - 0.5) * ping.variation;
-            const newPing = Math.round(ping.baseValue + variation);
+            try {
+                const variation = (Math.random() - 0.5) * ping.variation;
+                const newPing = Math.round(ping.baseValue + variation);
 
-            ping.element.classList.add('ping-animate');
-            ping.element.textContent = `${newPing}ms`;
+                ping.element.classList.add('ping-animate');
+                ping.element.textContent = `${newPing}ms`;
 
-            setTimeout(() => {
-                ping.element.classList.remove('ping-animate');
-            }, 300);
-
+                setTimeout(() => {
+                    ping.element.classList.remove('ping-animate');
+                }, 300);
+            } catch (error) {
+                console.error('Phone ping animation error:', error);
+            }
         }, 3000 + (index * 500)); // Разные интервалы для каждого пинга
 
         phonePingIntervals.push(interval);
@@ -2057,19 +2364,28 @@ function startPhonePingAnimation() {
 function startPhoneTrafficAnimation() {
     const downloadElement = document.getElementById('phone-download');
     const uploadElement = document.getElementById('phone-upload');
+    
+    // Проверяем существование элементов
+    if (!downloadElement || !uploadElement) {
+        console.error('Phone traffic elements not found');
+        return;
+    }
 
     phoneConnectionTimer = setInterval(() => {
-        // Более медленные приращения трафика
-        const downloadIncrease = Math.random() * 0.3 + 0.1; // 0.1-0.4 MB (медленнее)
-        const uploadIncrease = Math.random() * 0.15 + 0.05; // 0.05-0.2 MB (медленнее)
+        try {
+            // Более медленные приращения трафика
+            const downloadIncrease = Math.random() * 0.3 + 0.1; // 0.1-0.4 MB (медленнее)
+            const uploadIncrease = Math.random() * 0.15 + 0.05; // 0.05-0.2 MB (медленнее)
 
-        phoneDownloadMB += downloadIncrease;
-        phoneUploadMB += uploadIncrease;
+            phoneDownloadMB += downloadIncrease;
+            phoneUploadMB += uploadIncrease;
 
-        // Простое обновление без цветовой анимации
-        downloadElement.textContent = `${phoneDownloadMB.toFixed(0)}MB`;
-        uploadElement.textContent = `${phoneUploadMB.toFixed(0)}MB`;
-
+            // Простое обновление без цветовой анимации
+            downloadElement.textContent = `${phoneDownloadMB.toFixed(0)}MB`;
+            uploadElement.textContent = `${phoneUploadMB.toFixed(0)}MB`;
+        } catch (error) {
+            console.error('Phone traffic animation error:', error);
+        }
     }, 4000); // Обновляем каждые 4 секунды (медленнее)
 }
 
