@@ -389,6 +389,28 @@ body {
     background-size: 200% 200%;
 }
 
+/* Градиентная иконка в navbar-brand */
+.navbar-brand .gradient-icon {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease-in-out infinite;
+    background-size: 200% 200%;
+    display: inline-block;
+}
+
+/* Глобальный класс для градиентных иконок */
+.gradient-icon {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease-in-out infinite;
+    background-size: 200% 200%;
+    display: inline-block;
+}
+
 .nav-link {
     font-weight: 500;
     color: var(--dark) !important;
