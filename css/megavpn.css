@@ -35,6 +35,64 @@ body {
     padding-top: 120px; /* Статус бар (32px) + навбар (~88px) */
 }
 
+.list-inline-item {
+    margin-right: 10px;
+}
+
+/* Убираем разделители - элементы должны быть просто в строчку на десктопе */
+@media (min-width: 769px) {
+    .hero-content .list-inline {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        text-align: center !important;
+        gap: clamp(8px, 1.5vw, 15px) !important;
+    }
+    
+    .hero-content .list-inline-item {
+        display: inline-block !important;
+        margin-right: 0 !important;
+        margin-bottom: 0 !important;
+        /* Автоматический расчет размера шрифта от 11px до 16px в зависимости от ширины экрана */
+        font-size: clamp(11px, 1.2vw, 16px) !important;
+        flex-shrink: 1 !important;
+        word-break: keep-all !important;
+        hyphens: none !important;
+        /* Делаем элементы равной ширины для красивого расположения */
+        flex: 0 1 auto !important;
+        min-width: 0 !important;
+    }
+    
+    /* Стили для иконок в списке преимуществ */
+    .hero-content .list-inline-item i.fas {
+        margin-right: 6px !important;
+        font-size: 1.1em !important;
+        color: #10b981 !important;
+        vertical-align: middle !important;
+    }
+    
+    /* Первые два элемента в одну строку */
+    .hero-content .list-inline-item:nth-child(1),
+    .hero-content .list-inline-item:nth-child(2) {
+        flex: 0 1 calc(50% - 10px) !important;
+        max-width: calc(50% - 10px) !important;
+    }
+    
+    /* Третий элемент по центру */
+    .hero-content .list-inline-item:nth-child(3) {
+        flex: 0 1 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .hero-content .list-inline-item:not(:last-child)::after {
+        content: "";
+        margin-left: 0;
+    }
+}
+
 .hero-section::before {
     content: '';
     position: absolute;
@@ -49,6 +107,92 @@ body {
 .hero-content {
     position: relative;
     z-index: 2;
+}
+
+/* Стили для кнопок в hero на ДЕСКТОПЕ - в столбик */
+@media (min-width: 769px) {
+    /* Правильное позиционирование колонок в hero */
+    .hero-section .row {
+        align-items: center;
+    }
+
+    .hero-section .col-lg-6:first-child {
+        padding-right: 30px;
+    }
+
+    .hero-section .col-lg-6:last-child {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Размер телефона на десктопе */
+    .phone-mockup {
+        min-width: 320px;
+    }
+
+    .hero-content .d-flex.flex-wrap.gap-3 {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 15px !important;
+    }
+
+    .hero-content .btn-lg {
+        width: auto !important;
+        max-width: none !important;
+        flex: none !important;
+        /* Оптимальные размеры для десктопного лендинга */
+        font-size: 16px !important;
+        padding: 14px 32px !important;
+        line-height: 1.3 !important;
+        border-radius: 50px !important;
+        font-weight: 600 !important;
+        min-width: 220px !important;
+        text-align: center !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* Маленькие кнопки (альтернативные ссылки) на десктопе */
+    .hero-content .btn-sm {
+        font-size: 13px !important;
+        padding: 8px 16px !important;
+        line-height: 1.2 !important;
+        border-radius: 25px !important;
+        font-weight: 500 !important;
+        margin: 0 8px 8px 0 !important;
+        min-width: auto !important;
+        white-space: nowrap !important;
+    }
+
+    /* Контейнер для маленьких кнопок на десктопе */
+    .hero-content .mt-3 .d-flex {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+
+    /* Дополнительные стили для кнопок в hero */
+    .hero-content .btn-warning.btn-lg {
+        box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4) !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .hero-content .btn-warning.btn-lg:hover {
+        transform: translateY(-3px) !important;
+        box-shadow: 0 12px 35px rgba(245, 158, 11, 0.5) !important;
+    }
+
+    .hero-content .btn-outline-light.btn-lg {
+        border-width: 2px !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .hero-content .btn-outline-light.btn-lg:hover {
+        transform: translateY(-3px) !important;
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3) !important;
+    }
 }
 
 /* Buttons */
@@ -279,78 +423,6 @@ body {
     width: 80%;
 }
 
-.navbar-toggler {
-    border: 2px solid rgba(0,0,0,0.2);
-    background: rgba(0,0,0,0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 8px;
-    padding: 8px 12px;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 2;
-}
-
-.navbar-toggler:hover {
-    border-color: var(--primary);
-    background: rgba(99, 102, 241, 0.1);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
-}
-
-.navbar-toggler:focus {
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
-    outline: none;
-}
-
-/* Animated hamburger icon */
-.navbar-toggler-icon {
-    width: 24px;
-    height: 20px;
-    position: relative;
-    display: block;
-    cursor: pointer;
-}
-
-.navbar-toggler-icon span {
-    display: block;
-    position: absolute;
-    height: 3px;
-    width: 100%;
-    background: var(--dark);
-    border-radius: 3px;
-    opacity: 1;
-    left: 0;
-    transform: rotate(0deg);
-    transition: .25s ease-in-out;
-}
-
-.navbar-toggler-icon span:nth-child(1) {
-    top: 0px;
-}
-
-.navbar-toggler-icon span:nth-child(2) {
-    top: 8px;
-}
-
-.navbar-toggler-icon span:nth-child(3) {
-    top: 16px;
-}
-
-/* Hamburger animation when menu is open */
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(1) {
-    top: 8px;
-    transform: rotate(135deg);
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(2) {
-    opacity: 0;
-    left: -30px;
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(3) {
-    top: 8px;
-    transform: rotate(-135deg);
-}
 
 /* Кастомизация кнопки в навигации */
 .navbar .btn-primary {
@@ -441,10 +513,28 @@ body {
     border: 3px solid var(--primary);
     position: relative;
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.pricing-card::before {
-    content: 'ПОПУЛЯРНЫЙ';
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+}
+
+/* Популярный план */
+.pricing-card-popular {
+    border-color: var(--secondary);
+    background: linear-gradient(135deg, #ffffff 0%, #fffdf7 100%);
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(245, 158, 11, 0.3);
+}
+
+.pricing-card-popular:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 25px 50px rgba(245, 158, 11, 0.4);
+}
+
+.popular-badge {
     position: absolute;
     top: 20px;
     left: -30px;
@@ -454,12 +544,20 @@ body {
     font-size: 12px;
     font-weight: 700;
     transform: rotate(-45deg);
+    border-radius: 4px;
 }
 
 .price {
     font-size: 3rem;
     font-weight: 700;
     color: var(--primary);
+}
+
+.price-per-month {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .price-old {
@@ -563,6 +661,23 @@ body {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
+/* Стили для иконки в статус баре */
+.vpn-status-bar i.fas {
+    margin-right: 6px;
+    font-size: 1.1em;
+    vertical-align: middle;
+    color: #ffffff !important; /* Все иконки белые для контраста */
+}
+
+/* Убираем цветовые переопределения - все иконки белые */
+.vpn-status-bar i.text-danger,
+.vpn-status-bar i.text-warning,
+.vpn-status-bar i.text-primary,
+.vpn-status-bar i.text-info,
+.vpn-status-bar i.text-success {
+    color: #ffffff !important; /* Белый цвет для всех иконок */
+}
+
 .vpn-status-bar.protected {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     animation: neonGlow 3s ease-in-out infinite;
@@ -582,14 +697,14 @@ body {
 
 @keyframes neonGlow {
     0%, 100% {
-        box-shadow: 
+        box-shadow:
             0 2px 10px rgba(0,0,0,0.1),
             0 0 20px rgba(16, 185, 129, 0.6),
             0 0 40px rgba(16, 185, 129, 0.4),
             0 0 60px rgba(16, 185, 129, 0.2);
     }
     50% {
-        box-shadow: 
+        box-shadow:
             0 2px 10px rgba(0,0,0,0.1),
             0 0 30px rgba(16, 185, 129, 0.8),
             0 0 60px rgba(16, 185, 129, 0.6),
@@ -628,7 +743,7 @@ body {
 
 /* Phone Mockup */
 .phone-mockup {
-    max-width: 320px;
+    max-width: 220px;
     margin: 0 auto;
 }
 
@@ -638,6 +753,7 @@ body {
     padding: 8px;
     box-shadow: 0 25px 50px rgba(0,0,0,0.3);
     position: relative;
+    width: 100%;
 }
 
 .phone-frame::before {
@@ -661,6 +777,8 @@ body {
     color: white;
     position: relative;
     overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .phone-header {
@@ -982,6 +1100,189 @@ body {
         padding-right: 12px;
     }
 
+    /* Адаптивный список преимуществ - ТОЛЬКО в hero секции на мобильных */
+    .hero-content .list-inline {
+        display: block !important;
+    }
+
+    .hero-content .list-inline-item {
+        display: block !important;
+        margin-right: 0 !important;
+        margin-bottom: 5px !important;
+    }
+
+    /* ГЛОБАЛЬНЫЕ СТИЛИ ДЛЯ ВСЕХ КНОПОК НА МОБИЛЬНЫХ (кроме навигации) */
+    .btn:not(.navbar .btn) {
+        /* Автоматическое сжимание текста */
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        line-height: 1.2 !important;
+
+        /* Адаптивный размер шрифта */
+        font-size: 14px !important;
+
+        /* Гибкие отступы */
+        padding: 12px 16px !important;
+
+        /* Центрирование текста */
+        text-align: center !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        /* Максимальная ширина */
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Большие кнопки на мобильных (кроме навигации) */
+    .btn-lg:not(.navbar .btn-lg) {
+        font-size: 13px !important;
+        padding: 12px 14px !important;
+        line-height: 1.1 !important;
+    }
+
+    /* Маленькие кнопки на мобильных */
+    .btn-sm {
+        font-size: 12px !important;
+        padding: 8px 12px !important;
+        line-height: 1.1 !important;
+    }
+
+    /* Блочные кнопки */
+    .btn-block {
+        font-size: 14px !important;
+        padding: 14px 16px !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Специальные стили для кнопок в hero секции - ТОЛЬКО НА МОБИЛЬНЫХ */
+    .hero-content .btn-lg {
+        flex: 1 !important;
+        max-width: calc(50% - 6px) !important;
+        font-size: 13px !important;
+        padding: 12px 8px !important;
+        margin: 4px 3px !important;
+    }
+
+    /* Контейнер для основных кнопок героя - в линию ТОЛЬКО НА МОБИЛЬНЫХ */
+    .hero-content .d-flex.flex-wrap.gap-3 {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 6px !important;
+        justify-content: space-between !important;
+    }
+
+    /* Альтернативные ссылки в hero */
+    .hero-content .btn-sm {
+        font-size: 11px !important;
+        padding: 6px 8px !important;
+        margin: 2px !important;
+        flex: auto !important;
+        min-width: auto !important;
+    }
+
+    /* Кнопки в навигации */
+    .navbar .btn {
+        font-size: 14px !important;
+        padding: 10px 16px !important;
+    }
+
+    /* Кнопки в карточках */
+    .feature-card .btn,
+    .app-download-card .btn,
+    .pricing-card .btn,
+    .testimonial-card .btn {
+        font-size: 13px !important;
+        padding: 12px 14px !important;
+        width: 100% !important;
+        margin-bottom: 8px !important;
+    }
+
+    /* Кнопки в футере */
+    footer .btn {
+        font-size: 12px !important;
+        padding: 8px 12px !important;
+        margin: 2px !important;
+    }
+
+    /* Кнопки в призыве к действию */
+    .cta-section .btn,
+    .download-actions .btn {
+        font-size: 13px !important;
+        padding: 12px 14px !important;
+        margin: 4px 2px !important;
+        flex: 1 !important;
+        min-width: calc(33.333% - 8px) !important;
+    }
+
+    /* Иконки в кнопках */
+    .btn i {
+        margin-right: 4px !important;
+        font-size: 0.9em !important;
+    }
+
+    /* Убираем nowrap для всех кнопок */
+    .btn * {
+        white-space: normal !important;
+    }
+
+    .navbar-toggler {
+        padding: 4px 6px;
+        margin-right: 2px;
+        border-radius: 6px;
+        border: 1px solid black !important;
+    }
+
+    .navbar-toggler-icon {
+        width: 18px;
+        height: 14px;
+        position: relative;
+        display: block;
+    }
+
+    .navbar-toggler-icon span {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: #000;
+        border-radius: 1px;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: all 0.25s ease-in-out;
+    }
+
+    .navbar-toggler-icon span:nth-child(1) {
+        top: 0;
+    }
+
+    .navbar-toggler-icon span:nth-child(2) {
+        top: 5px;
+    }
+
+    .navbar-toggler-icon span:nth-child(3) {
+        top: 10px;
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(1) {
+        top: 5px;
+        transform: rotate(135deg);
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(2) {
+        opacity: 0;
+        left: -60px;
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(3) {
+        top: 5px;
+        transform: rotate(-135deg);
+    }
+
     /* VPN статус бар */
     .vpn-status-bar {
         font-size: 12px;
@@ -991,6 +1292,10 @@ body {
         top: 0;
         left: 0;
         right: 0;
+
+        white-space: nowrap;         /* не переносить текст */
+        overflow: hidden;            /* скрыть, если не влезает */
+        text-overflow: ellipsis;     /* добавить троеточие в конце */
     }
 
     .status-icon {
@@ -1012,7 +1317,7 @@ body {
         background: rgba(255,255,255,1) !important;
         box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
-    
+
     /* Hero секция на мобильных */
     .hero-section {
         text-align: center;
@@ -1155,8 +1460,7 @@ body {
 
     /* Phone mockup */
     .phone-mockup {
-        max-width: 280px;
-        margin-top: 30px;
+        min-width: 290px;
     }
 
     /* Убираем горизонтальный скролл */
@@ -1281,6 +1585,51 @@ body {
 
 /* Дополнительные стили для очень маленьких экранов */
 @media (max-width: 480px) {
+    /* ГЛОБАЛЬНЫЕ СТИЛИ ДЛЯ ВСЕХ КНОПОК НА ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНАХ */
+    .btn:not(.navbar .btn) {
+        font-size: 12px !important;
+        padding: 10px 12px !important;
+        line-height: 1.1 !important;
+    }
+
+    .btn-lg:not(.navbar .btn-lg) {
+        font-size: 12px !important;
+        padding: 10px 12px !important;
+        line-height: 1.1 !important;
+    }
+
+    .btn-sm {
+        font-size: 10px !important;
+        padding: 6px 10px !important;
+        line-height: 1.1 !important;
+    }
+
+    .btn-block {
+        font-size: 12px !important;
+        padding: 12px 14px !important;
+    }
+
+    /* Hero кнопки еще компактнее */
+    .hero-content .btn-lg {
+        font-size: 12px !important;
+        padding: 10px 8px !important;
+        flex: 1 !important;
+        max-width: calc(50% - 4px) !important;
+    }
+
+    .hero-content .d-flex.flex-wrap.gap-3 {
+        gap: 8px !important;
+    }
+
+    /* CTA секция кнопки */
+    .cta-section .btn,
+    .download-actions .btn {
+        font-size: 12px !important;
+        padding: 10px 12px !important;
+        margin: 3px 1px !important;
+        min-width: calc(33.333% - 6px) !important;
+    }
+
     /* VPN статус */
     .vpn-status-bar {
         font-size: 10px;
@@ -1295,12 +1644,13 @@ body {
     /* Навигация */
     .navbar {
         position: fixed;
-        top: 28px; /* Уменьшенная высота VPN статус бара на маленьких экранах */
-        padding: 8px 0;
+        top: 22px; /* Уменьшенная высота VPN статус бара на маленьких экранах */
+        padding: 0px 0;
     }
 
     .navbar-brand {
         font-size: 16px;
+        padding-left: 12px;
     }
 
     /* Hero */
@@ -1318,9 +1668,11 @@ body {
         margin-bottom: 15px;
     }
 
-    .hero-content .btn-lg {
-        font-size: 14px;
-        padding: 12px 16px;
+    /* Контейнер для основных кнопок - всегда в линию */
+    .hero-content .d-flex.flex-wrap.gap-3 {
+        flex-wrap: nowrap !important;
+        gap: 12px !important;
+        justify-content: space-between;
     }
 
     /* Альтернативные ссылки еще компактнее */
@@ -1333,7 +1685,7 @@ body {
 
     /* Телефон мокап еще меньше */
     .phone-mockup {
-        max-width: 220px;
+        min-width: 260px;
     }
 
     .phone-screen {
@@ -1465,12 +1817,25 @@ body {
     }
 
     .hero-content .btn-lg {
-        font-size: 13px;
-        padding: 11px 14px;
+        font-size: 12px;
+        padding: 10px 12px;
+        flex: 1;
+        max-width: calc(50% - 4px);
+        text-align: center;
+        line-height: 1.1;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    /* Контейнер для основных кнопок - всегда в линию даже на очень маленьких экранах */
+    .hero-content .d-flex.flex-wrap.gap-3 {
+        flex-wrap: nowrap !important;
+        gap: 8px !important;
+        justify-content: space-between;
     }
 
     .phone-mockup {
-        max-width: 200px;
+        min-width: 290px;
     }
 
     .section-title {
@@ -1522,7 +1887,7 @@ body {
 /* Стили для мобильного меню collapse */
 .navbar-collapse {
     position: relative;
-    z-index: 2;
+    z-index: 1002;
 }
 
 @media (max-width: 991px) {
@@ -1531,88 +1896,71 @@ body {
         top: 100%;
         left: 0;
         right: 0;
-        background: rgba(255,255,255,0.95);
-        backdrop-filter: blur(15px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        border-radius: 0 0 15px 15px;
-        max-height: calc(100vh - 100px);
-        overflow-y: auto;
-        margin-top: 15px;
-        padding: 20px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 0;
+        transition: all 0.3s ease;
     }
 
-    .navbar-collapse.show {
-        animation: slideDown 0.3s ease;
-    }
-
-    @keyframes slideDown {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .navbar-collapse.show,
+    .navbar-collapse.collapsing {
+        max-height: calc(100vh - 80px);
+        padding: 15px 0;
+        opacity: 1;
     }
 
     .navbar-nav {
         padding: 0;
+        margin: 0;
     }
 
     .navbar .nav-item {
-        margin: 5px 0;
+        margin: 0;
     }
 
     .navbar .nav-link {
         padding: 12px 20px !important;
         text-align: center;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
         font-size: 16px;
         margin: 0 !important;
         display: block;
         color: var(--dark) !important;
-        border-radius: 10px;
-        background: rgba(0,0,0,0.03);
-        transition: all 0.3s ease;
-        z-index: 1;
-        position: relative;
+        background: transparent;
+        transition: all 0.2s ease;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .navbar .nav-link:hover {
-        background: rgba(99, 102, 241, 0.1);
+        background: rgba(99, 102, 241, 0.05);
         color: var(--primary) !important;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
     }
 
     .navbar .nav-link::before {
         display: none;
     }
 
-    .navbar .nav-item:last-child .nav-link {
-        border-bottom: none;
-    }
-
     .navbar .btn-primary {
-        margin: 20px 0 10px 0;
+        margin: 10px 20px 15px 20px;
         display: block;
-        width: 100%;
         font-size: 16px;
-        padding: 14px 20px;
+        font-weight: 600;
+        padding: 12px 20px;
         background: var(--gradient);
-        background-size: 200% 200%;
-        animation: gradientShift 6s ease infinite;
         border: none;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+        transition: all 0.2s ease;
     }
 
     .navbar .btn-primary:hover {
         background: linear-gradient(135deg, #4f46e5 0%, #5b21b6 100%);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
-        animation: none;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
     }
 }
 
@@ -1668,9 +2016,196 @@ body.bot-page {
     .redirect-card {
         padding: 30px 20px;
     }
-    
+
     .redirect-card .btn {
         width: 100%;
         margin: 5px 0;
     }
-} 
+}
+
+.hero-content .btn-lg {
+    font-size: 12px;
+    padding: 10px 12px;
+    flex: 1;
+    max-width: calc(50% - 4px);
+    text-align: center;
+    line-height: 1.1;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* Контейнер для основных кнопок - всегда в линию даже на очень маленьких экранах */
+.hero-content .d-flex.flex-wrap.gap-3 {
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    justify-content: space-between;
+}
+
+.section-title {
+    font-size: 18px;
+}
+
+/* Альтернативные ссылки в две строки */
+.hero-content .mt-3 .d-flex {
+    flex-direction: column;
+}
+
+.hero-content .btn-sm {
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+/* Стили для очень узких экранов (менее 360px) */
+@media (max-width: 360px) {
+    /* ГЛОБАЛЬНЫЕ СТИЛИ ДЛЯ ВСЕХ КНОПОК НА САМЫХ МАЛЕНЬКИХ ЭКРАНАХ */
+    .btn:not(.navbar .btn) {
+        font-size: 11px !important;
+        padding: 8px 10px !important;
+        line-height: 1.0 !important;
+    }
+
+    .btn-lg:not(.navbar .btn-lg) {
+        font-size: 11px !important;
+        padding: 8px 10px !important;
+        line-height: 1.0 !important;
+    }
+
+    .btn-sm {
+        font-size: 9px !important;
+        padding: 5px 8px !important;
+        line-height: 1.0 !important;
+    }
+
+    .btn-block {
+        font-size: 11px !important;
+        padding: 10px 12px !important;
+    }
+
+    /* Hero кнопки максимально компактно */
+    .hero-content .btn-lg {
+        font-size: 11px !important;
+        padding: 8px 6px !important;
+        flex: 1 !important;
+        max-width: calc(50% - 3px) !important;
+    }
+
+    .hero-content .d-flex.flex-wrap.gap-3 {
+        gap: 6px !important;
+    }
+
+    /* CTA и другие секции */
+    .cta-section .btn,
+    .download-actions .btn {
+        font-size: 11px !important;
+        padding: 8px 10px !important;
+        margin: 2px 1px !important;
+        min-width: calc(33.333% - 4px) !important;
+    }
+
+    .hero-section h1 {
+        font-size: 22px;
+    }
+
+    /* Контейнер для основных кнопок - всегда в линию даже на очень маленьких экранах */
+    .hero-content .d-flex.flex-wrap.gap-3 {
+        flex-wrap: nowrap !important;
+        gap: 8px !important;
+        justify-content: space-between;
+    }
+
+    .phone-mockup {
+        max-width: 160px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    /* Альтернативные ссылки в две строки */
+    .hero-content .mt-3 .d-flex {
+        flex-direction: column;
+    }
+
+    .hero-content .btn-sm {
+        width: 100%;
+        margin-bottom: 4px;
+    }
+}
+
+/* Общие стили для иконок в интерфейсе */
+.btn i.fas,
+.btn i.fab {
+    margin-right: 6px !important;
+    font-size: 1em !important;
+    vertical-align: middle !important;
+}
+
+/* Стили для иконок в navbar-brand */
+.navbar-brand i.fas {
+    margin-right: 8px !important;
+    font-size: 1.2em !important;
+    vertical-align: middle !important;
+}
+
+/* Стили для иконок в бейджах */
+.badge i.fas {
+    margin-right: 4px !important;
+    font-size: 0.9em !important;
+    vertical-align: middle !important;
+}
+
+/* Стили для иконок в тексте */
+p i.fas,
+span i.fas {
+    margin-right: 4px !important;
+    font-size: 1em !important;
+    vertical-align: middle !important;
+}
+
+/* Стили для иконок в списках */
+li i.fas {
+    margin-right: 8px !important;
+    font-size: 1em !important;
+    vertical-align: middle !important;
+}
+
+/* Стили для иконок в заголовках */
+h5 i.fas,
+.text-primary i.fas {
+    margin-right: 6px !important;
+    font-size: 1em !important;
+    vertical-align: middle !important;
+}
+
+/* Стили для иконок флагов в телефонном макете */
+.server-item span .fi {
+    margin-right: 8px !important;
+    font-size: 1.2em !important;
+    vertical-align: middle !important;
+    display: inline-block !important;
+    width: 20px !important;
+    height: 15px !important;
+    border-radius: 2px !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+/* Убираем псевдоэлемент для флагов */
+.server-item span .fi:before {
+    display: none !important;
+}
+
+/* Стили для звездочек рейтинга в отзывах */
+.testimonial-card .mb-3 i.fas.fa-star {
+    margin-right: 2px !important;
+    font-size: 1.1em !important;
+    color: #fbbf24 !important;
+    vertical-align: middle !important;
+}
+
+/* Стили для иконок в phone-mockup (кроме флагов) */
+.phone-mockup i.fas {
+    margin-right: 4px !important;
+    vertical-align: middle !important;
+}

@@ -72,10 +72,15 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Toggle collapse using jQuery (Bootstrap 4 way)
             $(navbarCollapse).collapse('toggle');
-            
-            // Update aria-expanded attribute
-            const isExpanded = navbarToggler.getAttribute('aria-expanded') === 'true';
-            navbarToggler.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Listen to Bootstrap collapse events for proper aria-expanded sync
+        $(navbarCollapse).on('show.bs.collapse', function() {
+            navbarToggler.setAttribute('aria-expanded', 'true');
+        });
+
+        $(navbarCollapse).on('hide.bs.collapse', function() {
+            navbarToggler.setAttribute('aria-expanded', 'false');
         });
     }
     
@@ -85,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (window.innerWidth < 992) {
                 if (navbarCollapse.classList.contains('show')) {
                     $(navbarCollapse).collapse('hide');
-                    navbarToggler.setAttribute('aria-expanded', 'false');
                 }
             }
         });
@@ -99,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (!isClickInsideNav && isNavOpen) {
                 $(navbarCollapse).collapse('hide');
-                navbarToggler.setAttribute('aria-expanded', 'false');
             }
         }
     });
@@ -138,7 +141,7 @@ function checkVPNStatus() {
 
     // Показываем статус "не защищено"
     statusBar.classList.remove('protected');
-    statusText.innerHTML = '🚨 Ваше подключение НЕ защищено - подключитесь к нашим серверам MegaVPN';
+    statusText.innerHTML = '<i class="fas fa-exclamation-triangle text-danger"></i> Ваше подключение НЕ защищено - подключитесь к нашим серверам MegaVPN';
 
     // Запускаем эмуляцию подключения через 3 секунды
     setTimeout(() => {
@@ -157,12 +160,12 @@ function simulateVPNConnection() {
 
     // Выбираем случайный сервер один раз для сессии
     if (!currentServer) {
-        const servers = ['🇺🇸 США', '🇳🇱 Нидерланды', '🇸🇬 Сингапур', '🇩🇪 Германия', '🇯🇵 Япония'];
+        const servers = ['США', 'Нидерланды', 'Сингапур', 'Германия', 'Япония'];
         currentServer = servers[Math.floor(Math.random() * servers.length)];
     }
 
     // Показываем процесс подключения
-    statusText.innerHTML = '🔄 Подключаемся к серверам MegaVPN...';
+    statusText.innerHTML = '<i class="fas fa-spinner fa-spin text-primary"></i> Подключаемся к серверам MegaVPN...';
 
     // Запускаем анимацию телефона одновременно
     setTimeout(() => {
@@ -175,17 +178,17 @@ function simulateVPNConnection() {
 
     // Эмуляция задержки подключения
     setTimeout(() => {
-        statusText.innerHTML = `🔗 Подключение к серверу ${currentServer}...`;
+        statusText.innerHTML = `<i class="fas fa-server text-info"></i> Подключение к серверу ${currentServer}...`;
     }, 1000);
 
     setTimeout(() => {
-        statusText.innerHTML = '🛡️ Проверяем безопасность канала...';
+        statusText.innerHTML = '<i class="fas fa-shield-alt text-success"></i> Проверяем безопасность канала...';
     }, 2000);
 
     // Успешное подключение
     setTimeout(() => {
         statusBar.classList.add('protected');
-        statusText.innerHTML = `✅ Подключено к MegaVPN | ${currentServer} | Время: 00:00:01`;
+        statusText.innerHTML = `<i class="fas fa-check-circle text-success"></i> Подключено к MegaVPN | ${currentServer} | Время: 00:00:01`;
 
         // Запускаем таймер
         connectionStartTime = new Date();
@@ -218,7 +221,7 @@ function startConnectionTimer() {
         const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
         const statusText = document.getElementById('status-text');
-        statusText.innerHTML = `🛡️ Защищено MegaVPN | ${currentServer} | Время: ${timeString}`;
+        statusText.innerHTML = `<i class="fas fa-shield-alt text-success"></i> Защищено MegaVPN | ${currentServer} | Время: ${timeString}`;
     }, 1000);
 }
 
@@ -245,7 +248,7 @@ if (vpnStatusElement) {
             statusBar.classList.remove('protected');
         }
 
-        statusText.innerHTML = '🔄 Обновляем статус...';
+        statusText.innerHTML = '<i class="fas fa-sync fa-spin text-primary"></i> Обновляем статус...';
 
         setTimeout(() => {
             checkVPNStatus();
@@ -418,7 +421,7 @@ function animatePhoneConnection() {
     }
 
     // Используем тот же сервер, что и в главном VPN статусе
-    const selectedServer = currentServer || '🇺🇸 США';
+    const selectedServer = currentServer || 'США';
 
     // Этап 1: Подключение
     phoneIndicator.className = 'status-indicator connecting';
