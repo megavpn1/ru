@@ -63,6 +63,56 @@ body {
         width: auto !important;
         max-width: none !important;
         flex: none !important;
+        /* Оптимальные размеры для десктопного лендинга */
+        font-size: 16px !important;
+        padding: 14px 32px !important;
+        line-height: 1.3 !important;
+        border-radius: 50px !important;
+        font-weight: 600 !important;
+        min-width: 220px !important;
+        text-align: center !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    /* Маленькие кнопки (альтернативные ссылки) на десктопе */
+    .hero-content .btn-sm {
+        font-size: 13px !important;
+        padding: 8px 16px !important;
+        line-height: 1.2 !important;
+        border-radius: 25px !important;
+        font-weight: 500 !important;
+        margin: 0 8px 8px 0 !important;
+        min-width: auto !important;
+        white-space: nowrap !important;
+    }
+    
+    /* Контейнер для маленьких кнопок на десктопе */
+    .hero-content .mt-3 .d-flex {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+    
+    /* Дополнительные стили для кнопок в hero */
+    .hero-content .btn-warning.btn-lg {
+        box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4) !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .hero-content .btn-warning.btn-lg:hover {
+        transform: translateY(-3px) !important;
+        box-shadow: 0 12px 35px rgba(245, 158, 11, 0.5) !important;
+    }
+    
+    .hero-content .btn-outline-light.btn-lg {
+        border-width: 2px !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .hero-content .btn-outline-light.btn-lg:hover {
+        transform: translateY(-3px) !important;
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3) !important;
     }
 }
 
