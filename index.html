@@ -632,6 +632,45 @@
                 width: 280px;
             }
         }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .download-actions {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -947,6 +986,24 @@
                 </div>
             </div>
         </div>
+
+        <!-- Действия после скачивания -->
+        <div class="download-actions" data-aos="fade-up" data-aos-delay="300">
+            <h5 class="text-primary mb-3">
+                <i class="fas fa-rocket mr-2"></i>Скачал приложение? Получи настройки!
+            </h5>
+            <p class="text-muted mb-4">
+                Для работы V2Box нужна персональная ссылка подписки. Получи её в нашем боте за 30 секунд.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center" style="gap: 15px;">
+                <a href="bot.html" class="btn btn-warning btn-lg">
+                    🤖 Получить настройки в боте
+                </a>
+                <a href="#" class="btn btn-outline-primary btn-lg scroll-top-btn">
+                    ⬆️ Наверх за настройками
+                </a>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -1119,6 +1176,11 @@
     </div>
 </footer>
 
+<!-- Плавающая кнопка "Вверх" -->
+<button class="scroll-to-top" id="scrollToTop">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
@@ -1228,6 +1290,35 @@ document.getElementById('vpn-status').addEventListener('click', function() {
     setTimeout(() => {
         checkVPNStatus();
     }, 1000);
+});
+
+// Управление плавающей кнопкой "Вверх"
+const scrollToTopBtn = document.getElementById('scrollToTop');
+
+// Показываем/скрываем кнопку при прокрутке
+window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('visible');
+    } else {
+        scrollToTopBtn.classList.remove('visible');
+    }
+});
+
+// Прокрутка наверх при клике на плавающую кнопку
+scrollToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Прокрутка наверх при клике на кнопку "Наверх за настройками"
+document.querySelector('.scroll-top-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 });
 </script>
 
