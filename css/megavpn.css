@@ -513,10 +513,28 @@ body {
     border: 3px solid var(--primary);
     position: relative;
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.pricing-card::before {
-    content: 'ПОПУЛЯРНЫЙ';
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+}
+
+/* Популярный план */
+.pricing-card-popular {
+    border-color: var(--secondary);
+    background: linear-gradient(135deg, #ffffff 0%, #fffdf7 100%);
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(245, 158, 11, 0.3);
+}
+
+.pricing-card-popular:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 25px 50px rgba(245, 158, 11, 0.4);
+}
+
+.popular-badge {
     position: absolute;
     top: 20px;
     left: -30px;
@@ -526,12 +544,20 @@ body {
     font-size: 12px;
     font-weight: 700;
     transform: rotate(-45deg);
+    border-radius: 4px;
 }
 
 .price {
     font-size: 3rem;
     font-weight: 700;
     color: var(--primary);
+}
+
+.price-per-month {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .price-old {
