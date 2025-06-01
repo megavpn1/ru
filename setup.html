@@ -180,6 +180,10 @@
             margin: 15px 0;
         }
 
+        .video-demos {
+            margin-top: 20px;
+        }
+
         .video-demo {
             background: white;
             border-radius: 15px;
@@ -199,212 +203,6 @@
             font-weight: 600;
             margin-bottom: 15px;
             color: var(--primary);
-        }
-
-        .video-gallery {
-            margin-top: 20px;
-        }
-
-        .video-preview-card {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .video-preview-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        }
-
-        .video-preview {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            cursor: pointer;
-        }
-
-        .video-preview video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px 10px 0 0;
-        }
-
-        .play-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px 10px 0 0;
-            transition: background 0.3s ease;
-        }
-
-        .video-preview-card:hover .play-overlay {
-            background: rgba(0, 0, 0, 0.6);
-        }
-
-        .play-button {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .video-preview-card:hover .play-button {
-            background: white;
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        .video-thumbnail {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        }
-
-        .video-thumbnail video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .video-duration {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: 600;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-
-        .video-info {
-            padding: 20px;
-            background: white;
-        }
-
-        .video-info .video-title {
-            color: var(--dark);
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 16px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.8);
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-dialog {
-            position: relative;
-            margin: 5% auto;
-            max-width: 800px;
-            width: 90%;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from { 
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to { 
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            border-radius: 15px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            overflow: hidden;
-        }
-
-        .modal-header {
-            background: var(--gradient);
-            color: white;
-            border-bottom: none;
-            padding: 20px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-title {
-            font-weight: 700;
-            font-size: 20px;
-            margin: 0;
-        }
-
-        .btn-close {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            font-size: 24px;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .btn-close:hover {
-            background: rgba(255,255,255,0.3);
-        }
-
-        .modal-body {
-            padding: 0;
-        }
-
-        .modal-body video {
-            width: 100%;
-            height: auto;
-            display: block;
         }
     </style>
 </head>
@@ -528,71 +326,25 @@
                             </div>
 
                             <!-- Видео демонстрации -->
-                            <div class="video-gallery">
+                            <div class="video-demos">
                                 <h6 class="mb-4"><i class="fas fa-play-circle"></i> Видео инструкции</h6>
                                 
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <div class="video-preview-card">
-                                            <div class="video-preview" data-video="Add_sub">
-                                                <div class="video-thumbnail">
-                                                    <video preload="metadata" width="100%">
-                                                        <source src="video/Add_sub.mp4" type="video/mp4">
-                                                    </video>
-                                                    <div class="play-overlay">
-                                                        <div class="play-button">
-                                                            <i class="fas fa-play"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="video-duration">📱 Добавление подписки</div>
-                                                </div>
-                                            </div>
-                                            <div class="video-info">
-                                                <h6 class="video-title">Как добавить подписку в V2Box</h6>
-                                                <p class="small text-muted">Подробная демонстрация процесса добавления подписки в приложение</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-md-6 mb-4">
-                                        <div class="video-preview-card">
-                                            <div class="video-preview" data-video="Connect">
-                                                <div class="video-thumbnail">
-                                                    <video preload="metadata" width="100%">
-                                                        <source src="video/Connect.mp4" type="video/mp4">
-                                                    </video>
-                                                    <div class="play-overlay">
-                                                        <div class="play-button">
-                                                            <i class="fas fa-play"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="video-duration">🔗 Подключение к VPN</div>
-                                                </div>
-                                            </div>
-                                            <div class="video-info">
-                                                <h6 class="video-title">Как подключиться к VPN</h6>
-                                                <p class="small text-muted">Пошаговая демонстрация подключения к серверу</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="video-demo">
+                                    <h6 class="video-title">📹 Видео: Как добавить подписку в V2Box</h6>
+                                    <video controls preload="metadata" width="100%" style="max-width: 500px; border-radius: 10px;">
+                                        <source src="video/Add_sub.mp4" type="video/mp4">
+                                        Ваш браузер не поддерживает воспроизведение видео.
+                                    </video>
+                                    <p class="small text-muted mt-2">Подробная демонстрация процесса добавления подписки</p>
                                 </div>
-                            </div>
 
-                            <!-- Модальное окно для воспроизведения видео -->
-                            <div class="modal fade" id="videoModal" tabindex="-1">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="videoModalTitle">Видео инструкция</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal">×</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <video id="modalVideo" controls width="100%" style="border-radius: 10px;">
-                                                <source id="modalVideoSource" src="" type="video/mp4">
-                                                Ваш браузер не поддерживает воспроизведение видео.
-                                            </video>
-                                        </div>
-                                    </div>
+                                <div class="video-demo">
+                                    <h6 class="video-title">📹 Видео: Как подключиться к VPN</h6>
+                                    <video controls preload="metadata" width="100%" style="max-width: 500px; border-radius: 10px;">
+                                        <source src="video/Connect.mp4" type="video/mp4">
+                                        Ваш браузер не поддерживает воспроизведение видео.
+                                    </video>
+                                    <p class="small text-muted mt-2">Пошаговая демонстрация подключения к серверу</p>
                                 </div>
                             </div>
                         </div>
@@ -662,53 +414,25 @@
                             </div>
 
                             <!-- Видео демонстрации -->
-                            <div class="video-gallery">
+                            <div class="video-demos">
                                 <h6 class="mb-4"><i class="fas fa-play-circle"></i> Видео инструкции</h6>
                                 
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <div class="video-preview-card">
-                                            <div class="video-preview" data-video="Add_sub">
-                                                <div class="video-thumbnail">
-                                                    <video preload="metadata" width="100%">
-                                                        <source src="video/Add_sub.mp4" type="video/mp4">
-                                                    </video>
-                                                    <div class="play-overlay">
-                                                        <div class="play-button">
-                                                            <i class="fas fa-play"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="video-duration">📱 Добавление подписки</div>
-                                                </div>
-                                            </div>
-                                            <div class="video-info">
-                                                <h6 class="video-title">Как добавить подписку в V2Box</h6>
-                                                <p class="small text-muted">Подробная демонстрация процесса добавления подписки в приложение</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-md-6 mb-4">
-                                        <div class="video-preview-card">
-                                            <div class="video-preview" data-video="Connect">
-                                                <div class="video-thumbnail">
-                                                    <video preload="metadata" width="100%">
-                                                        <source src="video/Connect.mp4" type="video/mp4">
-                                                    </video>
-                                                    <div class="play-overlay">
-                                                        <div class="play-button">
-                                                            <i class="fas fa-play"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="video-duration">🔗 Подключение к VPN</div>
-                                                </div>
-                                            </div>
-                                            <div class="video-info">
-                                                <h6 class="video-title">Как подключиться к VPN</h6>
-                                                <p class="small text-muted">Пошаговая демонстрация подключения к серверу</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="video-demo">
+                                    <h6 class="video-title">📹 Видео: Как добавить подписку в V2Box</h6>
+                                    <video controls preload="metadata" width="100%" style="max-width: 500px; border-radius: 10px;">
+                                        <source src="video/Add_sub.mp4" type="video/mp4">
+                                        Ваш браузер не поддерживает воспроизведение видео.
+                                    </video>
+                                    <p class="small text-muted mt-2">Подробная демонстрация процесса добавления подписки</p>
+                                </div>
+
+                                <div class="video-demo">
+                                    <h6 class="video-title">📹 Видео: Как подключиться к VPN</h6>
+                                    <video controls preload="metadata" width="100%" style="max-width: 500px; border-radius: 10px;">
+                                        <source src="video/Connect.mp4" type="video/mp4">
+                                        Ваш браузер не поддерживает воспроизведение видео.
+                                    </video>
+                                    <p class="small text-muted mt-2">Пошаговая демонстрация подключения к серверу</p>
                                 </div>
                             </div>
                         </div>
@@ -786,53 +510,25 @@
                             </div>
 
                             <!-- Видео демонстрации -->
-                            <div class="video-gallery">
+                            <div class="video-demos">
                                 <h6 class="mb-4"><i class="fas fa-play-circle"></i> Видео инструкции</h6>
                                 
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <div class="video-preview-card">
-                                            <div class="video-preview" data-video="Add_sub">
-                                                <div class="video-thumbnail">
-                                                    <video preload="metadata" width="100%">
-                                                        <source src="video/Add_sub.mp4" type="video/mp4">
-                                                    </video>
-                                                    <div class="play-overlay">
-                                                        <div class="play-button">
-                                                            <i class="fas fa-play"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="video-duration">📱 Добавление подписки</div>
-                                                </div>
-                                            </div>
-                                            <div class="video-info">
-                                                <h6 class="video-title">Как добавить подписку в V2Box</h6>
-                                                <p class="small text-muted">Подробная демонстрация процесса добавления подписки в приложение</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-md-6 mb-4">
-                                        <div class="video-preview-card">
-                                            <div class="video-preview" data-video="Connect">
-                                                <div class="video-thumbnail">
-                                                    <video preload="metadata" width="100%">
-                                                        <source src="video/Connect.mp4" type="video/mp4">
-                                                    </video>
-                                                    <div class="play-overlay">
-                                                        <div class="play-button">
-                                                            <i class="fas fa-play"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="video-duration">🔗 Подключение к VPN</div>
-                                                </div>
-                                            </div>
-                                            <div class="video-info">
-                                                <h6 class="video-title">Как подключиться к VPN</h6>
-                                                <p class="small text-muted">Пошаговая демонстрация подключения к серверу</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="video-demo">
+                                    <h6 class="video-title">📹 Видео: Как добавить подписку в V2Box</h6>
+                                    <video controls preload="metadata" width="100%" style="max-width: 500px; border-radius: 10px;">
+                                        <source src="video/Add_sub.mp4" type="video/mp4">
+                                        Ваш браузер не поддерживает воспроизведение видео.
+                                    </video>
+                                    <p class="small text-muted mt-2">Подробная демонстрация процесса добавления подписки</p>
+                                </div>
+
+                                <div class="video-demo">
+                                    <h6 class="video-title">📹 Видео: Как подключиться к VPN</h6>
+                                    <video controls preload="metadata" width="100%" style="max-width: 500px; border-radius: 10px;">
+                                        <source src="video/Connect.mp4" type="video/mp4">
+                                        Ваш браузер не поддерживает воспроизведение видео.
+                                    </video>
+                                    <p class="small text-muted mt-2">Пошаговая демонстрация подключения к серверу</p>
                                 </div>
                             </div>
                         </div>
@@ -920,122 +616,7 @@
             });
         });
 
-        // Обработка видео превью
-        document.querySelectorAll('.video-preview').forEach(preview => {
-            preview.addEventListener('click', function() {
-                const videoName = this.dataset.video;
-                const videoSrc = `video/${videoName}.mp4`;
-                
-                console.log(`Клик по видео: ${videoName}, путь: ${videoSrc}`);
-                
-                // Настраиваем модальное окно
-                const modal = document.getElementById('videoModal');
-                const modalVideo = document.getElementById('modalVideo');
-                const modalVideoSource = document.getElementById('modalVideoSource');
-                const modalTitle = document.getElementById('videoModalTitle');
-                
-                if (!modal || !modalVideo || !modalVideoSource || !modalTitle) {
-                    console.error('Не найдены элементы модального окна');
-                    return;
-                }
-                
-                // Устанавливаем источник видео
-                modalVideoSource.src = videoSrc;
-                modalVideo.load();
-                
-                // Устанавливаем заголовок
-                if (videoName === 'Add_sub') {
-                    modalTitle.textContent = 'Как добавить подписку в V2Box';
-                } else if (videoName === 'Connect') {
-                    modalTitle.textContent = 'Как подключиться к VPN';
-                }
-                
-                // Показываем модальное окно
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // Блокируем скролл фона
-                
-                console.log('Модальное окно открыто');
-                
-                // Воспроизводим видео с задержкой
-                setTimeout(() => {
-                    modalVideo.play().catch(error => {
-                        console.log('Автовоспроизведение заблокировано:', error);
-                    });
-                }, 500);
-            });
-            
-            // Добавляем hover эффект
-            preview.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.02)';
-                this.style.transition = 'transform 0.3s ease';
-            });
-            
-            preview.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-            });
-        });
-
-        // Функция закрытия модального окна
-        function closeVideoModal() {
-            const modal = document.getElementById('videoModal');
-            const modalVideo = document.getElementById('modalVideo');
-            
-            if (modal && modalVideo) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Восстанавливаем скролл
-                modalVideo.pause();
-                modalVideo.currentTime = 0;
-                console.log('Модальное окно закрыто');
-            }
-        }
-
-        // Закрытие модального окна по кнопке
-        document.addEventListener('DOMContentLoaded', function() {
-            const closeBtn = document.querySelector('.btn-close');
-            if (closeBtn) {
-                closeBtn.addEventListener('click', closeVideoModal);
-                console.log('Обработчик кнопки закрытия добавлен');
-            } else {
-                console.error('Кнопка закрытия не найдена');
-            }
-        });
-
-        // Закрытие по клику вне модального окна
-        window.addEventListener('click', function(event) {
-            const modal = document.getElementById('videoModal');
-            if (event.target === modal) {
-                closeVideoModal();
-            }
-        });
-
-        // Закрытие по клавише ESC
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const modal = document.getElementById('videoModal');
-                if (modal && modal.style.display === 'block') {
-                    closeVideoModal();
-                }
-            }
-        });
-
-        // Улучшенная загрузка превью
-        document.querySelectorAll('.video-thumbnail video').forEach(video => {
-            video.addEventListener('loadedmetadata', function() {
-                // Устанавливаем время на 2 секунды для лучшего превью
-                this.currentTime = 2;
-            });
-            
-            video.addEventListener('loadeddata', function() {
-                // Показываем первый кадр
-                this.style.opacity = '1';
-            });
-            
-            video.addEventListener('error', function() {
-                console.error('Ошибка загрузки видео:', this.src);
-            });
-        });
-
-        console.log('🚀 MegaVPN Setup Instructions with video previews loaded!');
+        console.log('🚀 MegaVPN Setup Instructions loaded!');
     </script>
 </body>
 </html> 
