@@ -10,7 +10,8 @@
 
     <!-- External CSS -->
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="vendor/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- Fonts -->
@@ -700,6 +701,18 @@
 
         .testimonials-carousel .owl-stage-outer {
             padding: 10px 0;
+        }
+
+        /* Fallback стили для случая если карусель не загрузится */
+        .testimonials-carousel .testimonial-card {
+            display: block;
+            max-width: 400px;
+            margin: 0 auto 30px;
+        }
+
+        .testimonials-carousel.owl-loaded .testimonial-card {
+            max-width: none;
+            margin: 0;
         }
     </style>
 </head>
@@ -1550,6 +1563,7 @@
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
 <script>
@@ -1689,30 +1703,62 @@ document.querySelector('.scroll-top-btn').addEventListener('click', function(e) 
 
 // Инициализация карусели отзывов
 $(document).ready(function() {
-    $('.testimonials-carousel').owlCarousel({
-        items: 3,
-        margin: 30,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 4000,
-        autoplayHoverPause: true,
-        nav: false,
-        dots: true,
-        responsive: {
-            0: {
-                items: 1,
-                margin: 15
+    console.log('🎠 Initializing testimonials carousel...');
+    
+    // Проверяем, что элемент существует
+    if ($('.testimonials-carousel').length === 0) {
+        console.error('❌ Testimonials carousel element not found!');
+        return;
+    }
+    
+    console.log('✅ Found testimonials carousel element');
+    
+    // Проверяем, что Owl Carousel загружен
+    if (typeof $.fn.owlCarousel === 'undefined') {
+        console.error('❌ Owl Carousel not loaded!');
+        // Показываем отзывы в обычном виде
+        $('.testimonials-carousel .testimonial-card').show();
+        return;
+    }
+    
+    console.log('✅ Owl Carousel plugin loaded');
+    
+    try {
+        $('.testimonials-carousel').owlCarousel({
+            items: 3,
+            margin: 30,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true,
+            nav: false,
+            dots: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    margin: 15
+                },
+                768: {
+                    items: 2,
+                    margin: 20
+                },
+                992: {
+                    items: 3,
+                    margin: 30
+                }
             },
-            768: {
-                items: 2,
-                margin: 20
+            onInitialized: function() {
+                console.log('✅ Testimonials carousel initialized successfully!');
             },
-            992: {
-                items: 3,
-                margin: 30
+            onInitialize: function() {
+                console.log('🔄 Testimonials carousel initializing...');
             }
-        }
-    });
+        });
+    } catch (error) {
+        console.error('❌ Error initializing carousel:', error);
+        // Fallback: показываем отзывы в обычном виде
+        $('.testimonials-carousel .testimonial-card').show();
+    }
 });
 </script>
 
