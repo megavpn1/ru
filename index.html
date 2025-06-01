@@ -83,6 +83,31 @@
             box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
         }
 
+        .btn-warning {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            font-size: 16px;
+            margin: 8px;
+        }
+
+        .btn-warning:hover {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+            color: white;
+        }
+
+        .btn-warning:focus {
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+            color: white;
+        }
+
         .btn-outline-light {
             border: 2px solid rgba(255,255,255,0.3);
             color: white;
@@ -90,6 +115,7 @@
             font-weight: 600;
             border-radius: 50px;
             transition: all 0.3s ease;
+            margin: 8px;
         }
 
         .btn-outline-light:hover {
@@ -307,7 +333,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 27px;
             padding: 20px 15px;
-            height: 500px;
+            height: 520px;
             color: white;
             position: relative;
             overflow: hidden;
@@ -317,7 +343,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-size: 14px;
             font-weight: 600;
         }
@@ -330,14 +356,14 @@
 
         .app-content {
             text-align: center;
-            height: 100%;
+            height: calc(100% - 50px);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-evenly;
         }
 
         .app-logo {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .vpn-icon {
@@ -348,7 +374,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 15px;
+            margin: 0 auto 10px;
             font-size: 24px;
             backdrop-filter: blur(10px);
         }
@@ -366,13 +392,13 @@
         }
 
         .connection-status {
-            margin: 30px 0;
+            margin: 20px 0;
         }
 
         .status-indicator {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 15px;
             position: relative;
             display: flex;
             align-items: center;
@@ -383,14 +409,14 @@
             background: rgba(16, 185, 129, 0.2);
             border-radius: 50%;
             color: #10b981;
-            font-size: 30px;
+            font-size: 26px;
         }
 
         .pulse-ring {
             border: 2px solid rgba(16, 185, 129, 0.3);
             border-radius: 50%;
-            height: 100px;
-            width: 100px;
+            height: 90px;
+            width: 90px;
             position: absolute;
             animation: pulse 2s ease-out infinite;
         }
@@ -415,7 +441,7 @@
         }
 
         .connection-status h5 {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
             margin-bottom: 5px;
         }
@@ -431,8 +457,8 @@
             justify-content: space-around;
             background: rgba(255,255,255,0.1);
             border-radius: 15px;
-            padding: 15px 10px;
-            margin: 20px 0;
+            padding: 12px 8px;
+            margin: 15px 0;
             backdrop-filter: blur(10px);
         }
 
@@ -441,13 +467,13 @@
         }
 
         .stat-value {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             margin-bottom: 5px;
         }
 
         .stat-label {
-            font-size: 11px;
+            font-size: 10px;
             opacity: 0.7;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -456,7 +482,7 @@
         .quick-servers {
             background: rgba(255,255,255,0.1);
             border-radius: 15px;
-            padding: 15px;
+            padding: 12px;
             backdrop-filter: blur(10px);
         }
 
@@ -464,8 +490,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 0;
-            font-size: 14px;
+            padding: 6px 0;
+            font-size: 13px;
         }
 
         .server-item:not(:last-child) {
@@ -473,7 +499,7 @@
         }
 
         .ping {
-            font-size: 12px;
+            font-size: 11px;
             opacity: 0.7;
         }
 
@@ -496,8 +522,22 @@
             }
 
             .phone-screen {
-                height: 420px;
+                height: 440px;
                 padding: 15px 12px;
+            }
+
+            .d-flex.flex-wrap {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .d-flex.flex-wrap .btn {
+                width: 280px;
+                margin: 6px 0;
+            }
+
+            .hero-content .d-flex.flex-wrap {
+                gap: 10px !important;
             }
         }
     </style>
@@ -552,7 +592,7 @@
                     Получи доступ к YouTube, Instagram, Netflix и всем заблокированным сайтам. 
                     Быстро, безопасно, анонимно.
                 </p>
-                <div class="d-flex flex-wrap gap-3 mb-4">
+                <div class="d-flex flex-wrap gap-3 mb-4 justify-content-center">
                     <a href="https://t.me/megavpn_bot" class="btn btn-warning btn-lg">
                         🚀 Попробовать бесплатно
                     </a>
@@ -902,7 +942,7 @@
                 Присоединись к тысячам пользователей, которые уже наслаждаются безлимитным интернетом
             </p>
             
-            <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+            <div class="d-flex flex-wrap justify-content-center mb-4" style="gap: 15px;">
                 <a href="https://t.me/megavpn_bot" class="btn btn-warning btn-lg">
                     🚀 Начать бесплатный период
                 </a>
