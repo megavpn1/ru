@@ -125,6 +125,25 @@
             transform: translateY(-2px);
         }
 
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 25px;
+        }
+
+        .btn-outline-light.btn-sm {
+            border: 1px solid rgba(255,255,255,0.4);
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+        }
+
+        .btn-outline-light.btn-sm:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.6);
+            color: white;
+            transform: translateY(-1px);
+        }
+
         .navbar {
             background: rgba(255,255,255,0.95);
             backdrop-filter: blur(10px);
@@ -333,7 +352,8 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 27px;
             padding: 20px 15px;
-            height: 520px;
+            height: auto;
+            min-height: 651px;
             color: white;
             position: relative;
             overflow: hidden;
@@ -356,10 +376,11 @@
 
         .app-content {
             text-align: center;
-            height: calc(100% - 50px);
+            min-height: 580px;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
+            padding-bottom: 20px;
         }
 
         .app-logo {
@@ -522,22 +543,33 @@
             }
 
             .phone-screen {
-                height: 440px;
+                min-height: 500px;
                 padding: 15px 12px;
+            }
+
+            .app-content {
+                min-height: 430px;
+                padding-bottom: 15px;
             }
 
             .d-flex.flex-wrap {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
             }
 
             .d-flex.flex-wrap .btn {
-                width: 280px;
+                width: auto;
+                min-width: 200px;
                 margin: 6px 0;
             }
 
             .hero-content .d-flex.flex-wrap {
                 gap: 10px !important;
+                align-items: center;
+            }
+
+            .hero-content .d-flex.flex-wrap .btn {
+                width: 280px;
             }
         }
     </style>
@@ -592,7 +624,7 @@
                     Получи доступ к YouTube, Instagram, Netflix и всем заблокированным сайтам. 
                     Быстро, безопасно, анонимно.
                 </p>
-                <div class="d-flex flex-wrap gap-3 mb-4 justify-content-center">
+                <div class="d-flex flex-wrap gap-3 mb-4">
                     <a href="https://t.me/megavpn_bot" class="btn btn-warning btn-lg">
                         🚀 Попробовать бесплатно
                     </a>
@@ -603,6 +635,24 @@
                 <p class="text-white-50 small">
                     ✅ Без регистрации • ✅ Мгновенная активация • ✅ 50+ стран
                 </p>
+                
+                <!-- Альтернативный доступ к боту -->
+                <div class="mt-3">
+                    <p class="text-white-50 small mb-2">
+                        🔒 Если t.me заблокирован, используйте веб-версию:
+                    </p>
+                    <div class="d-flex flex-wrap gap-2 mb-2">
+                        <a href="https://webogram.org/a/#/im?p=@megavpn_bot" target="_blank" class="btn btn-outline-light btn-sm">
+                            🌐 Webogram
+                        </a>
+                        <a href="https://web.telegram.org/a/#@megavpn_bot" target="_blank" class="btn btn-outline-light btn-sm">
+                            💻 Web Telegram
+                        </a>
+                    </div>
+                    <p class="text-white-50" style="font-size: 12px;">
+                        💡 Откройте любую ссылку выше и найдите бота: <strong>@megavpn_bot</strong>
+                    </p>
+                </div>
             </div>
             <div class="col-lg-6 text-center" data-aos="fade-left">
                 <div class="floating-phone">
@@ -846,7 +896,11 @@
                 <div class="step-card">
                     <div class="step-number">2</div>
                     <h5 class="font-weight-bold mb-3">Получи настройки</h5>
-                    <p>Напиши боту @megavpn_bot и получи персональную ссылку подписки</p>
+                    <p class="mb-3">Напиши боту @megavpn_bot и получи персональную ссылку подписки</p>
+                    <div class="mt-3">
+                        <a href="https://t.me/megavpn_bot" class="btn btn-warning btn-sm mr-2 mb-2">Telegram</a>
+                        <a href="https://webogram.org/a/#/im?p=@megavpn_bot" target="_blank" class="btn btn-outline-light btn-sm mb-2">Webogram</a>
+                    </div>
                 </div>
             </div>
             
@@ -860,9 +914,16 @@
         </div>
         
         <div class="text-center mt-5" data-aos="fade-up">
-            <a href="https://t.me/megavpn_bot" class="btn btn-warning btn-lg">
-                🤖 Получить настройки в боте
-            </a>
+            <div class="mb-3">
+                <a href="https://t.me/megavpn_bot" class="btn btn-warning btn-lg mr-3 mb-2">
+                    🤖 Получить настройки в боте
+                </a>
+            </div>
+            <div class="d-flex justify-content-center flex-wrap gap-2">
+                <span class="text-white-50 small mr-3">Если Telegram заблокирован:</span>
+                <a href="https://webogram.org/a/#/im?p=@megavpn_bot" target="_blank" class="btn btn-outline-light btn-sm mr-2">🌐 Webogram</a>
+                <a href="https://web.telegram.org/a/#@megavpn_bot" target="_blank" class="btn btn-outline-light btn-sm">💻 Web Telegram</a>
+            </div>
         </div>
     </div>
 </section>
