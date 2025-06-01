@@ -51,6 +51,21 @@ body {
     z-index: 2;
 }
 
+/* Стили для кнопок в hero на ДЕСКТОПЕ - в столбик */
+@media (min-width: 769px) {
+    .hero-content .d-flex.flex-wrap.gap-3 {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 15px !important;
+    }
+    
+    .hero-content .btn-lg {
+        width: auto !important;
+        max-width: none !important;
+        flex: none !important;
+    }
+}
+
 /* Buttons */
 .btn-primary {
     background: var(--primary);
@@ -910,6 +925,125 @@ body {
         padding-right: 12px;
     }
 
+    /* ГЛОБАЛЬНЫЕ СТИЛИ ДЛЯ ВСЕХ КНОПОК НА МОБИЛЬНЫХ */
+    .btn {
+        /* Автоматическое сжимание текста */
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        line-height: 1.2 !important;
+        
+        /* Адаптивный размер шрифта */
+        font-size: 14px !important;
+        
+        /* Гибкие отступы */
+        padding: 12px 16px !important;
+        
+        /* Центрирование текста */
+        text-align: center !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        
+        /* Максимальная ширина */
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Большие кнопки на мобильных */
+    .btn-lg {
+        font-size: 13px !important;
+        padding: 12px 14px !important;
+        line-height: 1.1 !important;
+    }
+
+    /* Маленькие кнопки на мобильных */
+    .btn-sm {
+        font-size: 12px !important;
+        padding: 8px 12px !important;
+        line-height: 1.1 !important;
+    }
+
+    /* Блочные кнопки */
+    .btn-block {
+        font-size: 14px !important;
+        padding: 14px 16px !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Специальные стили для кнопок в hero секции - ТОЛЬКО НА МОБИЛЬНЫХ */
+    .hero-content .btn-lg {
+        flex: 1 !important;
+        max-width: calc(50% - 6px) !important;
+        font-size: 13px !important;
+        padding: 12px 8px !important;
+        margin: 4px 3px !important;
+    }
+
+    /* Контейнер для основных кнопок героя - в линию ТОЛЬКО НА МОБИЛЬНЫХ */
+    .hero-content .d-flex.flex-wrap.gap-3 {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 6px !important;
+        justify-content: space-between !important;
+    }
+
+    /* Альтернативные ссылки в hero */
+    .hero-content .btn-sm {
+        font-size: 11px !important;
+        padding: 6px 8px !important;
+        margin: 2px !important;
+        flex: auto !important;
+        min-width: auto !important;
+    }
+
+    /* Кнопки в навигации */
+    .navbar .btn {
+        font-size: 14px !important;
+        padding: 10px 16px !important;
+        margin: 5px !important;
+    }
+
+    /* Кнопки в карточках */
+    .feature-card .btn,
+    .app-download-card .btn,
+    .pricing-card .btn,
+    .testimonial-card .btn {
+        font-size: 13px !important;
+        padding: 12px 14px !important;
+        width: 100% !important;
+        margin-bottom: 8px !important;
+    }
+
+    /* Кнопки в футере */
+    footer .btn {
+        font-size: 12px !important;
+        padding: 8px 12px !important;
+        margin: 2px !important;
+    }
+
+    /* Кнопки в призыве к действию */
+    .cta-section .btn,
+    .download-actions .btn {
+        font-size: 13px !important;
+        padding: 12px 14px !important;
+        margin: 4px 2px !important;
+        flex: 1 !important;
+        min-width: calc(33.333% - 8px) !important;
+    }
+
+    /* Иконки в кнопках */
+    .btn i {
+        margin-right: 4px !important;
+        font-size: 0.9em !important;
+    }
+
+    /* Убираем nowrap для всех кнопок */
+    .btn * {
+        white-space: normal !important;
+    }
+
     .navbar-toggler {
         padding: 4px 6px;
         margin-right: 2px;
@@ -1267,6 +1401,51 @@ body {
 
 /* Дополнительные стили для очень маленьких экранов */
 @media (max-width: 480px) {
+    /* ГЛОБАЛЬНЫЕ СТИЛИ ДЛЯ ВСЕХ КНОПОК НА ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНАХ */
+    .btn {
+        font-size: 12px !important;
+        padding: 10px 12px !important;
+        line-height: 1.1 !important;
+    }
+
+    .btn-lg {
+        font-size: 12px !important;
+        padding: 10px 12px !important;
+        line-height: 1.1 !important;
+    }
+
+    .btn-sm {
+        font-size: 10px !important;
+        padding: 6px 10px !important;
+        line-height: 1.1 !important;
+    }
+
+    .btn-block {
+        font-size: 12px !important;
+        padding: 12px 14px !important;
+    }
+
+    /* Hero кнопки еще компактнее */
+    .hero-content .btn-lg {
+        font-size: 12px !important;
+        padding: 10px 8px !important;
+        flex: 1 !important;
+        max-width: calc(50% - 4px) !important;
+    }
+
+    .hero-content .d-flex.flex-wrap.gap-3 {
+        gap: 8px !important;
+    }
+
+    /* CTA секция кнопки */
+    .cta-section .btn,
+    .download-actions .btn {
+        font-size: 12px !important;
+        padding: 10px 12px !important;
+        margin: 3px 1px !important;
+        min-width: calc(33.333% - 6px) !important;
+    }
+
     /* VPN статус */
     .vpn-status-bar {
         font-size: 10px;
@@ -1305,9 +1484,11 @@ body {
         margin-bottom: 15px;
     }
 
-    .hero-content .btn-lg {
-        font-size: 14px;
-        padding: 12px 16px;
+    /* Контейнер для основных кнопок - всегда в линию */
+    .hero-content .d-flex.flex-wrap.gap-3 {
+        flex-wrap: nowrap !important;
+        gap: 12px !important;
+        justify-content: space-between;
     }
 
     /* Альтернативные ссылки еще компактнее */
@@ -1452,8 +1633,21 @@ body {
     }
 
     .hero-content .btn-lg {
-        font-size: 13px;
-        padding: 11px 14px;
+        font-size: 12px;
+        padding: 10px 12px;
+        flex: 1;
+        max-width: calc(50% - 4px);
+        text-align: center;
+        line-height: 1.1;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    /* Контейнер для основных кнопок - всегда в линию даже на очень маленьких экранах */
+    .hero-content .d-flex.flex-wrap.gap-3 {
+        flex-wrap: nowrap !important;
+        gap: 8px !important;
+        justify-content: space-between;
     }
 
     .phone-mockup {
@@ -1642,5 +1836,118 @@ body.bot-page {
     .redirect-card .btn {
         width: 100%;
         margin: 5px 0;
+    }
+}
+
+.hero-content .btn-lg {
+    font-size: 12px;
+    padding: 10px 12px;
+    flex: 1;
+    max-width: calc(50% - 4px);
+    text-align: center;
+    line-height: 1.1;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* Контейнер для основных кнопок - всегда в линию даже на очень маленьких экранах */
+.hero-content .d-flex.flex-wrap.gap-3 {
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    justify-content: space-between;
+}
+
+.phone-mockup {
+    max-width: 200px;
+}
+
+.section-title {
+    font-size: 18px;
+}
+
+/* Альтернативные ссылки в две строки */
+.hero-content .mt-3 .d-flex {
+    flex-direction: column;
+}
+
+.hero-content .btn-sm {
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+/* Стили для очень узких экранов (менее 360px) */
+@media (max-width: 360px) {
+    /* ГЛОБАЛЬНЫЕ СТИЛИ ДЛЯ ВСЕХ КНОПОК НА САМЫХ МАЛЕНЬКИХ ЭКРАНАХ */
+    .btn {
+        font-size: 11px !important;
+        padding: 8px 10px !important;
+        line-height: 1.0 !important;
+    }
+
+    .btn-lg {
+        font-size: 11px !important;
+        padding: 8px 10px !important;
+        line-height: 1.0 !important;
+    }
+
+    .btn-sm {
+        font-size: 9px !important;
+        padding: 5px 8px !important;
+        line-height: 1.0 !important;
+    }
+
+    .btn-block {
+        font-size: 11px !important;
+        padding: 10px 12px !important;
+    }
+
+    /* Hero кнопки максимально компактно */
+    .hero-content .btn-lg {
+        font-size: 11px !important;
+        padding: 8px 6px !important;
+        flex: 1 !important;
+        max-width: calc(50% - 3px) !important;
+    }
+
+    .hero-content .d-flex.flex-wrap.gap-3 {
+        gap: 6px !important;
+    }
+
+    /* CTA и другие секции */
+    .cta-section .btn,
+    .download-actions .btn {
+        font-size: 11px !important;
+        padding: 8px 10px !important;
+        margin: 2px 1px !important;
+        min-width: calc(33.333% - 4px) !important;
+    }
+
+    .hero-section h1 {
+        font-size: 22px;
+    }
+
+    /* Контейнер для основных кнопок - всегда в линию даже на очень маленьких экранах */
+    .hero-content .d-flex.flex-wrap.gap-3 {
+        flex-wrap: nowrap !important;
+        gap: 8px !important;
+        justify-content: space-between;
+    }
+
+    .phone-mockup {
+        max-width: 200px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    /* Альтернативные ссылки в две строки */
+    .hero-content .mt-3 .d-flex {
+        flex-direction: column;
+    }
+
+    .hero-content .btn-sm {
+        width: 100%;
+        margin-bottom: 4px;
     }
 }
