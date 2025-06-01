@@ -278,6 +278,205 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .phone-mockup {
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        .phone-frame {
+            background: #1f2937;
+            border-radius: 35px;
+            padding: 8px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #374151;
+            border-radius: 2px;
+        }
+
+        .phone-screen {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 27px;
+            padding: 20px 15px;
+            height: 500px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .phone-battery {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .app-content {
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .app-logo {
+            margin-bottom: 20px;
+        }
+
+        .vpn-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .app-logo h4 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .app-logo p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .connection-status {
+            margin: 30px 0;
+        }
+
+        .status-indicator {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .status-indicator.connected {
+            background: rgba(16, 185, 129, 0.2);
+            border-radius: 50%;
+            color: #10b981;
+            font-size: 30px;
+        }
+
+        .pulse-ring {
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            animation: pulse 2s ease-out infinite;
+        }
+
+        .pulse-ring.delay-1 {
+            animation-delay: 0.7s;
+        }
+
+        .pulse-ring.delay-2 {
+            animation-delay: 1.4s;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .connection-status h5 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .connection-status p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .connection-stats {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 15px 10px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .quick-servers {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .server-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .server-item:not(:last-child) {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .ping {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
         @media (max-width: 768px) {
             .hero-section {
                 text-align: center;
@@ -290,6 +489,15 @@
             
             .price {
                 font-size: 2.5rem;
+            }
+
+            .phone-mockup {
+                max-width: 240px;
+            }
+
+            .phone-screen {
+                height: 420px;
+                padding: 15px 12px;
             }
         }
     </style>
@@ -358,8 +566,71 @@
             </div>
             <div class="col-lg-6 text-center" data-aos="fade-left">
                 <div class="floating-phone">
-                    <img src="https://via.placeholder.com/300x600/6366f1/ffffff?text=V2Box+App" 
-                         alt="V2Box App" class="img-fluid" style="max-width: 300px; border-radius: 30px;">
+                    <div class="phone-mockup">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <div class="phone-header">
+                                    <div class="phone-time">9:41</div>
+                                    <div class="phone-battery">
+                                        <i class="fas fa-battery-full"></i>
+                                        <i class="fas fa-wifi"></i>
+                                        <i class="fas fa-signal"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="app-content">
+                                    <div class="app-logo">
+                                        <div class="vpn-icon">
+                                            <i class="fas fa-shield-alt"></i>
+                                        </div>
+                                        <h4>V2Box</h4>
+                                        <p>MegaVPN</p>
+                                    </div>
+                                    
+                                    <div class="connection-status">
+                                        <div class="status-indicator connected">
+                                            <div class="pulse-ring"></div>
+                                            <div class="pulse-ring delay-1"></div>
+                                            <div class="pulse-ring delay-2"></div>
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <h5>Подключено</h5>
+                                        <p>Сервер: США 🇺🇸</p>
+                                    </div>
+                                    
+                                    <div class="connection-stats">
+                                        <div class="stat">
+                                            <div class="stat-value">47ms</div>
+                                            <div class="stat-label">Пинг</div>
+                                        </div>
+                                        <div class="stat">
+                                            <div class="stat-value">125MB</div>
+                                            <div class="stat-label">Скачано</div>
+                                        </div>
+                                        <div class="stat">
+                                            <div class="stat-value">45MB</div>
+                                            <div class="stat-label">Загружено</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="quick-servers">
+                                        <div class="server-item">
+                                            <span>🇺🇸 США</span>
+                                            <span class="ping">47ms</span>
+                                        </div>
+                                        <div class="server-item">
+                                            <span>🇳🇱 Нидерланды</span>
+                                            <span class="ping">23ms</span>
+                                        </div>
+                                        <div class="server-item">
+                                            <span>🇸🇬 Сингапур</span>
+                                            <span class="ping">89ms</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
