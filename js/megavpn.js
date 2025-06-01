@@ -49,6 +49,61 @@ window.addEventListener('scroll', function() {
     }
 });
 
+// Mobile menu improvements
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar');
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    
+    // Close mobile menu when clicking on a nav link
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth < 992) {
+                if (navbarCollapse.classList.contains('show')) {
+                    $(navbarCollapse).collapse('hide');
+                }
+            }
+        });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth < 992) {
+            const isClickInsideNav = navbar.contains(e.target);
+            const isNavOpen = navbarCollapse.classList.contains('show');
+            
+            if (!isClickInsideNav && isNavOpen) {
+                $(navbarCollapse).collapse('hide');
+            }
+        }
+    });
+    
+    // Improve navbar scrolling behavior on mobile
+    let lastScrollTop = 0;
+    let isScrolling = false;
+    
+    window.addEventListener('scroll', function() {
+        if (!isScrolling) {
+            window.requestAnimationFrame(function() {
+                const navbar = document.querySelector('.navbar');
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Always show navbar on mobile (no hide on scroll down)
+                if (currentScroll > 50) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+                
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                isScrolling = false;
+            });
+            isScrolling = true;
+        }
+    });
+});
+
 console.log('🚀 MegaVPN Landing Page loaded successfully!');
 
 // Проверка VPN статуса
