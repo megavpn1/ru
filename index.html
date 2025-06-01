@@ -671,6 +671,43 @@
             margin-top: 30px;
             text-align: center;
         }
+
+        .testimonials-carousel .testimonial-card {
+            margin-bottom: 0;
+        }
+
+        .testimonials-carousel .owl-dots {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .testimonials-carousel .owl-dot {
+            display: inline-block;
+            margin: 0 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .testimonials-carousel .owl-dot.active,
+        .testimonials-carousel .owl-dot:hover {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .testimonials-carousel .owl-stage-outer {
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- VPN Status Bar -->
+<div class="vpn-status-bar" id="vpn-status">
+    <span class="status-icon"></span>
     </style>
 </head>
 <body>
@@ -1068,57 +1105,393 @@
             <p class="section-subtitle">Реальные отзывы о MegaVPN</p>
         </div>
         
-        <div class="row">
-            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="testimonial-card">
-                    <div class="mb-3">
-                        ⭐⭐⭐⭐⭐
-                    </div>
-                    <p class="mb-3">"Наконец-то могу смотреть YouTube без тормозов! V2Box работает идеально, настройка заняла 2 минуты"</p>
-                    <div class="d-flex align-items-center">
-                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">
-                            А
-                        </div>
-                        <div>
-                            <div class="font-weight-bold">Алексей М.</div>
-                            <small class="text-muted">Программист</small>
-                        </div>
+        <div class="testimonials-carousel owl-carousel owl-theme" data-aos="fade-up">
+            <!-- Отзыв 1 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Наконец-то могу смотреть YouTube без тормозов! V2Box работает идеально, настройка заняла 2 минуты"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">А</div>
+                    <div>
+                        <div class="font-weight-bold">Алексей М.</div>
+                        <small class="text-muted">Программист</small>
                     </div>
                 </div>
             </div>
-            
-            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="testimonial-card">
-                    <div class="mb-3">
-                        ⭐⭐⭐⭐⭐
-                    </div>
-                    <p class="mb-3">"Сэкономил кучу денег, покупая игры через VPN. Окупился за первую же покупку!"</p>
-                    <div class="d-flex align-items-center">
-                        <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">
-                            Д
-                        </div>
-                        <div>
-                            <div class="font-weight-bold">Дмитрий К.</div>
-                            <small class="text-muted">Геймер</small>
-                        </div>
+
+            <!-- Отзыв 2 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Сэкономил кучу денег, покупая игры через VPN. Окупился за первую же покупку!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Д</div>
+                    <div>
+                        <div class="font-weight-bold">Дмитрий К.</div>
+                        <small class="text-muted">Геймер</small>
                     </div>
                 </div>
             </div>
-            
-            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="testimonial-card">
-                    <div class="mb-3">
-                        ⭐⭐⭐⭐⭐
+
+            <!-- Отзыв 3 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Открыла для себя Netflix США и Disney+. Столько фильмов, которых нет в России!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">М</div>
+                    <div>
+                        <div class="font-weight-bold">Мария С.</div>
+                        <small class="text-muted">Студентка</small>
                     </div>
-                    <p class="mb-3">"Открыла для себя Netflix США и Disney+. Столько фильмов, которых нет в России!"</p>
-                    <div class="d-flex align-items-center">
-                        <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">
-                            М
-                        </div>
-                        <div>
-                            <div class="font-weight-bold">Мария С.</div>
-                            <small class="text-muted">Студентка</small>
-                        </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 4 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Работаю фрилансером, нужен был стабильный VPN. MegaVPN не подводит уже полгода!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">И</div>
+                    <div>
+                        <div class="font-weight-bold">Игорь В.</div>
+                        <small class="text-muted">Дизайнер</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 5 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Instagram и TikTok работают без задержек. Даже прямые эфиры идут в HD качестве!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Е</div>
+                    <div>
+                        <div class="font-weight-bold">Елена Р.</div>
+                        <small class="text-muted">Блогер</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 6 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Пользуюсь на всей семье - 4 устройства. Цена смешная, а работает отлично!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">В</div>
+                    <div>
+                        <div class="font-weight-bold">Владимир Л.</div>
+                        <small class="text-muted">Менеджер</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 7 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Как IT-шник могу сказать - сервис топовый. Протоколы современные, скорость максимальная"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">С</div>
+                    <div>
+                        <div class="font-weight-bold">Сергей Н.</div>
+                        <small class="text-muted">Системный администратор</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 8 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Путешествую часто, везде нужен VPN. MegaVPN работает даже в Китае и ОАЭ!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">О</div>
+                    <div>
+                        <div class="font-weight-bold">Ольга К.</div>
+                        <small class="text-muted">Travel-блогер</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 9 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Стример, для меня важна стабильность. Уже год стримлю через MegaVPN - ни одного разрыва!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Р</div>
+                    <div>
+                        <div class="font-weight-bold">Роман Т.</div>
+                        <small class="text-muted">Стример</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 10 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Мама не могла настроить VPN, помог MegaVPN бот. Теперь она смотрит корейские дорамы!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">А</div>
+                    <div>
+                        <div class="font-weight-bold">Анна Ф.</div>
+                        <small class="text-muted">Маркетолог</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 11 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Покупал подписки на Spotify и Apple Music через VPN. Сэкономил больше 15000 рублей в год!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">П</div>
+                    <div>
+                        <div class="font-weight-bold">Павел З.</div>
+                        <small class="text-muted">Музыкант</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 12 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Живу в общаге, интернет плохой. Через MegaVPN даже видео в 4K грузится быстро!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">К</div>
+                    <div>
+                        <div class="font-weight-bold">Кирилл Б.</div>
+                        <small class="text-muted">Студент</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 13 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Работаю с зарубежными клиентами. Без VPN никак - MegaVPN выручает каждый день!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Л</div>
+                    <div>
+                        <div class="font-weight-bold">Лариса Г.</div>
+                        <small class="text-muted">Переводчик</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 14 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Геймер со стажем. Пинги низкие, лагов нет. Играю в европейские сервера без проблем!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Н</div>
+                    <div>
+                        <div class="font-weight-bold">Никита Ж.</div>
+                        <small class="text-muted">Киберспортсмен</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 15 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Фотограф, загружаю работы на зарубежные стоки. MegaVPN ускорил процесс в разы!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ю</div>
+                    <div>
+                        <div class="font-weight-bold">Юлия П.</div>
+                        <small class="text-muted">Фотограф</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 16 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Пробовал 5 других VPN сервисов. MegaVPN лучший по соотношению цена-качество!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Т</div>
+                    <div>
+                        <div class="font-weight-bold">Тимур А.</div>
+                        <small class="text-muted">Аналитик</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 17 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Дочка учится за границей, общаемся через заблокированные мессенджеры. Спасибо MegaVPN!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Г</div>
+                    <div>
+                        <div class="font-weight-bold">Галина И.</div>
+                        <small class="text-muted">Учитель</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 18 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Трейдер, работаю с зарубежными биржами. Стабильность подключения критична - MegaVPN не подводит!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ф</div>
+                    <div>
+                        <div class="font-weight-bold">Федор Ц.</div>
+                        <small class="text-muted">Трейдер</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 19 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Веду бизнес в соцсетях. Instagram Reels теперь загружаются моментально!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Б</div>
+                    <div>
+                        <div class="font-weight-bold">Борис Э.</div>
+                        <small class="text-muted">SMM-специалист</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 20 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Изучаю языки через YouTube каналы. Теперь доступны все обучающие видео!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Х</div>
+                    <div>
+                        <div class="font-weight-bold">Христина У.</div>
+                        <small class="text-muted">Лингвист</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 21 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Врач, читаю зарубежные медицинские журналы. MegaVPN открыл доступ к базам данных!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Щ</div>
+                    <div>
+                        <div class="font-weight-bold">Щербаков А.</div>
+                        <small class="text-muted">Врач</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 22 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Копирайтер, изучаю зарубежные тренды. Pinterest, Behance - все доступно через MegaVPN!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ч</div>
+                    <div>
+                        <div class="font-weight-bold">Чернова Д.</div>
+                        <small class="text-muted">Копирайтер</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 23 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Подросток, хотел смотреть аниме на Crunchyroll. Родители купили MegaVPN - теперь я счастлив!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ш</div>
+                    <div>
+                        <div class="font-weight-bold">Шамиль К.</div>
+                        <small class="text-muted">Школьник</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 24 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Пенсионер, внуки научили пользоваться VPN. Смотрю европейские новости и фильмы!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ж</div>
+                    <div>
+                        <div class="font-weight-bold">Жанна М.</div>
+                        <small class="text-muted">Пенсионер</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 25 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Журналист, нужен доступ к международным источникам. MegaVPN - мой рабочий инструмент!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Э</div>
+                    <div>
+                        <div class="font-weight-bold">Эдуард Я.</div>
+                        <small class="text-muted">Журналист</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 26 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Предприниматель, веду переговоры через Zoom с партнерами. Качество связи отличное!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ю</div>
+                    <div>
+                        <div class="font-weight-bold">Юрий Ъ.</div>
+                        <small class="text-muted">Предприниматель</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 27 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Студентка, пишу диплом. Google Scholar и зарубежные библиотеки теперь доступны!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ы</div>
+                    <div>
+                        <div class="font-weight-bold">Ыдырысова А.</div>
+                        <small class="text-muted">Студентка</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 28 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Психолог, прохожу курсы на зарубежных платформах. Coursera и Udemy работают идеально!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ь</div>
+                    <div>
+                        <div class="font-weight-bold">Ьльвира О.</div>
+                        <small class="text-muted">Психолог</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 29 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"IT-директор компании, купил корпоративный доступ. Вся команда довольна скоростью и стабильностью!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Э</div>
+                    <div>
+                        <div class="font-weight-bold">Эльдар У.</div>
+                        <small class="text-muted">IT-директор</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Отзыв 30 -->
+            <div class="testimonial-card">
+                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <p class="mb-3">"Мама троих детей, смотрю зарубежные каналы про воспитание. MegaVPN помог стать лучшей мамой!"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ю</div>
+                    <div>
+                        <div class="font-weight-bold">Юлианна Я.</div>
+                        <small class="text-muted">Домохозяйка</small>
                     </div>
                 </div>
             </div>
@@ -1318,6 +1691,34 @@ document.querySelector('.scroll-top-btn').addEventListener('click', function(e) 
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
+    });
+});
+
+// Инициализация карусели отзывов
+$(document).ready(function() {
+    $('.testimonials-carousel').owlCarousel({
+        items: 3,
+        margin: 30,
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 4000,
+        autoplayHoverPause: true,
+        nav: false,
+        dots: true,
+        responsive: {
+            0: {
+                items: 1,
+                margin: 15
+            },
+            768: {
+                items: 2,
+                margin: 20
+            },
+            992: {
+                items: 3,
+                margin: 30
+            }
+        }
     });
 });
 </script>
