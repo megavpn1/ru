@@ -931,6 +931,10 @@ body {
         font-size: 12px;
         padding: 6px 0;
         z-index: 1050;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
     }
 
     .status-icon {
@@ -941,7 +945,14 @@ body {
     /* Навигация на мобильных */
     .navbar {
         padding: 10px 0;
-        margin-top: 20px;
+        position: fixed;
+        top: 24px; /* Высота статус бара на мобильных */
+        left: 0;
+        right: 0;
+        z-index: 1030;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
     }
 
     .navbar-brand {
@@ -964,7 +975,7 @@ body {
     /* Hero секция на мобильных */
     .hero-section {
         text-align: center;
-        padding: 60px 0 40px 0;
+        padding: 90px 0 40px 0; /* Увеличен отступ для статус бара + навбара */
         min-height: auto;
     }
 
@@ -1155,6 +1166,11 @@ body {
     .vpn-status-bar {
         font-size: 10px;
         padding: 4px 8px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1050;
     }
 
     /* Навигация */
@@ -1164,7 +1180,7 @@ body {
 
     /* Hero */
     .hero-section {
-        padding-top: 80px; /* Статус бар + navbar на маленьких экранах */
+        padding-top: 85px; /* Статус бар + navbar на маленьких экранах */
     }
 
     .hero-section h1 {
