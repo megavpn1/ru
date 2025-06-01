@@ -1,0 +1,36 @@
+.App {
+  text-align: left;
+}
+
+/* Custom overrides for VPN theme */
+:root {
+  --primary-color: #00d4ff;
+  --secondary-color: #0099cc;
+  --dark-color: #0d111b;
+  --white-color: #ffffff;
+  --text-color: #666;
+}
+
+/* VPN specific customizations */
+.vpn-hero {
+  background: linear-gradient(135deg, #0d111b, #1a1f2e);
+}
+
+.vpn-feature-icon {
+  color: var(--primary-color);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.vpn-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.vpn-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+}
