@@ -1649,20 +1649,104 @@ function checkVPNStatus() {
                     if (isRussianIP) {
                         statusBar.classList.remove('protected');
                         statusText.innerHTML = '🚨 Ваше подключение НЕ защищено - подключитесь к нашим серверам MegaVPN';
+                        
+                        // Эмуляция подключения через 3 секунды
+                        setTimeout(() => {
+                            simulateVPNConnection();
+                        }, 3000);
                     } else {
                         statusBar.classList.add('protected');
                         statusText.innerHTML = '🛡️ Вы защищены серверами MegaVPN - соединение анонимно и безопасно';
+                        startConnectionTimer();
                     }
                 })
                 .catch(() => {
-                    // Если ошибка, показываем нейтральный статус
+                    // Если ошибка, показываем нейтральный статус и запускаем эмуляцию
                     statusText.innerHTML = '🔍 Проверяем статус VPN...';
+                    setTimeout(() => {
+                        simulateVPNConnection();
+                    }, 2000);
                 });
         })
         .catch(() => {
-            // Ошибка при получении IP
+            // Ошибка при получении IP - запускаем эмуляцию
             statusText.innerHTML = '🔍 Не удается проверить статус VPN';
+            setTimeout(() => {
+                simulateVPNConnection();
+            }, 2000);
         });
+}
+
+let connectionTimer = null;
+let connectionStartTime = null;
+
+// Эмуляция подключения к VPN
+function simulateVPNConnection() {
+    const statusBar = document.getElementById('vpn-status');
+    const statusText = document.getElementById('status-text');
+    
+    // Показываем процесс подключения
+    statusText.innerHTML = '🔄 Подключаемся к серверам MegaVPN...';
+    
+    // Эмуляция задержки подключения
+    setTimeout(() => {
+        statusText.innerHTML = '🔗 Устанавливаем защищенное соединение...';
+    }, 1000);
+    
+    setTimeout(() => {
+        statusText.innerHTML = '🛡️ Проверяем безопасность канала...';
+    }, 2000);
+    
+    // Успешное подключение
+    setTimeout(() => {
+        statusBar.classList.add('protected');
+        statusText.innerHTML = '✅ Подключено к MegaVPN! Время соединения: 00:01';
+        
+        // Запускаем таймер
+        connectionStartTime = new Date();
+        startConnectionTimer();
+        
+        console.log('🟢 VPN connection simulated successfully');
+    }, 3500);
+}
+
+// Запуск таймера соединения
+function startConnectionTimer() {
+    // Очищаем предыдущий таймер если был
+    if (connectionTimer) {
+        clearInterval(connectionTimer);
+    }
+    
+    // Устанавливаем время начала если не установлено
+    if (!connectionStartTime) {
+        connectionStartTime = new Date();
+    }
+    
+    connectionTimer = setInterval(() => {
+        const currentTime = new Date();
+        const elapsedSeconds = Math.floor((currentTime - connectionStartTime) / 1000);
+        
+        const hours = Math.floor(elapsedSeconds / 3600);
+        const minutes = Math.floor((elapsedSeconds % 3600) / 60);
+        const seconds = elapsedSeconds % 60;
+        
+        const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        const statusText = document.getElementById('status-text');
+        const randomServers = ['🇺🇸 США', '🇳🇱 Нидерланды', '🇸🇬 Сингапур', '🇩🇪 Германия', '🇯🇵 Япония'];
+        const currentServer = randomServers[Math.floor(Math.random() * randomServers.length)];
+        
+        statusText.innerHTML = `🛡️ Защищено MegaVPN | ${currentServer} | Время: ${timeString}`;
+    }, 1000);
+}
+
+// Остановка таймера
+function stopConnectionTimer() {
+    if (connectionTimer) {
+        clearInterval(connectionTimer);
+        connectionTimer = null;
+        connectionStartTime = null;
+    }
 }
 
 // Добавляем клики на статус-бар для ручного обновления
@@ -1670,25 +1754,35 @@ document.getElementById('vpn-status').addEventListener('click', function() {
     const statusBar = document.getElementById('vpn-status');
     const statusText = document.getElementById('status-text');
     
-    // Демо-режим: переключаем статус при двойном клике
+    // Демо-режим: двойной клик для управления соединением
     if (event.detail === 2) {
         statusBar.classList.add('demo-mode');
         
         if (statusBar.classList.contains('protected')) {
-            // Переключаем на НЕ защищено
+            // Отключаем VPN
             statusBar.classList.remove('protected');
-            statusText.innerHTML = '🚨 Ваше подключение НЕ защищено - подключитесь к нашим серверам MegaVPN';
-            console.log('🔴 Demo: Switched to UNPROTECTED status');
+            stopConnectionTimer();
+            statusText.innerHTML = '🚨 VPN отключен - подключитесь к нашим серверам MegaVPN';
+            console.log('🔴 Demo: VPN disconnected');
+            
+            // Автоматически переподключаемся через 2 секунды
+            setTimeout(() => {
+                simulateVPNConnection();
+            }, 2000);
         } else {
-            // Переключаем на защищено
-            statusBar.classList.add('protected');
-            statusText.innerHTML = '🛡️ Вы защищены серверами MegaVPN - соединение анонимно и безопасно';
-            console.log('🟢 Demo: Switched to PROTECTED status');
+            // Запускаем подключение
+            simulateVPNConnection();
+            console.log('🟢 Demo: VPN connecting...');
         }
         return;
     }
     
-    // Обычный клик - проверка статуса
+    // Обычный клик - перезапуск проверки
+    if (statusBar.classList.contains('protected')) {
+        stopConnectionTimer();
+        statusBar.classList.remove('protected');
+    }
+    
     statusText.innerHTML = '🔄 Обновляем статус...';
     
     setTimeout(() => {
