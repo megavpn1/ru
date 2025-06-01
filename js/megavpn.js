@@ -136,46 +136,14 @@ function checkVPNStatus() {
     const statusBar = document.getElementById('vpn-status');
     const statusText = document.getElementById('status-text');
 
-    // Проверяем через сторонний сервис
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-            // Дополнительная проверка геолокации
-            fetch(`https://ipapi.co/${data.ip}/json/`)
-                .then(response => response.json())
-                .then(geoData => {
-                    // Простая эвристика: если IP из РФ, то VPN скорее всего не активен
-                    const isRussianIP = geoData.country_code === 'RU';
+    // Показываем статус "не защищено"
+    statusBar.classList.remove('protected');
+    statusText.innerHTML = '🚨 Ваше подключение НЕ защищено - подключитесь к нашим серверам MegaVPN';
 
-                    if (isRussianIP) {
-                        statusBar.classList.remove('protected');
-                        statusText.innerHTML = '🚨 Ваше подключение НЕ защищено - подключитесь к нашим серверам MegaVPN';
-
-                        // Эмуляция подключения через 3 секунды
-                        setTimeout(() => {
-                            simulateVPNConnection();
-                        }, 3000);
-                    } else {
-                        statusBar.classList.add('protected');
-                        statusText.innerHTML = '🛡️ Вы защищены серверами MegaVPN - соединение анонимно и безопасно';
-                        startConnectionTimer();
-                    }
-                })
-                .catch(() => {
-                    // Если ошибка, показываем нейтральный статус и запускаем эмуляцию
-                    statusText.innerHTML = '🔍 Проверяем статус VPN...';
-                    setTimeout(() => {
-                        simulateVPNConnection();
-                    }, 2000);
-                });
-        })
-        .catch(() => {
-            // Ошибка при получении IP - запускаем эмуляцию
-            statusText.innerHTML = '🔍 Не удается проверить статус VPN';
-            setTimeout(() => {
-                simulateVPNConnection();
-            }, 2000);
-        });
+    // Запускаем эмуляцию подключения через 3 секунды
+    setTimeout(() => {
+        simulateVPNConnection();
+    }, 3000);
 }
 
 let connectionTimer = null;
@@ -260,6 +228,7 @@ function stopConnectionTimer() {
         clearInterval(connectionTimer);
         connectionTimer = null;
         connectionStartTime = null;
+        currentServer = null;
     }
 }
 
