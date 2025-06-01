@@ -2,875 +2,618 @@
 <html lang="ru">
 
 <head>
-    <!--
-     - Roxy: Bootstrap template by GettTemplates.com
-     - https://gettemplates.co/roxy
-    -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>🔥 МЕГА VPN - Защити свою свободу СЕЙЧАС! 99% скидка!</title>
-    <meta name="description" content="⚡ ПОСЛЕДНИЙ ДЕНЬ СКИДКИ! Анонимность в интернете за копейки! Разблокируй ВСЁ! ⚡">
+    <title>🚀 MegaVPN - Бесплатный VPN для разблокировки сайтов</title>
+    <meta name="description" content="🆓 7 дней бесплатно! Разблокируй YouTube, Instagram, Netflix. Приложение V2Box для iOS и Android. $1/месяц после пробного периода.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- External CSS -->
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="vendor/select2/select2.min.css">
     <link rel="stylesheet" href="vendor/owlcarousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="vendor/lightcase/lightcase.css">
-     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Work+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.min.css">
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-    <!-- Modernizr JS for IE8 support of HTML5 elements and media queries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-
     <style>
-        .mega-banner {
-            background: linear-gradient(45deg, #ff0000, #ff6600, #ff0000);
-            color: white;
-            padding: 10px 0;
-            font-weight: bold;
-            text-align: center;
-            animation: pulse 2s infinite;
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
+
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
-        .discount-badge {
-            background: #ff0000;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 25px;
-            font-weight: bold;
-            animation: shake 1s infinite;
+
+        body {
+            background: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
         }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+
+        .hero-section {
+            background: var(--gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
-        .urgent-btn {
-            background: linear-gradient(45deg, #ff0000, #ff6600);
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-primary {
+            background: var(--primary);
             border: none;
+            padding: 12px 32px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-outline-light {
+            border: 2px solid rgba(255,255,255,0.3);
             color: white;
-            font-weight: bold;
-            padding: 15px 30px;
-            font-size: 18px;
-            text-transform: uppercase;
-            animation: glow 2s infinite;
+            padding: 12px 32px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
         }
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 5px #ff0000; }
-            50% { box-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000; }
+
+        .btn-outline-light:hover {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+            transform: translateY(-2px);
         }
-        .timer {
-            background: #000;
-            color: #ff0000;
-            padding: 20px;
+
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark) !important;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
             text-align: center;
-            font-size: 24px;
-            font-weight: bold;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            height: 100%;
         }
-        .price-strike {
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 24px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 3px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: 'ПОПУЛЯРНЫЙ';
+            position: absolute;
+            top: 20px;
+            left: -30px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 40px;
+            font-size: 12px;
+            font-weight: 700;
+            transform: rotate(-45deg);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .price-old {
             text-decoration: line-through;
-            color: #999;
-            font-size: 24px;
+            color: #9ca3af;
+            font-size: 1.5rem;
         }
-        .price-new {
-            color: #ff0000;
-            font-size: 36px;
-            font-weight: bold;
+
+        .download-section {
+            background: var(--light);
+        }
+
+        .app-download-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .app-download-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .steps-section {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .step-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: white;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .cta-section {
+            background: var(--dark);
+            color: white;
+        }
+
+        .floating-phone {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                text-align: center;
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .price {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
-<body data-spy="scroll" data-target="#navbar" class="static-layout">
-    
-    <!-- МЕГА БАННЕР -->
-    <div class="mega-banner">
-        🔥 ВНИМАНИЕ! ПОСЛЕДНИЕ 24 ЧАСА! СКИДКА 99%! БОЛЬШЕ НИКОГДА НЕ ПОВТОРИТСЯ! 🔥
-    </div>
+<body>
 
-	<nav id="header-navbar" class="navbar navbar-expand-lg py-4">
+<!-- НАВИГАЦИЯ -->
+<nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center text-white" href="/">
-            <h3 class="font-weight-bolder mb-0">🚀 МЕГА VPN</h3>
+        <a class="navbar-brand" href="#">
+            🚀 <span class="gradient-text">MegaVPN</span>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav-header" aria-controls="navbar-nav-header" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="lnr lnr-menu"></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+            <i class="fas fa-bars"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbar-nav-header">
+        <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#features">⚡ Фичи</a>
+                    <a class="nav-link" href="#features">Возможности</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#installation">📱 Установка</a>
+                    <a class="nav-link" href="#pricing">Цены</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#price">💸 Цены</a>
+                    <a class="nav-link" href="#download">Скачать</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#testimonials">👥 Отзывы</a>
+                    <a class="nav-link" href="#testimonials">Отзывы</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link urgent-btn" href="https://t.me/megavpn_bot">🔥 НАЧАТЬ БЕСПЛАТНО!</a>
+                    <a href="https://t.me/megavpn_bot" class="btn btn-primary ml-3">Начать бесплатно</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- ТАЙМЕР СРОЧНОСТИ -->
-<section class="timer">
-    🎯 ПОПРОБУЙ БЕСПЛАТНО! 7 дней полного доступа → Потом всего $1/месяц! 🎯
-</section>
-
-<div id="side-nav" class="sidenav">
-	<a href="javascript:void(0)" id="side-nav-close">&times;</a>
-	
-	<div class="sidenav-content">
-		<p>
-			🔒 Твоя анонимность под угрозой!
-		</p>
-		<p>
-			<span class="fs-16 primary-color">📞 +7 (800) MEGA-VPN</span>
-		</p>
-		<p>help@megavpn.ru</p>
-	</div>
-</div><div id="side-search" class="sidenav">
-	<a href="javascript:void(0)" id="side-search-close">&times;</a>
-	<div class="sidenav-content">
-		<form action="">
-
-			<div class="input-group md-form form-sm form-2 pl-0">
-			  <input class="form-control my-0 py-1 red-border" type="text" placeholder="Найди свободу..." aria-label="Search">
-			  <div class="input-group-append">
-			    <button class="input-group-text red lighten-3" id="basic-text1">
-			    	<span class="lnr lnr-magnifier"></span>
-			    </button>
-			  </div>
-			</div>
-
-		</form>
-	</div>
-	
-</div>	<div class="jumbotron d-flex align-items-center">
-  <div class="container text-center">
-    <div class="discount-badge mb-4">🆓 7 ДНЕЙ БЕСПЛАТНО ⚡</div>
-    <h1 class="display-1 mb-4">МЕГА<br>VPN</h1>
-    <h2 class="text-white mb-4">🔥 ПОЛНАЯ СВОБОДА ИНТЕРНЕТА ЗА $1! 🔥</h2>
-    <p class="lead text-white mb-4">❌ Провайдер блокирует сайты?<br>❌ YouTube тормозит?<br>✅ МЕГА VPN = ВСЕ РАЗБЛОКИРОВАНО!</p>
-    <div class="timer mb-4">
-        🎯 ПОПРОБУЙ БЕСПЛАТНО 7 ДНЕЙ → Потом всего $1/месяц!
-    </div>
-    <div class="mb-4">
-        <a href="https://apps.apple.com/app/v2box/id6446814690" class="btn urgent-btn btn-lg mr-3 mb-2">
-            📱 СКАЧАТЬ ДЛЯ iPhone
-        </a>
-        <a href="https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box" class="btn urgent-btn btn-lg mb-2">
-            🤖 СКАЧАТЬ ДЛЯ Android
-        </a>
-    </div>
-    <p class="text-white-50">⚡ Приложение V2Box - Безлимитная скорость!</p>
-  </div>
-  <div class="rectangle-1"></div>
-  <div class="rectangle-2"></div>
-  <div class="rectangle-transparent-1"></div>
-  <div class="rectangle-transparent-2"></div>
-  <div class="circle-1"></div>
-  <div class="circle-2"></div>
-  <div class="circle-3"></div>
-  <div class="triangle triangle-1">
-  	<img src="img/obj_triangle.png" alt="">
-  </div>
-  <div class="triangle triangle-2">
-  	<img src="img/obj_triangle.png" alt="">
-  </div>
-  <div class="triangle triangle-3">
-  	<img src="img/obj_triangle.png" alt="">
-  </div>
-  <div class="triangle triangle-4">
-  	<img src="img/obj_triangle.png" alt="">
-  </div>
-</div>	<!-- Features Section-->
-<section id="features" class="bg-white">
-    <div class="container">
-        <div class="section-content">
-            <!-- Section Title -->
-            <div class="title-wrap mb-5" data-aos="fade-up">
-                <h2 class="section-title">
-                    🚀 Почему МЕГА VPN круче всех?
-                </h2>
-                <p class="section-sub-title">Мы даём то, что другие скрывают! <br> 🔥 Безлимитная скорость, полная анонимность, разблокировка ВСЕГО!</p>
-            </div>
-            <!-- End of Section Title -->
-            <div class="row">
-                <!-- Features Holder-->
-                <div class="col-md-10 offset-md-1 features-holder">
-                    <div class="row">
-                        <!-- Features Item -->
-                        <div class="col-md-4 col-sm-12 text-center mt-4">
-                            <div class="shadow rounded feature-item p-4 mb-4" data-aos="fade-up">
-                                <div class="my-4">
-                                    <i class="fas fa-rocket fs-40" style="color: #ff0000;"></i>
-                                </div>
-                                <h4>⚡ Скорость КОСМОС</h4>
-                                <p>Загружай торренты со скоростью света! Никаких лагов, никаких ограничений!</p>
-                            </div>
-                            <div class="shadow rounded feature-item p-4 mb-4" data-aos="fade-up">
-                                <div class="my-4">
-                                    <i class="fas fa-shield-alt fs-40" style="color: #ff0000;"></i>
-                                </div>
-                                <h4>🔒 100% Анонимность</h4>
-                                <p>Твой провайдер НИКОГДА не узнает что ты делаешь! Полная защита от слежки!</p>
-                            </div>
-                        </div>
-                        <!-- End of Feature Item -->
-                        <!-- Features Item -->
-                        <div class="col-md-4 col-sm-12 text-center">
-                            <div class="shadow rounded feature-item p-4 mb-4" data-aos="fade-up">
-                                <div class="my-4">
-                                    <i class="fas fa-globe fs-40" style="color: #ff0000;"></i>
-                                </div>
-                                <h4>🌍 Разблокируй ВСЁ</h4>
-                                <p>Netflix США, YouTube без рекламы, заблокированные сайты - ВСЁ доступно!</p>
-                            </div>
-                            <div class="shadow rounded feature-item p-4 mb-4" data-aos="fade-up">
-                                <div class="my-4">
-                                    <i class="fas fa-money-bill-wave fs-40" style="color: #ff0000;"></i>
-                                </div>
-                                <h4>💰 Экономия ТЫСЯЧ</h4>
-                                <p>Покупай игры, подписки и товары дешевле через другие страны!</p>
-                            </div>
-                        </div>
-                        <!-- End of Feature Item -->
-                        <!-- Features Item -->
-                        <div class="col-md-4 col-sm-12 text-center mt-4">
-                            <div class="shadow rounded feature-item p-4 mb-4" data-aos="fade-up">
-                                <div class="my-4">
-                                    <i class="fas fa-download fs-40" style="color: #ff0000;"></i>
-                                </div>
-                                <h4>📥 Качай БЕЗ ЛИМИТОВ</h4>
-                                <p>Торренты, фильмы, игры - скачивай что хочешь без страха блокировки!</p>
-                            </div>
-                            <div class="shadow rounded feature-item p-4 mb-4" data-aos="fade-up">
-                                <div class="my-4">
-                                    <i class="fas fa-clock fs-40" style="color: #ff0000;"></i>
-                                </div>
-                                <h4>⏰ Работает 24/7</h4>
-                                <p>Никаких отключений! Серверы в 50+ странах работают круглосуточно!</p>
-                            </div>
-                        </div>
-                        <!-- End of Feature Item -->
-                    </div>
-                </div>
-                <!-- End of Features Holder-->
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End of Features Section-->	<section id="section-featurettes" class="featurettes overlay bg-fixed" style="background-image: url(img/bg.jpg);">
-
-    <div class="container">
-        <div class="section-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row align-items-center text-white">
-
-                        <div class="col-md-4 offset-md-2 col-sm-6" data-aos="fade-right">
-                            <h4 class="mb-4">Capture every moments and share it to all your friends</h4>
-                            <p>Nulla vitae elit libero, a pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet.</p>
-                            <button type="button" class="btn btn-outline-primary">FEATURES</button>
-                        </div><!--/ .col-md-4.col-md-offset-2.col-sm-6 -->
-
-                        <div class="col-md-4 offset-md-right-2 col-sm-6" data-aos="flip-right">
-                            <img class="my-5" src="img/app-profile-mockup.png" alt="">
-                        </div><!--/ .col-md-4.col-md-offset-right-2.col-sm-6 -->
-
-                    </div><!--/ .featurettes-item -->
-
-                </div><!--/ .col-md-12 -->
-
-            </div><!--/ .row -->
-        </div>
-    </div><!--/ .container -->
-
-</section>	<section id="section-featurettes" class="featurettes">
-
-    <div class="container">
-        <div class="section-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row align-items-center">
-
-                        <div class="col-md-4 offset-md-2 col-sm-6" data-aos="flip-left">
-                            <img class="my-5" src="img/app-profile-mockup.png" alt="">
-                        </div><!--/ .col-md-4.col-md-offset-right-2.col-sm-6 -->
-
-                        <div class="col-md-4 offset-md-right-2 col-sm-6" data-aos="fade-left">
-                            <h4 class="mb-4">Capture every moments and share it to all your friends</h4>
-                            <p>Nulla vitae elit libero, a pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet.</p>
-                            <div class="progress mb-3">
-                                <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">HTML5 95%</div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">CSS3 90%</div>
-                            </div>
-                        </div><!--/ .col-md-4.col-md-offset-2.col-sm-6 -->
-
-                    </div><!--/ .featurettes-item -->
-
-                </div><!--/ .col-md-12 -->
-
-            </div><!--/ .row -->
-        </div>
-    </div><!--/ .container -->
-
-</section>	<!-- Testimonial Section-->
-<section id="testimonials" class="section-padding bg-fixed bg-white overlay" style="background-image: url(img/bg-white.jpg);">
-    <div class="container">
-        <div class="section-content" data-aos="fade-up">
-            <div class="heading-section text-center">
-                <h2>💬 Отзывы РЕАЛЬНЫХ пользователей</h2>
-            </div>
-            <div class="row">
-                <!-- Testimonial -->
-                <div class="testi-content testi-carousel owl-carousel">
-                    <div class="testi-item text-center">
-                        <i class="testi-icon fa fa-3x fa-quote-left"></i>
-                        <h4 class="testi-text">🔥 МЕГА VPN просто БОМБА!<br> Качаю фильмы со скоростью света! Провайдер больше не достаёт!</h4>
-                        <div class="testi-meta-inner d-flex justify-content-center align-items-center">
-                            <div class="testi-img mr-2">
-                                <img src="img/testi-1.jpg" alt="">
-                            </div>
-                            <div class="testi-details">
-                                <p class="testi-author mb-0 font-weight-bolder">Алексей М.</p>
-                                <p class="testi-desc mb-0">Программист</p>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="testi-item text-center">
-                        <i class="testi-icon fa fa-3x fa-quote-left"></i>
-                        <h4 class="testi-text">💰 Сэкономил уже 50 тысяч рублей!<br> Покупаю игры через США - в 5 раз дешевле! СПАСИБО!</h4>
-                        <div class="testi-meta-inner d-flex justify-content-center align-items-center">
-                            <div class="testi-img mr-2">
-                                <img src="img/testi-1.jpg" alt="">
-                            </div>
-                            <div class="testi-details">
-                                <p class="testi-author mb-0 font-weight-bolder">Дмитрий К.</p>
-                                <p class="testi-desc mb-0">Геймер</p>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="testi-item text-center">
-                        <i class="testi-icon fa fa-3x fa-quote-left"></i>
-                        <h4 class="testi-text">🌍 Смотрю Netflix США, Hulu, Disney+!<br> Столько контента открылось! Никаких блокировок!</h4>
-                        <div class="testi-meta-inner d-flex justify-content-center align-items-center">
-                            <div class="testi-img mr-2">
-                                <img src="img/testi-1.jpg" alt="">
-                            </div>
-                            <div class="testi-details">
-                                <p class="testi-author mb-0 font-weight-bolder">Мария С.</p>
-                                <p class="testi-desc mb-0">Студентка</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Testimonial -->
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End of Testimonial Section-->	<!-- Portfolio Section -->
-<section id="portfolio" class="bg-white">
-    <div class="container">
-        <div class="section-content">
-            <!-- Section Title -->
-            <div class="title-wrap">
-                <h2 class="section-title">Our <b>Awesome</b> Works</h2>
-                <p class="section-sub-title">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. <br> pharetra augue. Donec id elit non mi.</p>
-            </div>
-            <!-- End of Section Title -->
-            <div class="row">
-                <!-- Portfolio Holder -->
-                <div class="col-md-12 portfolio-holder mt-3">
-                    <!-- Btn Filter -->
-                    <div class="filter-button-group btn-filter d-flex justify-content-center">
-                        <a tabindex="0" class="is-checked" data-filter="*">Show All</a>
-                        <a tabindex="0" data-filter=".minimalism">Minimalism</a>
-                        <a tabindex="0" data-filter=".vintage">Vintage</a>
-                        <a tabindex="0" data-filter=".creative">Creative</a>
-                    </div>
-                    <!-- End of Btn Filter -->
-                    <!-- Portfolio Content -->
-                    <div class="grid-portfolio">
-                        <div class="grid-sizer"></div>
-                        <div class="gutter-sizer"></div>
-                        <!-- Portfolio Item -->
-                        <div class="grid-item minimalism" data-aos="fade-up">
-                            <div class="grid-item-wrapper">
-                                <img src="img/photo-1.jpg" alt="portfolio-img" class="portfolio-item">
-                                <div class="grid-info">
-                                    <div class="grid-link d-flex justify-content-center">
-                                        <a class="img-pop" data-rel="lightcase" href="img/photo-1.jpg" title="Photo-1">
-                                            <span class="lnr lnr-move"></span>
-                                        </a>
-                                        <a class="ext-link" href="https://unsplash.com/" target="_blank">
-                                            <span class="lnr lnr-link"></span>
-                                        </a>
-                                    </div>
-                                    <div class="grid-title">
-                                        <h4>Camera</h4>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- End of Portfolio Item -->
-                        <!-- Portfolio Item -->
-                        <div class="grid-item vintage" data-aos="fade-up">
-                            <div class="grid-item-wrapper">
-                                <img src="img/photo-6.jpg" alt="portfolio-img" class="portfolio-item">
-                                <div class="grid-info">
-                                    <div class="grid-link d-flex justify-content-center">
-                                        <a class="img-pop" data-rel="lightcase" href="img/photo-6.jpg" title="Ship">
-                                            <span class="lnr lnr-move"></span>
-                                        </a>
-                                        <a class="ext-link" href="https://unsplash.com/" target="_blank">
-                                            <span class="lnr lnr-link"></span>
-                                        </a>
-                                    </div>
-                                    <div class="grid-title">
-                                        <h4>Flower</h4>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- End of Portfolio Item -->
-                        <!-- Portfolio Item -->
-                        <div class="grid-item creative grid-item-height" data-aos="fade-up">
-                            <div class="grid-item-wrapper">
-                                <img src="img/photo-2.jpg" alt="portfolio-img" class="portfolio-item">
-                                <div class="grid-info">
-                                    <div class="grid-link d-flex justify-content-center">
-                                        <a class="img-pop" data-rel="lightcase" href="img/photo-2.jpg" title="Tracy Portrait">
-                                            <span class="lnr lnr-move"></span>
-                                        </a>
-                                        <a class="ext-link" href="https://unsplash.com/" target="_blank">
-                                            <span class="lnr lnr-link"></span>
-                                        </a>
-                                    </div>
-                                    <div class="grid-title">
-                                        <h4>Breakfast</h4>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- End of Portfolio Item -->
-                        <!-- Portfolio Item -->
-                        <div class="grid-item creative" data-aos="fade-up">
-                            <div class="grid-item-wrapper">
-                                <img src="img/photo-7.jpg" alt="portfolio-img" class="portfolio-item">
-                                <div class="grid-info">
-                                    <div class="grid-link d-flex justify-content-center">
-                                        <a class="img-pop" data-rel="lightcase" href="img/photo-7.jpg" title="Guitar">
-                                            <span class="lnr lnr-move"></span>
-                                        </a>
-                                        <a class="ext-link" href="https://unsplash.com/" target="_blank">
-                                            <span class="lnr lnr-link"></span>
-                                        </a>
-                                    </div>
-                                    <div class="grid-title">
-                                        <h4>Chair</h4>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- End of Portfolio Item -->
-                        <!-- Portfolio Item -->
-                        <div class="grid-item vintage" data-aos="fade-up">
-                            <div class="grid-item-wrapper">
-                                <img src="img/photo-4.jpg" alt="portfolio-img" class="portfolio-item">
-                                <div class="grid-info">
-                                    <div class="grid-link d-flex justify-content-center">
-                                        <a class="img-pop" data-rel="lightcase" href="img/photo-4.jpg" title="Bookself">
-                                            <span class="lnr lnr-move"></span>
-                                        </a>
-                                        <a class="ext-link" href="https://unsplash.com/" target="_blank">
-                                            <span class="lnr lnr-link"></span>
-                                        </a>
-                                    </div>
-                                    <div class="grid-title">
-                                        <h4>Hidden Book</h4>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- End of Portfolio Item -->
-                        <!-- Portfolio Item -->
-                        <div class="grid-item creative" data-aos="fade-up">
-                            <div class="grid-item-wrapper">
-                                <img src="img/photo-9.jpg" alt="portfolio-img" class="portfolio-item">
-                                <div class="grid-info">
-                                    <div class="grid-link d-flex justify-content-center">
-                                        <a class="img-pop" data-rel="lightcase" href="img/photo-9.jpg" title="Guitar">
-                                            <span class="lnr lnr-move"></span>
-                                        </a>
-                                        <a class="ext-link" href="https://unsplash.com/" target="_blank">
-                                            <span class="lnr lnr-link"></span>
-                                        </a>
-                                    </div>
-                                    <div class="grid-title">
-                                        <h4>Red</h4>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- End of Portfolio Item -->
-                    </div>
-                    <!-- End of Portfolio Content -->
-                </div>
-                <!-- End of Portfolio Holder -->
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End of Portfolio Section -->	<!-- Client Section -->
-<section id="client" class="overlay bg-fixed" style="background-image: url(img/bg.jpg);">
-    <div class="container">
-        <div class="section-content" data-aos="fade-up">
-            <div class="row ">
-                <div class="col-md-12">
-                    <!-- Section Title -->
-                    <div class="title-wrap mb-5">
-                        <h2>Who love to <span> work</span> with us</h2>
-                    </div>
-                    <!-- End of Section Title -->
-                </div>
-                <!-- Client Holder -->
-                <div class="col-md-12 client-holder">
-                    <div class="client-slider owl-carousel">
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/client.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/client.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/client.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/client.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/client.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/client.png" alt=" ">
-                        </div>
-                    </div>
-                    <!-- End of Client Holder -->
-                </div>
-            </div>
-        </div>
-</section>
-<!-- End of Client Section -->	<!-- Reservation Section -->
-<section id="reservation" class="bg-white section-content">
+<!-- ГЛАВНЫЙ ЭКРАН -->
+<section class="hero-section">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-5 offset-lg-1 mb-5 mb-lg-0" data-aos="fade-right">
-                <div class="bg-white p-5 shadow">
-                    <div class="heading-section text-center">
-                        <h2 class="mb-4">
-                            Contact Us
-                        </h2>
-                    </div>
-                    <form method="post" name="contact-us" action="">
-                        <div class="row">
-                            <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Email">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="websiteUrl" name="websiteUrl" placeholder="Website">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <textarea class="form-control" id="message" name="message" rows="6" placeholder="Your Message ..."></textarea>
-                            </div>
-                            <div class="col-md-12 text-center">
-                                <button class="btn btn-primary btn-shadow btn-lg" type="submit" name="submit">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
+            <div class="col-lg-6 hero-content" data-aos="fade-right">
+                <div class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill">
+                    🎉 7 дней бесплатно
+                </div>
+                <h1 class="display-4 font-weight-bold text-white mb-4">
+                    Разблокируй<br>
+                    <span class="text-warning">весь интернет</span><br>
+                    за $1 в месяц
+                </h1>
+                <p class="lead text-white-50 mb-4">
+                    Получи доступ к YouTube, Instagram, Netflix и всем заблокированным сайтам. 
+                    Быстро, безопасно, анонимно.
+                </p>
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    <a href="https://t.me/megavpn_bot" class="btn btn-warning btn-lg">
+                        🚀 Попробовать бесплатно
+                    </a>
+                    <a href="#download" class="btn btn-outline-light btn-lg">
+                        📱 Скачать приложение
+                    </a>
+                </div>
+                <p class="text-white-50 small">
+                    ✅ Без регистрации • ✅ Мгновенная активация • ✅ 50+ стран
+                </p>
+            </div>
+            <div class="col-lg-6 text-center" data-aos="fade-left">
+                <div class="floating-phone">
+                    <img src="https://via.placeholder.com/300x600/6366f1/ffffff?text=V2Box+App" 
+                         alt="V2Box App" class="img-fluid" style="max-width: 300px; border-radius: 30px;">
                 </div>
             </div>
-            <div class="col-lg-4 offset-lg-1" data-aos="fade-left">
-                <h2 class="mb-4">
-                    Best solution to create any website. Pay once.
-                </h2>
-                <p class="mb-4">I am text block. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+        </div>
+    </div>
+</section>
 
-                <ul class="list-inline py-2">
-                    <li class="list-inline-item text-center">
-                        <span class="lnr fs-40 lnr-rocket"></span>
-                        <p>Fast delivery</p>
-                    </li>
-                    <li class="list-inline-item text-center">
-                        <span class="lnr fs-40 lnr-magic-wand"></span>
-                        <p>Awesome design</p>
-                    </li>
-                    <li class="list-inline-item text-center">
-                        <span class="lnr fs-40 lnr-cog"></span>
-                        <p>Easy to customize</p>
-                    </li>
-                </ul>
+<!-- ВОЗМОЖНОСТИ -->
+<section id="features" class="section">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">Почему выбирают <span class="gradient-text">MegaVPN</span>?</h2>
+            <p class="section-subtitle">Всё что нужно для свободного интернета</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h5 class="font-weight-bold mb-3">Космическая скорость</h5>
+                    <p>Безлимитная скорость для просмотра видео, игр и загрузок без задержек</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h5 class="font-weight-bold mb-3">100% Анонимность</h5>
+                    <p>Твой провайдер не увидит что ты делаешь. Полная защита от слежки</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h5 class="font-weight-bold mb-3">Доступ ко всему</h5>
+                    <p>YouTube, Instagram, Netflix, TikTok - весь заблокированный контент</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h5 class="font-weight-bold mb-3">Удобное приложение</h5>
+                    <p>V2Box для iOS и Android. Подключается одним нажатием</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h5 class="font-weight-bold mb-3">50+ стран</h5>
+                    <p>Серверы по всему миру для максимальной скорости и стабильности</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h5 class="font-weight-bold mb-3">Поддержка 24/7</h5>
+                    <p>Помогаем с настройкой и решаем проблемы в любое время</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <a href="#" class="btn btn-link p-0">
-                    <span>PURCHASE NOW</span>
-                    <span class="lnr lnr-arrow-right"></span>
-                </a>
+<!-- ЦЕНЫ -->
+<section id="pricing" class="section download-section">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">Простые и честные цены</h2>
+            <p class="section-subtitle">Попробуй бесплатно, плати только если понравится</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8" data-aos="fade-up">
+                <div class="pricing-card">
+                    <h3 class="font-weight-bold mb-3">MegaVPN Premium</h3>
+                    <div class="mb-4">
+                        <span class="price-old">$29.99</span>
+                        <div class="price">$1<span class="h5 text-muted">/месяц</span></div>
+                        <p class="text-success font-weight-bold">7 дней бесплатно!</p>
+                    </div>
+                    
+                    <ul class="list-unstyled text-left mb-4">
+                        <li class="mb-2">✅ Безлимитный трафик</li>
+                        <li class="mb-2">✅ 50+ стран для подключения</li>
+                        <li class="mb-2">✅ Максимальная скорость</li>
+                        <li class="mb-2">✅ Приложение V2Box</li>
+                        <li class="mb-2">✅ YouTube, Netflix, Instagram</li>
+                        <li class="mb-2">✅ Поддержка 24/7</li>
+                        <li class="mb-2">✅ Без логов и анонимно</li>
+                    </ul>
+                    
+                    <a href="https://t.me/megavpn_bot" class="btn btn-primary btn-lg btn-block">
+                        🚀 Начать бесплатный пробный период
+                    </a>
+                    <p class="small text-muted mt-3">Отменить можно в любой момент</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- СКАЧАТЬ ПРИЛОЖЕНИЕ -->
+<section id="download" class="section">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">Скачай приложение <span class="gradient-text">V2Box</span></h2>
+            <p class="section-subtitle">Доступно для всех платформ</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6 mb-4" data-aos="fade-right">
+                <div class="app-download-card">
+                    <div class="text-center mb-4">
+                        <i class="fab fa-apple text-primary" style="font-size: 4rem;"></i>
+                    </div>
+                    <h4 class="font-weight-bold mb-3">iPhone / iPad</h4>
+                    <p class="mb-4">Скачай V2Box из App Store и получи мгновенный доступ ко всем заблокированным сайтам</p>
+                    <a href="https://apps.apple.com/app/v2box/id6446814690" class="btn btn-primary btn-block" target="_blank">
+                        <i class="fab fa-apple mr-2"></i> Скачать из App Store
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4" data-aos="fade-left">
+                <div class="app-download-card">
+                    <div class="text-center mb-4">
+                        <i class="fab fa-google-play text-success" style="font-size: 4rem;"></i>
+                    </div>
+                    <h4 class="font-weight-bold mb-3">Android</h4>
+                    <p class="mb-4">Установи V2Box из Google Play и наслаждайся свободным интернетом на своём устройстве</p>
+                    <a href="https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box" class="btn btn-success btn-block" target="_blank">
+                        <i class="fab fa-google-play mr-2"></i> Скачать из Google Play
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- КАК НАСТРОИТЬ -->
+<section class="steps-section section">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title text-white">Настройка за 3 шага</h2>
+            <p class="section-subtitle text-white-50">Получи доступ к заблокированным сайтам за 2 минуты</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h5 class="font-weight-bold mb-3">Скачай приложение</h5>
+                    <p>Установи V2Box из App Store или Google Play на свой телефон</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h5 class="font-weight-bold mb-3">Получи настройки</h5>
+                    <p>Напиши боту @megavpn_bot и получи персональную ссылку подписки</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h5 class="font-weight-bold mb-3">Подключись</h5>
+                    <p>Добавь настройки в приложение и включи VPN одним нажатием</p>
+                </div>
             </div>
         </div>
         
-    </div>
-</section>
-<!-- End of Reservation Section -->	<!-- Features Section-->
-<section id="cta" class="bg-fixed overlay" style="background-image: url(img/bg.jpg);">
-    <div class="container">
-        <div class="section-content" data-aos="fade-up">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2 class="mb-2">Make a beautiful website, or million of them</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, veritatis qui eligendi delectus quia fuga!</p>
-                    <a class="btn btn-outline-primary btn-lg">FEATURES</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End of Features Section-->
-
-<!-- ЦЕНЫ -->
-<section id="price" class="featurettes overlay bg-fixed" style="background-image: url(img/bg.jpg);">
-    <div class="container">
-        <div class="section-content">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2 class="text-white mb-5">💸 ЦЕНЫ КОТОРЫЕ ШОКИРУЮТ!</h2>
-                    <div class="row align-items-center text-white">
-                        <div class="col-md-6 offset-md-3" data-aos="fade-up">
-                            <div class="card bg-dark text-white p-4">
-                                <h3>🆓 БЕСПЛАТНАЯ НЕДЕЛЯ!</h3>
-                                <div class="mb-3">
-                                    <span class="price-strike">$29.99/месяц</span>
-                                    <span class="price-new">$1/месяц</span>
-                                </div>
-                                <p class="mb-4">✅ 7 дней БЕСПЛАТНО<br>✅ Безлимитный трафик<br>✅ 50+ стран<br>✅ Приложение V2Box<br>✅ YouTube, Netflix, Instagram<br>✅ 24/7 поддержка</p>
-                                <a href="https://t.me/megavpn_bot" class="urgent-btn btn-lg btn-block">🚀 НАЧАТЬ БЕСПЛАТНО!</a>
-                                <p class="mt-2"><small>⚡ Пробный период 7 дней → потом $1/месяц</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="https://t.me/megavpn_bot" class="btn btn-warning btn-lg">
+                🤖 Получить настройки в боте
+            </a>
         </div>
     </div>
 </section>
 
-<!-- ИНСТРУКЦИИ УСТАНОВКИ V2BOX -->
-<section id="installation" class="bg-white">
+<!-- ОТЗЫВЫ -->
+<section id="testimonials" class="section download-section">
     <div class="container">
-        <div class="section-content">
-            <div class="title-wrap mb-5 text-center" data-aos="fade-up">
-                <h2 class="section-title">📱 Как установить V2Box</h2>
-                <p class="section-sub-title">Простая установка за 3 минуты!<br>Следуй инструкциям и получи доступ к заблокированным сайтам</p>
-            </div>
-            
-            <div class="row">
-                <!-- Android Instructions -->
-                <div class="col-md-6 mb-5" data-aos="fade-right">
-                    <div class="card border-danger h-100">
-                        <div class="card-header bg-danger text-white text-center">
-                            <h4>🤖 ANDROID</h4>
-                        </div>
-                        <div class="card-body">
-                            <h5>📱 Установка V2Box на Android:</h5>
-                            <p class="mb-3">
-                                <a href="https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box" 
-                                   class="btn btn-success btn-block" target="_blank">
-                                    🔗 Скачать из Google Play
-                                </a>
-                            </p>
-                            
-                            <h6>📋 Пошаговая инструкция:</h6>
-                            <ol class="list-unstyled">
-                                <li>1️⃣ Нажмите на ссылку выше</li>
-                                <li>2️⃣ Откроется Google Play Market</li>
-                                <li>3️⃣ Нажмите "Установить"</li>
-                                <li>4️⃣ Дождитесь завершения установки</li>
-                                <li>5️⃣ Нажмите "Открыть" или найдите V2Box на рабочем столе</li>
-                            </ol>
-                            
-                            <div class="alert alert-info">
-                                <strong>💡 Совет:</strong> Если не можете найти в Play Market, скачайте APK файл напрямую
-                            </div>
-                        </div>
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">Что говорят пользователи</h2>
+            <p class="section-subtitle">Реальные отзывы о MegaVPN</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-card">
+                    <div class="mb-3">
+                        ⭐⭐⭐⭐⭐
                     </div>
-                </div>
-                
-                <!-- iPhone Instructions -->
-                <div class="col-md-6 mb-5" data-aos="fade-left">
-                    <div class="card border-primary h-100">
-                        <div class="card-header bg-primary text-white text-center">
-                            <h4>📱 iPHONE</h4>
+                    <p class="mb-3">"Наконец-то могу смотреть YouTube без тормозов! V2Box работает идеально, настройка заняла 2 минуты"</p>
+                    <div class="d-flex align-items-center">
+                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">
+                            А
                         </div>
-                        <div class="card-body">
-                            <h5>📱 Установка V2Box на iPhone:</h5>
-                            <p class="mb-3">
-                                <a href="https://apps.apple.com/app/v2box/id6446814690" 
-                                   class="btn btn-primary btn-block" target="_blank">
-                                    🔗 Скачать из App Store
-                                </a>
-                            </p>
-                            
-                            <h6>📋 Пошаговая инструкция:</h6>
-                            <ol class="list-unstyled">
-                                <li>1️⃣ Нажмите на ссылку выше</li>
-                                <li>2️⃣ Откроется App Store</li>
-                                <li>3️⃣ Нажмите "Получить" (синяя кнопка)</li>
-                                <li>4️⃣ Подтвердите установку (Face ID/Touch ID/пароль)</li>
-                                <li>5️⃣ Дождитесь завершения установки</li>
-                                <li>6️⃣ Нажмите "Открыть" или найдите V2Box на рабочем столе</li>
-                            </ol>
-                            
-                            <div class="alert alert-warning">
-                                <strong>⚠️ Важно:</strong> Приложение может потребовать разрешение VPN в настройках
-                            </div>
+                        <div>
+                            <div class="font-weight-bold">Алексей М.</div>
+                            <small class="text-muted">Программист</small>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Configuration Instructions -->
-            <div class="row mt-4">
-                <div class="col-md-12" data-aos="fade-up">
-                    <div class="card border-success">
-                        <div class="card-header bg-success text-white text-center">
-                            <h4>⚙️ НАСТРОЙКА V2BOX</h4>
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-card">
+                    <div class="mb-3">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p class="mb-3">"Сэкономил кучу денег, покупая игры через VPN. Окупился за первую же покупку!"</p>
+                    <div class="d-flex align-items-center">
+                        <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">
+                            Д
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h5>📋 Пошаговая настройка:</h5>
-                                    <ol>
-                                        <li><strong>Откройте приложение V2Box</strong> 📱</li>
-                                        <li><strong>В нижнем меню выберите "Configs"</strong> ⚙️</li>
-                                        <li><strong>Нажмите кнопку "+" (плюс)</strong> ➕</li>
-                                        <li><strong>Выберите "Add Subscription"</strong> 📥</li>
-                                        <li><strong>Заполните поля:</strong>
-                                            <ul>
-                                                <li>Name: "Mega VPN"</li>
-                                                <li>URL: Получите в боте 👆</li>
-                                            </ul>
-                                        </li>
-                                        <li><strong>Нажмите "Add Subscribe"</strong> ✅</li>
-                                        <li><strong>Перейдите в "Home"</strong> 🏠</li>
-                                        <li><strong>Передвиньте переключатель вправо</strong> 🔄</li>
-                                    </ol>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="alert alert-success">
-                                        <h6>🎯 <strong>Получить ссылку подписки:</strong></h6>
-                                        <p>Для получения персональной ссылки подписки, обратитесь к нашему боту:</p>
-                                        <a href="https://t.me/megavpn_bot" class="btn btn-success btn-block">
-                                            🤖 Открыть бота MegaVPN
-                                        </a>
-                                        <small class="text-muted">Бот автоматически выдаст вам ссылку и поможет с настройкой</small>
-                                    </div>
-                                    
-                                    <div class="alert alert-info">
-                                        <h6>💡 <strong>Дополнительные функции:</strong></h6>
-                                        <ul class="mb-0">
-                                            <li><strong>Ping All</strong> - проверить все серверы</li>
-                                            <li><strong>Auto Update</strong> - автообновление</li>
-                                            <li><strong>QR код</strong> - альтернативный способ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                        <div>
+                            <div class="font-weight-bold">Дмитрий К.</div>
+                            <small class="text-muted">Геймер</small>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Quick Action Buttons -->
-            <div class="row mt-4 text-center">
-                <div class="col-md-12" data-aos="fade-up">
-                    <h4 class="mb-3">🚀 Быстрые действия</h4>
-                    <a href="https://t.me/megavpn_bot" class="btn urgent-btn btn-lg mr-3 mb-2">
-                        🤖 Получить подписку в боте
-                    </a>
-                    <a href="https://apps.apple.com/app/v2box/id6446814690" class="btn btn-primary btn-lg mr-3 mb-2">
-                        📱 iPhone
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box" class="btn btn-success btn-lg mb-2">
-                        🤖 Android
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ГАРАНТИИ -->
-<section class="featurettes">
-    <div class="container">
-        <div class="section-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row align-items-center">
-                        <div class="col-md-6" data-aos="fade-right">
-                            <h4 class="mb-4">🛡️ ЖЕЛЕЗНЫЕ ГАРАНТИИ</h4>
-                            <p>✅ <strong>30 дней возврат денег</strong> - не подошло? Вернём без вопросов!<br>
-                            ✅ <strong>99.9% аптайм</strong> - серверы не падают!<br>
-                            ✅ <strong>Безлогов политика</strong> - мы не храним твои данные!<br>
-                            ✅ <strong>Безлимитная скорость</strong> - никаких ограничений!</p>
-                            <div class="progress mb-3">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 99%;" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100">Довольных клиентов 99%</div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Время работы 100%</div>
-                            </div>
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="testimonial-card">
+                    <div class="mb-3">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p class="mb-3">"Открыла для себя Netflix США и Disney+. Столько фильмов, которых нет в России!"</p>
+                    <div class="d-flex align-items-center">
+                        <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">
+                            М
                         </div>
-                        <div class="col-md-6" data-aos="fade-left">
-                            <div class="card bg-danger text-white p-4 text-center">
-                                <h3>⚠️ ОПАСНОСТЬ!</h3>
-                                <p>Каждую секунду без VPN:</p>
-                                <p>❌ Провайдер собирает твои данные<br>
-                                ❌ Хакеры могут украсть пароли<br>
-                                ❌ Реклама следит за тобой<br>
-                                ❌ Сайты блокируются</p>
-                                <h4>🔒 ЗАЩИТИСЬ СЕЙЧАС!</h4>
-                            </div>
+                        <div>
+                            <div class="font-weight-bold">Мария С.</div>
+                            <small class="text-muted">Студентка</small>
                         </div>
                     </div>
                 </div>
@@ -879,33 +622,68 @@
     </div>
 </section>
 
-<!-- ФИНАЛЬНЫЙ ПРИЗЫВ -->
-<section class="bg-danger text-white text-center py-5">
+<!-- ПРИЗЫВ К ДЕЙСТВИЮ -->
+<section class="cta-section section">
     <div class="container">
-        <h2>🚀 ГОТОВ ПОПРОБОВАТЬ MEGAVPN? 🚀</h2>
-        <p class="lead">7 дней БЕСПЛАТНО → Потом всего $1/месяц!<br>
-        Разблокируй YouTube, Instagram, Netflix прямо сейчас!</p>
-        <div class="mb-4">
-            <h4 class="text-warning">📱 СКАЧАЙ V2BOX И НАЧНИ БЕСПЛАТНО:</h4>
+        <div class="text-center" data-aos="fade-up">
+            <h2 class="section-title text-white mb-4">Готов получить свободный интернет?</h2>
+            <p class="section-subtitle text-white-50 mb-5">
+                Присоединись к тысячам пользователей, которые уже наслаждаются безлимитным интернетом
+            </p>
+            
+            <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+                <a href="https://t.me/megavpn_bot" class="btn btn-warning btn-lg">
+                    🚀 Начать бесплатный период
+                </a>
+                <a href="https://apps.apple.com/app/v2box/id6446814690" class="btn btn-outline-light btn-lg">
+                    📱 Скачать для iPhone
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box" class="btn btn-outline-light btn-lg">
+                    🤖 Скачать для Android
+                </a>
+            </div>
+            
+            <p class="text-white-50 small">
+                7 дней бесплатно • Потом $1/месяц • Отменить можно в любой момент
+            </p>
         </div>
-        <div class="mb-4">
-            <a href="https://t.me/megavpn_bot" class="btn urgent-btn btn-lg mr-3 mb-2">
-                🤖 Получить подписку в боте
-            </a>
-            <a href="https://apps.apple.com/app/v2box/id6446814690" class="btn btn-light btn-lg mr-3 mb-2">
-                📱 iPhone
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box" class="btn btn-light btn-lg mb-2">
-                🤖 Android
-            </a>
-        </div>
-        <p class="mt-3"><small>💳 Принимаем все способы оплаты через Telegram</small></p>
     </div>
 </section>
+
+<!-- ФУТЕР -->
+<footer class="bg-dark text-white py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="d-flex align-items-center">
+                    <span class="h5 mb-0">🚀 <span class="gradient-text">MegaVPN</span></span>
+                    <span class="ml-3 text-muted">© 2024 Все права защищены</span>
+                </div>
+            </div>
+            <div class="col-md-6 text-md-right">
+                <div class="mt-3 mt-md-0">
+                    <a href="https://t.me/megavpn_bot" class="btn btn-sm btn-outline-warning mr-2">
+                        Telegram бот
+                    </a>
+                    <span class="text-muted">Поддержка 24/7</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
 <script>
-// MegaVPN Landing Page Scripts
-console.log('🚀 MegaVPN Landing Page загружен!');
+// Initialize AOS
+AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true
+});
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -921,67 +699,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Track clicks on download buttons
-function trackDownload(platform) {
-    console.log(`V2Box download clicked: ${platform}`);
-    // Here you can add analytics tracking
-}
-
-// Add click tracking to download buttons
+// Track download clicks
 document.querySelectorAll('a[href*="apps.apple.com"], a[href*="play.google.com"]').forEach(button => {
     button.addEventListener('click', function() {
         const platform = this.href.includes('apps.apple.com') ? 'iOS' : 'Android';
-        trackDownload(platform);
+        console.log(`V2Box download clicked: ${platform}`);
+        // Add analytics here
     });
 });
+
+// Navbar background on scroll
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(255,255,255,0.98)';
+    } else {
+        navbar.style.background = 'rgba(255,255,255,0.95)';
+    }
+});
+
+console.log('🚀 MegaVPN Landing Page loaded successfully!');
 </script>
 
-<footer class="mastfoot my-3">
-    <div class="inner container">
-         <div class="row">
-         	<div class="col-lg-4 col-md-12 d-flex align-items-center">
-         		
-         	</div>
-         	<div class="col-lg-4 col-md-12 d-flex align-items-center">
-         		<p class="mx-auto text-center mb-0">&copy; 2019 Roxy. Design by <a href="https://gettemplates.co" target="_blank">GetTemplates</a>.</p>
-         	</div>
-           
-            <div class="col-lg-4 col-md-12">
-            	<nav class="nav nav-mastfoot justify-content-center">
-	                <a class="nav-link" href="#">
-	                	<i class="fab fa-facebook-f"></i>
-	                </a>
-	                <a class="nav-link" href="#">
-	                	<i class="fab fa-twitter"></i>
-	                </a>
-	                <a class="nav-link" href="#">
-	                	<i class="fab fa-instagram"></i>
-	                </a>
-	                <a class="nav-link" href="#">
-	                	<i class="fab fa-linkedin"></i>
-	                </a>
-	                <a class="nav-link" href="#">
-	                	<i class="fab fa-youtube"></i>
-	                </a>
-	            </nav>
-            </div>
-            
-        </div>
-    </div>
-</footer>	<!-- External JS -->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-	<script src="vendor/bootstrap/popper.min.js"></script>
-	<script src="vendor/bootstrap/bootstrap.min.js"></script>
-	<script src="vendor/select2/select2.min.js "></script>
-	<script src="vendor/owlcarousel/owl.carousel.min.js"></script>
-	<script src="vendor/stellar/jquery.stellar.js" type="text/javascript" charset="utf-8"></script>
-	<script src="vendor/isotope/isotope.min.js"></script>
-	<script src="vendor/lightcase/lightcase.js"></script>
-	<script src="vendor/waypoints/waypoint.min.js"></script>
-	 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-	 
-	<!-- Main JS -->
-	<script src="js/app.min.js "></script>
-	<script src="//localhost:35729/livereload.js"></script>
 </body>
 </html>
