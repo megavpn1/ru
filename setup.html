@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>🚀 Настройка V2Box - MegaVPN</title>
+    <meta name="description" content="Подробная инструкция по настройке приложения V2Box для iOS, Android и macOS с MegaVPN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            background: var(--gradient);
+            padding: 100px 0 80px;
+            color: white;
+        }
+
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary) !important;
+        }
+
+        .instruction-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            margin-right: 15px;
+        }
+
+        .platform-tab {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 15px 25px;
+            margin: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .platform-tab.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        .platform-tab:hover {
+            border-color: var(--primary);
+        }
+
+        .platform-content {
+            display: none;
+        }
+
+        .platform-content.active {
+            display: block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+            padding: 12px 32px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-warning {
+            background: var(--secondary);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 50px;
+        }
+
+        .alert-info {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 10px;
+            color: var(--primary-dark);
+        }
+
+        .code-block {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+
+        .download-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .download-link {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--dark);
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .download-link:hover {
+            border-color: var(--primary);
+            text-decoration: none;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .screenshot {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 15px 0;
+        }
+
+        .video-demo {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .video-demo video {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- НАВИГАЦИЯ -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                🚀 <span style="background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">MegaVPN</span>
+            </a>
+            <div class="ml-auto">
+                <a href="index.html" class="btn btn-outline-primary">← Назад на главную</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="display-4 font-weight-bold mb-4">
+                    Настройка <span style="color: #f59e0b;">V2Box</span>
+                </h1>
+                <p class="lead mb-4">
+                    Подробные инструкции по настройке VPN на iOS, Android и macOS
+                </p>
+                <div class="mb-4">
+                    <a href="bot.html" class="btn btn-warning btn-lg mr-3">
+                        🤖 Получить настройки в боте
+                    </a>
+                    <a href="#instructions" class="btn btn-outline-light btn-lg">
+                        📖 Читать инструкции
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ИНСТРУКЦИИ -->
+    <section id="instructions" class="py-5">
+        <div class="container">
+            <!-- Выбор платформы -->
+            <div class="text-center mb-5">
+                <h2 class="mb-4">Выберите вашу платформу</h2>
+                <div class="d-flex justify-content-center flex-wrap">
+                    <div class="platform-tab active" data-platform="ios">
+                        <i class="fab fa-apple fa-2x mb-2"></i><br>
+                        <strong>iOS</strong>
+                    </div>
+                    <div class="platform-tab" data-platform="android">
+                        <i class="fab fa-android fa-2x mb-2"></i><br>
+                        <strong>Android</strong>
+                    </div>
+                    <div class="platform-tab" data-platform="macos">
+                        <i class="fab fa-apple fa-2x mb-2"></i><br>
+                        <strong>macOS</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- iOS инструкции -->
+            <div class="platform-content active" id="ios">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="instruction-card">
+                            <h3><i class="fab fa-apple text-primary"></i> Настройка на iPhone/iPad</h3>
+                            
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i>
+                                <strong>Перед началом:</strong> Убедитесь, что у вас есть ссылка подписки от нашего бота @megabot_vpnbot
+                            </div>
+
+                            <div class="download-links">
+                                <a href="https://apps.apple.com/app/v2box/id6446814690" class="download-link" target="_blank">
+                                    <i class="fab fa-app-store fa-2x text-primary mr-3"></i>
+                                    <div>
+                                        <strong>Скачать V2Box</strong><br>
+                                        <small>Из App Store</small>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <h5 class="mt-4 mb-3">Пошаговая инструкция:</h5>
+                            
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="step-number">1</span>
+                                <div>
+                                    <strong>Получите настройки</strong><br>
+                                    Перейдите к боту <a href="bot.html">@megabot_vpnbot</a> и получите ссылку подписки
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="step-number">2</span>
+                                <div>
+                                    <strong>Установите V2Box</strong><br>
+                                    Скачайте приложение V2Box из App Store
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="step-number">3</span>
+                                <div>
+                                    <strong>Добавьте подписку</strong><br>
+                                    Откройте V2Box → нажмите "+" → "Import subscription" → вставьте ссылку от бота
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="step-number">4</span>
+                                <div>
+                                    <strong>Подключитесь</strong><br>
+                                    Выберите сервер → нажмите кнопку подключения → разрешите создание VPN профиля
+                                </div>
+                            </div>
+
+                            <div class="alert alert-success mt-4">
+                                <i class="fas fa-check-circle"></i>
+                                <strong>Готово!</strong> Теперь вы можете пользоваться интернетом без ограничений.
+                            </div>
+
+                            <!-- Видео демонстрации -->
+                            <div class="video-demo">
+                                <h6 class="video-title">📹 Видео: Как добавить подписку в V2Box</h6>
+                                <video controls preload="metadata" width="100%" style="max-width: 400px;">
+                                    <source src="video/Add_sub.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает воспроизведение видео.
+                                </video>
+                                <p class="small text-muted mt-2">Подробная демонстрация процесса добавления подписки</p>
+                            </div>
+
+                            <div class="video-demo">
+                                <h6 class="video-title">📹 Видео: Как подключиться к VPN</h6>
+                                <video controls preload="metadata" width="100%" style="max-width: 400px;">
+                                    <source src="video/Connect.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает воспроизведение видео.
+                                </video>
+                                <p class="small text-muted mt-2">Пошаговая демонстрация подключения к серверу</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Android инструкции -->
+            <div class="platform-content" id="android">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="instruction-card">
+                            <h3><i class="fab fa-android text-success"></i> Настройка на Android</h3>
+                            
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i>
+                                <strong>Перед началом:</strong> Убедитесь, что у вас есть ссылка подписки от нашего бота @megabot_vpnbot
+                            </div>
+
+                            <div class="download-links">
+                                <a href="https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box" class="download-link" target="_blank">
+                                    <i class="fab fa-google-play fa-2x text-success mr-3"></i>
+                                    <div>
+                                        <strong>Скачать V2Box</strong><br>
+                                        <small>Из Google Play</small>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <h5 class="mt-4 mb-3">Пошаговая инструкция:</h5>
+                            
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="step-number">1</span>
+                                <div>
+                                    <strong>Получите настройки</strong><br>
+                                    Перейдите к боту <a href="bot.html">@megabot_vpnbot</a> и получите ссылку подписки
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="step-number">2</span>
+                                <div>
+                                    <strong>Установите V2Box</strong><br>
+                                    Скачайте приложение V2Box из Google Play Store
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="step-number">3</span>
+                                <div>
+                                    <strong>Добавьте подписку</strong><br>
+                                    Откройте V2Box → нажмите "+" → "Add subscription" → вставьте ссылку от бота
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="step-number">4</span>
+                                <div>
+                                    <strong>Подключитесь</strong><br>
+                                    Выберите сервер → нажмите кнопку подключения → разрешите VPN соединение
+                                </div>
+                            </div>
+
+                            <div class="alert alert-success mt-4">
+                                <i class="fas fa-check-circle"></i>
+                                <strong>Готово!</strong> Теперь вы можете пользоваться интернетом без ограничений.
+                            </div>
+
+                            <!-- Видео демонстрации -->
+                            <div class="video-demo">
+                                <h6 class="video-title">📹 Видео: Как добавить подписку в V2Box</h6>
+                                <video controls preload="metadata" width="100%" style="max-width: 400px;">
+                                    <source src="video/Add_sub.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает воспроизведение видео.
+                                </video>
+                                <p class="small text-muted mt-2">Подробная демонстрация процесса добавления подписки</p>
+                            </div>
+
+                            <div class="video-demo">
+                                <h6 class="video-title">📹 Видео: Как подключиться к VPN</h6>
+                                <video controls preload="metadata" width="100%" style="max-width: 400px;">
+                                    <source src="video/Connect.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает воспроизведение видео.
+                                </video>
+                                <p class="small text-muted mt-2">Пошаговая демонстрация подключения к серверу</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- macOS инструкции -->
+            <div class="platform-content" id="macos">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="instruction-card">
+                            <h3><i class="fab fa-apple text-primary"></i> Настройка на macOS</h3>
+                            
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i>
+                                <strong>Перед началом:</strong> Убедитесь, что у вас есть ссылка подписки от нашего бота @megabot_vpnbot
+                            </div>
+
+                            <div class="download-links">
+                                <a href="https://apps.apple.com/app/v2box/id6446814690" class="download-link" target="_blank">
+                                    <i class="fab fa-app-store fa-2x text-primary mr-3"></i>
+                                    <div>
+                                        <strong>Скачать V2Box</strong><br>
+                                        <small>Из Mac App Store</small>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <h5 class="mt-4 mb-3">Пошаговая инструкция:</h5>
+                            
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="step-number">1</span>
+                                <div>
+                                    <strong>Получите настройки</strong><br>
+                                    Перейдите к боту <a href="bot.html">@megabot_vpnbot</a> и получите ссылку подписки
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="step-number">2</span>
+                                <div>
+                                    <strong>Установите V2Box</strong><br>
+                                    Скачайте приложение V2Box из Mac App Store
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="step-number">3</span>
+                                <div>
+                                    <strong>Добавьте подписку</strong><br>
+                                    Запустите V2Box → нажмите "+" → выберите "Import v2ray url..." → вставьте ссылку от бота
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="step-number">4</span>
+                                <div>
+                                    <strong>Обновите список серверов</strong><br>
+                                    Нажмите "+" → выберите "Update all subscriptions" для загрузки списка серверов
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="step-number">5</span>
+                                <div>
+                                    <strong>Подключитесь</strong><br>
+                                    Выберите сервер → перейдите в раздел "Home" → нажмите "Tap to connect"
+                                </div>
+                            </div>
+
+                            <div class="alert alert-success mt-4">
+                                <i class="fas fa-check-circle"></i>
+                                <strong>Готово!</strong> Кнопка станет зеленой — соединение установлено.
+                            </div>
+
+                            <!-- Видео демонстрации -->
+                            <div class="video-demo">
+                                <h6 class="video-title">📹 Видео: Как добавить подписку в V2Box</h6>
+                                <video controls preload="metadata" width="100%" style="max-width: 400px;">
+                                    <source src="video/Add_sub.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает воспроизведение видео.
+                                </video>
+                                <p class="small text-muted mt-2">Подробная демонстрация процесса добавления подписки</p>
+                            </div>
+
+                            <div class="video-demo">
+                                <h6 class="video-title">📹 Видео: Как подключиться к VPN</h6>
+                                <video controls preload="metadata" width="100%" style="max-width: 400px;">
+                                    <source src="video/Connect.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает воспроизведение видео.
+                                </video>
+                                <p class="small text-muted mt-2">Пошаговая демонстрация подключения к серверу</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Общие советы -->
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="instruction-card">
+                        <h3><i class="fas fa-lightbulb text-warning"></i> Полезные советы</h3>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-server text-primary"></i> Выбор сервера</h5>
+                                <ul>
+                                    <li>Для YouTube, Netflix: США, Нидерланды</li>
+                                    <li>Для игр: ближайший сервер (низкий пинг)</li>
+                                    <li>Для Instagram: любой сервер</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-exclamation-triangle text-danger"></i> Устранение проблем</h5>
+                                <ul>
+                                    <li>Не работает: попробуйте другой сервер</li>
+                                    <li>Медленно: выберите ближайший сервер</li>
+                                    <li>Не подключается: обновите подписку</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-3">
+                            <i class="fas fa-question-circle"></i>
+                            <strong>Нужна помощь?</strong> Обратитесь к нашему боту <a href="bot.html">@megabot_vpnbot</a> — мы поможем решить любую проблему!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-5">
+                <h3 class="mb-4">Готовы начать?</h3>
+                <a href="bot.html" class="btn btn-primary btn-lg mr-3">
+                    🤖 Получить настройки
+                </a>
+                <a href="index.html" class="btn btn-outline-primary btn-lg">
+                    ← Вернуться на главную
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Переключение между платформами
+        document.querySelectorAll('.platform-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const platform = this.dataset.platform;
+                
+                // Убираем активный класс у всех табов
+                document.querySelectorAll('.platform-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.platform-content').forEach(c => c.classList.remove('active'));
+                
+                // Добавляем активный класс к выбранному табу
+                this.classList.add('active');
+                document.getElementById(platform).classList.add('active');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        console.log('🚀 MegaVPN Setup Instructions loaded!');
+    </script>
+</body>
+</html> 
