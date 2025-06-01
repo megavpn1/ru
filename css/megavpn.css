@@ -65,6 +65,14 @@ body {
         min-width: 0 !important;
     }
     
+    /* Стили для иконок в списке преимуществ */
+    .hero-content .list-inline-item i.fas {
+        margin-right: 6px !important;
+        font-size: 1.1em !important;
+        color: #10b981 !important;
+        vertical-align: middle !important;
+    }
+    
     /* Первые два элемента в одну строку */
     .hero-content .list-inline-item:nth-child(1),
     .hero-content .list-inline-item:nth-child(2) {
@@ -625,6 +633,23 @@ body {
     font-weight: 600;
     z-index: 1001;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Стили для иконки в статус баре */
+.vpn-status-bar i.fas {
+    margin-right: 6px;
+    font-size: 1.1em;
+    vertical-align: middle;
+    color: #ffffff !important; /* Все иконки белые для контраста */
+}
+
+/* Убираем цветовые переопределения - все иконки белые */
+.vpn-status-bar i.text-danger,
+.vpn-status-bar i.text-warning,
+.vpn-status-bar i.text-primary,
+.vpn-status-bar i.text-info,
+.vpn-status-bar i.text-success {
+    color: #ffffff !important; /* Белый цвет для всех иконок */
 }
 
 .vpn-status-bar.protected {
@@ -2079,4 +2104,82 @@ body.bot-page {
         width: 100%;
         margin-bottom: 4px;
     }
+}
+
+/* Общие стили для иконок в интерфейсе */
+.btn i.fas,
+.btn i.fab {
+    margin-right: 6px !important;
+    font-size: 1em !important;
+    vertical-align: middle !important;
+}
+
+/* Стили для иконок в navbar-brand */
+.navbar-brand i.fas {
+    margin-right: 8px !important;
+    font-size: 1.2em !important;
+    vertical-align: middle !important;
+}
+
+/* Стили для иконок в бейджах */
+.badge i.fas {
+    margin-right: 4px !important;
+    font-size: 0.9em !important;
+    vertical-align: middle !important;
+}
+
+/* Стили для иконок в тексте */
+p i.fas,
+span i.fas {
+    margin-right: 4px !important;
+    font-size: 1em !important;
+    vertical-align: middle !important;
+}
+
+/* Стили для иконок в списках */
+li i.fas {
+    margin-right: 8px !important;
+    font-size: 1em !important;
+    vertical-align: middle !important;
+}
+
+/* Стили для иконок в заголовках */
+h5 i.fas,
+.text-primary i.fas {
+    margin-right: 6px !important;
+    font-size: 1em !important;
+    vertical-align: middle !important;
+}
+
+/* Стили для иконок флагов в телефонном макете */
+.server-item span .fi {
+    margin-right: 8px !important;
+    font-size: 1.2em !important;
+    vertical-align: middle !important;
+    display: inline-block !important;
+    width: 20px !important;
+    height: 15px !important;
+    border-radius: 2px !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+/* Убираем псевдоэлемент для флагов */
+.server-item span .fi:before {
+    display: none !important;
+}
+
+/* Стили для звездочек рейтинга в отзывах */
+.testimonial-card .mb-3 i.fas.fa-star {
+    margin-right: 2px !important;
+    font-size: 1.1em !important;
+    color: #fbbf24 !important;
+    vertical-align: middle !important;
+}
+
+/* Стили для иконок в phone-mockup (кроме флагов) */
+.phone-mockup i.fas {
+    margin-right: 4px !important;
+    vertical-align: middle !important;
 }

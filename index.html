@@ -20,6 +20,7 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/css/flag-icons.min.css" integrity="sha512-uvXdJud8WaOlQFjlz9B15Yy2Au/bMAvz79F7Xa6OakCl2jvQPdHD0hb3dEqZRdSwG4/sknePXlE7GiarwA/9Wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/megavpn.css">
@@ -29,14 +30,14 @@
 <!-- VPN Status Bar -->
 <div class="vpn-status-bar" id="vpn-status">
     <span class="status-icon"></span>
-    <span id="status-text">🚨 Ваше подключение НЕ защищено - подключитесь к нашим серверам MegaVPN</span>
+    <span id="status-text"><i class="fas fa-exclamation-triangle text-danger"></i> Ваше подключение НЕ защищено - подключитесь к нашим серверам MegaVPN</span>
 </div>
 
 <!-- НАВИГАЦИЯ -->
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">
-            🚀 <span class="gradient-text">MegaVPN</span>
+            <i class="fas fa-rocket text-primary"></i> <span class="gradient-text">MegaVPN</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
@@ -73,7 +74,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6 hero-content" data-aos="fade-right">
                 <div class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill">
-                    🎉 7 дней бесплатно
+                    <i class="fas fa-gift text-danger"></i> 7 дней бесплатно
                 </div>
                 <h1 class="display-4 font-weight-bold text-white mb-4">
                     Разблокируй<br>
@@ -86,36 +87,36 @@
                 </p>
                 <div class="d-flex flex-wrap gap-3 mb-4">
                     <a href="bot.html" class="btn btn-warning btn-lg">
-                        🚀 Попробовать бесплатно
+                        <i class="fas fa-rocket text-white"></i> Попробовать бесплатно
                     </a>
                     <a href="#download" class="btn btn-outline-light btn-lg">
-                        📱 Скачать приложение
+                        <i class="fas fa-mobile-alt"></i> Скачать приложение
                     </a>
                 </div>
                 <ul class="list-unstyled text-white-50 small list-inline">
-                  <li class="list-inline-item">✅ Без регистрации</li>
-                  <li class="list-inline-item">✅ Мгновенная активация</li>
-                  <li class="list-inline-item">✅ Максимальная скорость</li>
+                  <li class="list-inline-item"><i class="fas fa-check-circle text-success"></i> Без регистрации</li>
+                  <li class="list-inline-item"><i class="fas fa-check-circle text-success"></i> Мгновенная активация</li>
+                  <li class="list-inline-item"><i class="fas fa-check-circle text-success"></i> Максимальная скорость</li>
                 </ul>
 
                 <!-- Альтернативный доступ к боту -->
                 <div class="mt-3">
                     <p class="text-white-50 small mb-2">
-                        🔒 Если t.me заблокирован, используйте веб-версию:
+                        <i class="fas fa-lock text-warning"></i> Если t.me заблокирован, используйте веб-версию:
                     </p>
                     <div class="d-flex flex-wrap gap-2 mb-2">
                         <a href="https://webogram.org/a/#/im?p=@megabot_vpnbot" target="_blank" class="btn btn-outline-light btn-sm">
-                            🌐 Webogram
+                            <i class="fas fa-globe"></i> Webogram
                         </a>
                         <a href="https://web.telegram.org/a/#@megabot_vpnbot" target="_blank" class="btn btn-outline-light btn-sm">
-                            💻 Web Telegram
+                            <i class="fas fa-desktop"></i> Web Telegram
                         </a>
                         <a href="app.html" class="btn btn-outline-light btn-sm">
-                            📱 Открыть V2Box
+                            <i class="fas fa-mobile-alt"></i> Открыть V2Box
                         </a>
                     </div>
                     <p class="text-white-50 text-small-12">
-                        💡 Откройте любую ссылку выше и найдите бота: <strong>@megabot_vpnbot</strong>
+                        <i class="fas fa-lightbulb text-warning"></i> Откройте любую ссылку выше и найдите бота: <strong>@megabot_vpnbot</strong>
                     </p>
                 </div>
             </div>
@@ -170,15 +171,15 @@
 
                                     <div class="quick-servers">
                                         <div class="server-item">
-                                            <span id="phone-server-1">🇺🇸 США</span>
+                                            <span id="phone-server-1"><span class="fi fi-us"></span> США</span>
                                             <span class="ping" id="phone-server-ping-1">--</span>
                                         </div>
                                         <div class="server-item">
-                                            <span id="phone-server-2">🇳🇱 Нидерланды</span>
+                                            <span id="phone-server-2"><span class="fi fi-nl"></span> Нидерланды</span>
                                             <span class="ping" id="phone-server-ping-2">--</span>
                                         </div>
                                         <div class="server-item">
-                                            <span id="phone-server-3">🇸🇬 Сингапур</span>
+                                            <span id="phone-server-3"><span class="fi fi-sg"></span> Сингапур</span>
                                             <span class="ping" id="phone-server-ping-3">--</span>
                                         </div>
                                     </div>
@@ -283,17 +284,17 @@
                     </div>
 
                     <ul class="list-unstyled text-left mb-4">
-                        <li class="mb-2">✅ Безлимитный трафик</li>
-                        <li class="mb-2">✅ Серверы по всему миру</li>
-                        <li class="mb-2">✅ Максимальная скорость</li>
-                        <li class="mb-2">✅ Приложение V2Box</li>
-                        <li class="mb-2">✅ YouTube, Netflix, Instagram</li>
-                        <li class="mb-2">✅ Поддержка 24/7</li>
-                        <li class="mb-2">✅ Без логов и анонимно</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success"></i> Безлимитный трафик</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success"></i> Серверы по всему миру</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success"></i> Максимальная скорость</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success"></i> Приложение V2Box</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success"></i> YouTube, Netflix, Instagram</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success"></i> Поддержка 24/7</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success"></i> Без логов и анонимно</li>
                     </ul>
 
                     <a href="bot.html" class="btn btn-primary btn-lg btn-block">
-                        🚀 Начать бесплатный пробный период
+                        <i class="fas fa-rocket text-white"></i> Начать бесплатный пробный период
                     </a>
                     <p class="small text-muted mt-3">Отменить можно в любой момент</p>
                 </div>
@@ -322,7 +323,7 @@
                         <i class="fab fa-apple mr-2"></i> Скачать из App Store
                     </a>
                     <a href="setup.html" class="btn btn-outline-primary btn-block">
-                        📖 Подробная инструкция по настройке
+                        <i class="fas fa-book"></i> Подробная инструкция по настройке
                     </a>
                 </div>
             </div>
@@ -338,7 +339,7 @@
                         <i class="fab fa-google-play mr-2"></i> Скачать из Google Play
                     </a>
                     <a href="setup.html" class="btn btn-outline-success btn-block">
-                        📖 Подробная инструкция по настройке
+                        <i class="fas fa-book"></i> Подробная инструкция по настройке
                     </a>
                 </div>
             </div>
@@ -354,13 +355,13 @@
             </p>
             <div class="d-flex flex-wrap justify-content-center gap-15">
                 <a href="bot.html" class="btn btn-warning btn-lg">
-                    🤖 Получить настройки в боте
+                    <i class="fas fa-robot"></i> Получить настройки в боте
                 </a>
                 <a href="setup.html" class="btn btn-primary btn-lg">
-                    📹 Видео инструкции
+                    <i class="fas fa-video"></i> Видео инструкции
                 </a>
                 <a href="#" class="btn btn-outline-primary btn-lg scroll-top-btn">
-                    ⬆️ Наверх за настройками
+                    <i class="fas fa-arrow-up"></i> Наверх за настройками
                 </a>
             </div>
         </div>
@@ -408,13 +409,13 @@
         <div class="text-center mt-5" data-aos="fade-up">
             <div class="mb-3">
                 <a href="bot.html" class="btn btn-warning btn-lg mr-3 mb-2">
-                    🤖 Получить настройки в боте
+                    <i class="fas fa-robot"></i> Получить настройки в боте
                 </a>
             </div>
             <div class="d-flex justify-content-center flex-wrap gap-2">
                 <span class="text-white-50 small mr-3">Если Telegram заблокирован:</span>
-                <a href="https://webogram.org/a/#/im?p=@megabot_vpnbot" target="_blank" class="btn btn-outline-light btn-sm mr-2">🌐 Webogram</a>
-                <a href="https://web.telegram.org/a/#@megabot_vpnbot" target="_blank" class="btn btn-outline-light btn-sm">💻 Web Telegram</a>
+                <a href="https://webogram.org/a/#/im?p=@megabot_vpnbot" target="_blank" class="btn btn-outline-light btn-sm mr-2"><i class="fas fa-globe"></i> Webogram</a>
+                <a href="https://web.telegram.org/a/#@megabot_vpnbot" target="_blank" class="btn btn-outline-light btn-sm"><i class="fas fa-desktop"></i> Web Telegram</a>
             </div>
         </div>
     </div>
@@ -431,7 +432,13 @@
         <div class="testimonials-carousel owl-carousel" data-aos="fade-up">
             <!-- Отзыв 1 -->
             <div class="testimonial-card">
-                <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                <div class="mb-3">
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                </div>
                 <p class="mb-3">"Наконец-то могу смотреть YouTube без тормозов! V2Box работает идеально, настройка заняла 2 минуты"</p>
                 <div class="d-flex align-items-center">
                     <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3 testimonial-avatar">А</div>
@@ -833,13 +840,13 @@
 
             <div class="d-flex flex-wrap justify-content-center gap-15">
                 <a href="bot.html" class="btn btn-warning btn-lg">
-                    🚀 Начать бесплатный период
+                    <i class="fas fa-rocket text-white"></i> Начать бесплатный период
                 </a>
                 <a href="https://apps.apple.com/app/v2box/id6446814690" class="btn btn-outline-light btn-lg">
-                    📱 Скачать для iPhone
+                    <i class="fab fa-apple"></i> Скачать для iPhone
                 </a>
                 <a href="https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box" class="btn btn-outline-light btn-lg">
-                    🤖 Скачать для Android
+                    <i class="fab fa-google-play"></i> Скачать для Android
                 </a>
             </div>
 
@@ -856,7 +863,7 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="d-flex align-items-center">
-                    <span class="h5 mb-0">🚀 <span class="gradient-text">MegaVPN</span></span>
+                    <span class="h5 mb-0"><i class="fas fa-rocket text-primary"></i> <span class="gradient-text">MegaVPN</span></span>
                     <span class="ml-3 text-muted">© 2024 Все права защищены</span>
                 </div>
             </div>
@@ -884,6 +891,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="js/megavpn.js"></script>
+
+<script>
+// Автоматическая замена эмодзи звездочек на иконки Font Awesome
+document.addEventListener('DOMContentLoaded', function() {
+    // Найти все элементы с эмодзи звездочками
+    const starElements = document.querySelectorAll('.testimonial-card .mb-3');
+    
+    starElements.forEach(function(element) {
+        if (element.textContent.includes('⭐')) {
+            // Заменить на 5 звездочек Font Awesome
+            element.innerHTML = `
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+            `;
+        }
+    });
+});
+</script>
 
 </body>
 </html>
