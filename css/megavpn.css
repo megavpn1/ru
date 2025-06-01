@@ -279,78 +279,6 @@ body {
     width: 80%;
 }
 
-.navbar-toggler {
-    border: 2px solid rgba(0,0,0,0.2);
-    background: rgba(0,0,0,0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 8px;
-    padding: 8px 12px;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 2;
-}
-
-.navbar-toggler:hover {
-    border-color: var(--primary);
-    background: rgba(99, 102, 241, 0.1);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
-}
-
-.navbar-toggler:focus {
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
-    outline: none;
-}
-
-/* Animated hamburger icon */
-.navbar-toggler-icon {
-    width: 24px;
-    height: 20px;
-    position: relative;
-    display: block;
-    cursor: pointer;
-}
-
-.navbar-toggler-icon span {
-    display: block;
-    position: absolute;
-    height: 3px;
-    width: 100%;
-    background: var(--dark);
-    border-radius: 3px;
-    opacity: 1;
-    left: 0;
-    transform: rotate(0deg);
-    transition: .25s ease-in-out;
-}
-
-.navbar-toggler-icon span:nth-child(1) {
-    top: 0px;
-}
-
-.navbar-toggler-icon span:nth-child(2) {
-    top: 8px;
-}
-
-.navbar-toggler-icon span:nth-child(3) {
-    top: 16px;
-}
-
-/* Hamburger animation when menu is open */
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(1) {
-    top: 8px;
-    transform: rotate(135deg);
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(2) {
-    opacity: 0;
-    left: -30px;
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(3) {
-    top: 8px;
-    transform: rotate(-135deg);
-}
 
 /* Кастомизация кнопки в навигации */
 .navbar .btn-primary {
@@ -582,14 +510,14 @@ body {
 
 @keyframes neonGlow {
     0%, 100% {
-        box-shadow: 
+        box-shadow:
             0 2px 10px rgba(0,0,0,0.1),
             0 0 20px rgba(16, 185, 129, 0.6),
             0 0 40px rgba(16, 185, 129, 0.4),
             0 0 60px rgba(16, 185, 129, 0.2);
     }
     50% {
-        box-shadow: 
+        box-shadow:
             0 2px 10px rgba(0,0,0,0.1),
             0 0 30px rgba(16, 185, 129, 0.8),
             0 0 60px rgba(16, 185, 129, 0.6),
@@ -982,6 +910,60 @@ body {
         padding-right: 12px;
     }
 
+    .navbar-toggler {
+        padding: 4px 6px;
+        margin-right: 2px;
+        border-radius: 6px;
+        border: 1px solid black !important;
+    }
+
+    .navbar-toggler-icon {
+        width: 18px;
+        height: 14px;
+        position: relative;
+        display: block;
+    }
+
+    .navbar-toggler-icon span {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: #000;
+        border-radius: 1px;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: all 0.25s ease-in-out;
+    }
+
+    .navbar-toggler-icon span:nth-child(1) {
+        top: 0;
+    }
+
+    .navbar-toggler-icon span:nth-child(2) {
+        top: 5px;
+    }
+
+    .navbar-toggler-icon span:nth-child(3) {
+        top: 10px;
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(1) {
+        top: 5px;
+        transform: rotate(135deg);
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(2) {
+        opacity: 0;
+        left: -60px;
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(3) {
+        top: 5px;
+        transform: rotate(-135deg);
+    }
+
     /* VPN статус бар */
     .vpn-status-bar {
         font-size: 12px;
@@ -991,6 +973,10 @@ body {
         top: 0;
         left: 0;
         right: 0;
+
+        white-space: nowrap;         /* не переносить текст */
+        overflow: hidden;            /* скрыть, если не влезает */
+        text-overflow: ellipsis;     /* добавить троеточие в конце */
     }
 
     .status-icon {
@@ -1012,7 +998,7 @@ body {
         background: rgba(255,255,255,1) !important;
         box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
-    
+
     /* Hero секция на мобильных */
     .hero-section {
         text-align: center;
@@ -1295,12 +1281,13 @@ body {
     /* Навигация */
     .navbar {
         position: fixed;
-        top: 28px; /* Уменьшенная высота VPN статус бара на маленьких экранах */
-        padding: 8px 0;
+        top: 22px; /* Уменьшенная высота VPN статус бара на маленьких экранах */
+        padding: 0px 0;
     }
 
     .navbar-brand {
         font-size: 16px;
+        padding-left: 12px;
     }
 
     /* Hero */
@@ -1537,7 +1524,6 @@ body {
         border-radius: 0 0 15px 15px;
         max-height: calc(100vh - 100px);
         overflow-y: auto;
-        margin-top: 15px;
         padding: 20px;
     }
 
@@ -1668,9 +1654,9 @@ body.bot-page {
     .redirect-card {
         padding: 30px 20px;
     }
-    
+
     .redirect-card .btn {
         width: 100%;
         margin: 5px 0;
     }
-} 
+}
