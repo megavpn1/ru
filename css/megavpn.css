@@ -41,7 +41,7 @@ body {
 
 /* Добавляем разделители между элементами на десктопе */
 @media (min-width: 769px) {
-    .list-inline-item:not(:last-child)::after {
+    .hero-content .list-inline-item:not(:last-child)::after {
         content: " • ";
         margin-left: 10px;
         color: rgba(255, 255, 255, 0.4);
@@ -1012,12 +1012,12 @@ body {
         padding-right: 12px;
     }
 
-    /* Адаптивный список преимуществ - в столбик на мобильных */
-    .list-inline {
+    /* Адаптивный список преимуществ - ТОЛЬКО в hero секции на мобильных */
+    .hero-content .list-inline {
         display: block !important;
     }
     
-    .list-inline-item {
+    .hero-content .list-inline-item {
         display: block !important;
         margin-right: 0 !important;
         margin-bottom: 5px !important;
