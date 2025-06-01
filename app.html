@@ -261,12 +261,6 @@
     </style>
 </head>
 <body>
-    <!-- VPN Status Bar -->
-    <div class="vpn-status-bar" id="vpn-status">
-        <span class="status-icon"></span>
-        <span id="status-text">🚨 Ваше подключение НЕ защищено - подключитесь к нашим серверам MegaVPN</span>
-    </div>
-
     <div class="redirect-card">
         <div class="app-icon">
             <i class="fas fa-shield-alt"></i>
@@ -516,68 +510,10 @@
                 document.getElementById('auto-redirect').style.display = 'none';
                 document.getElementById('manual-options').style.display = 'block';
                 showPlatformInfo();
-                // Проверяем VPN статус при возврате
-                checkVPNStatus();
             }
         });
 
-        // Проверка VPN статуса
-        function checkVPNStatus() {
-            const statusBar = document.getElementById('vpn-status');
-            const statusText = document.getElementById('status-text');
-            
-            // Имитируем проверку VPN (в реальности можно использовать API)
-            // Проверяем через сторонний сервис
-            fetch('https://api.ipify.org?format=json')
-                .then(response => response.json())
-                .then(data => {
-                    // Дополнительная проверка геолокации
-                    fetch(`https://ipapi.co/${data.ip}/json/`)
-                        .then(response => response.json())
-                        .then(geoData => {
-                            // Простая эвристика: если IP из РФ, то VPN скорее всего не активен
-                            const isRussianIP = geoData.country_code === 'RU';
-                            
-                            if (isRussianIP) {
-                                statusBar.classList.remove('protected');
-                                statusText.innerHTML = '🚨 Ваше подключение НЕ защищено - подключитесь к нашим серверам MegaVPN';
-                            } else {
-                                statusBar.classList.add('protected');
-                                statusText.innerHTML = '🛡️ Вы защищены серверами MegaVPN - соединение анонимно и безопасно';
-                            }
-                        })
-                        .catch(() => {
-                            // Если ошибка, показываем нейтральный статус
-                            statusText.innerHTML = '🔍 Проверяем статус VPN...';
-                        });
-                })
-                .catch(() => {
-                    // Ошибка при получении IP
-                    statusText.innerHTML = '🔍 Не удается проверить статус VPN';
-                });
-        }
-
-        // Инициализация при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function() {
-            // Проверяем VPN статус через 2 секунды после загрузки
-            setTimeout(checkVPNStatus, 2000);
-            
-            // Обновляем статус каждые 30 секунд
-            setInterval(checkVPNStatus, 30000);
-        });
-
-        // Добавляем клики на статус-бар для ручного обновления
-        document.getElementById('vpn-status').addEventListener('click', function() {
-            const statusText = document.getElementById('status-text');
-            const originalText = statusText.innerHTML;
-            statusText.innerHTML = '🔄 Обновляем статус...';
-            
-            setTimeout(() => {
-                checkVPNStatus();
-            }, 1000);
-        });
-
-        console.log('📱 V2Box App Page loaded with VPN status check!');
+        console.log('📱 V2Box App Page loaded!');
     </script>
 </body>
 </html>
