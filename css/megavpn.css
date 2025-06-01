@@ -998,10 +998,10 @@ body {
         height: 6px;
     }
 
-    /* Навигация на мобильных - восстанавливаем стили */
+    /* Навигация на мобильных - точное позиционирование */
     .navbar {
         position: fixed;
-        top: 2em;
+        top: 32px; /* Высота VPN статус бара */
         padding: 10px 0;
         transition: all 0.3s ease;
         background: rgba(255,255,255,0.95);
@@ -1199,6 +1199,84 @@ body {
     .navbar-collapse {
         z-index: 1031;
     }
+
+    /* Отключаем hover эффекты на тач устройствах */
+    @media (hover: none) {
+        .btn:hover,
+        .nav-link:hover,
+        .feature-card:hover,
+        .app-download-card:hover,
+        .testimonial-card:hover {
+            transform: none !important;
+            box-shadow: none !important;
+        }
+    }
+
+    /* Улучшаем читаемость */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Фикс для изображений */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Убираем лишние margin и padding */
+    .no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .no-gutters > .col,
+    .no-gutters > [class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    /* Улучшаем видимость фокуса */
+    *:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
+
+    /* Специальный класс для скрытия на мобильных */
+    .desktop-only {
+        display: none !important;
+    }
+
+    /* Улучшаем производительность анимаций */
+    * {
+        -webkit-transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+    }
+
+    .text-center-mobile {
+        text-align: center !important;
+    }
+
+    .text-left-mobile {
+        text-align: left !important;
+    }
+
+    .w-100-mobile {
+        width: 100% !important;
+    }
+
+    .mx-auto-mobile {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .d-block-mobile {
+        display: block !important;
+    }
+
+    .d-none-mobile {
+        display: none !important;
+    }
 }
 
 /* Дополнительные стили для очень маленьких экранов */
@@ -1215,6 +1293,12 @@ body {
     }
 
     /* Навигация */
+    .navbar {
+        position: fixed;
+        top: 28px; /* Уменьшенная высота VPN статус бара на маленьких экранах */
+        padding: 8px 0;
+    }
+
     .navbar-brand {
         font-size: 16px;
     }
@@ -1401,87 +1485,6 @@ body {
     .hero-content .btn-sm {
         width: 100%;
         margin-bottom: 4px;
-    }
-}
-
-/* Утилиты для мобильных */
-@media (max-width: 768px) {
-    /* Отключаем hover эффекты на тач устройствах */
-    @media (hover: none) {
-        .btn:hover,
-        .nav-link:hover,
-        .feature-card:hover,
-        .app-download-card:hover,
-        .testimonial-card:hover {
-            transform: none !important;
-            box-shadow: none !important;
-        }
-    }
-
-    /* Улучшаем читаемость */
-    body {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* Фикс для изображений */
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    /* Убираем лишние margin и padding */
-    .no-gutters {
-        margin-right: 0;
-        margin-left: 0;
-    }
-
-    .no-gutters > .col,
-    .no-gutters > [class*="col-"] {
-        padding-right: 0;
-        padding-left: 0;
-    }
-
-    /* Улучшаем видимость фокуса */
-    *:focus {
-        outline: 2px solid var(--primary);
-        outline-offset: 2px;
-    }
-
-    /* Специальный класс для скрытия на мобильных */
-    .desktop-only {
-        display: none !important;
-    }
-
-    /* Улучшаем производительность анимаций */
-    * {
-        -webkit-transform: translateZ(0);
-        -webkit-backface-visibility: hidden;
-    }
-
-    .text-center-mobile {
-        text-align: center !important;
-    }
-
-    .text-left-mobile {
-        text-align: left !important;
-    }
-
-    .w-100-mobile {
-        width: 100% !important;
-    }
-
-    .mx-auto-mobile {
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-    .d-block-mobile {
-        display: block !important;
-    }
-
-    .d-none-mobile {
-        display: none !important;
     }
 }
 
