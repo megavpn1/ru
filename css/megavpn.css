@@ -320,8 +320,7 @@ body {
 .navbar .btn-primary:hover {
     background: linear-gradient(135deg, #4f46e5 0%, #5b21b6 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-    color: white;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
     animation: none;
 }
 
@@ -1553,5 +1552,64 @@ body {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
         animation: none;
+    }
+}
+
+/* Bot page specific styles */
+body.bot-page {
+    background: var(--gradient);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.redirect-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.bot-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: white;
+    font-size: 32px;
+}
+
+.countdown {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary);
+    margin: 20px 0;
+}
+
+.loading {
+    display: none;
+}
+
+.spinner-border {
+    color: var(--primary);
+}
+
+@media (max-width: 576px) {
+    .redirect-card {
+        padding: 30px 20px;
+    }
+    
+    .redirect-card .btn {
+        width: 100%;
+        margin: 5px 0;
     }
 } 

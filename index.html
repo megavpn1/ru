@@ -21,1023 +21,8 @@
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-    <style>
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #f59e0b;
-            --success: #10b981;
-            --danger: #ef4444;
-            --dark: #1f2937;
-            --light: #f9fafb;
-            --white: #ffffff;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        * {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        body {
-            background: var(--white);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        .hero-section {
-            background: var(--gradient);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            border: none;
-            padding: 12px 32px;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1.2;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn-warning {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            border: none;
-            color: white;
-            font-weight: 600;
-            padding: 14px 28px;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
-            font-size: 16px;
-            margin: 8px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1.2;
-        }
-
-        .btn-warning:hover {
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
-            color: white;
-        }
-
-        .btn-warning:focus {
-            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
-            color: white;
-        }
-
-        .btn-outline-light {
-            border: 2px solid rgba(255,255,255,0.3);
-            color: white;
-            padding: 12px 32px;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            margin: 8px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1.2;
-        }
-
-        .btn-outline-light:hover {
-            background: white;
-            color: var(--primary);
-            border-color: white;
-            transform: translateY(-2px);
-        }
-
-        .btn-sm {
-            padding: 8px 16px;
-            font-size: 14px;
-            border-radius: 25px;
-        }
-
-        .btn-outline-light.btn-sm {
-            border: 1px solid rgba(255,255,255,0.4);
-            color: rgba(255,255,255,0.9);
-            font-weight: 500;
-        }
-
-        .btn-outline-light.btn-sm:hover {
-            background: rgba(255,255,255,0.2);
-            border-color: rgba(255,255,255,0.6);
-            color: white;
-            transform: translateY(-1px);
-        }
-
-        .btn-outline-primary {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 10px 24px;
-            font-weight: 600;
-            border-radius: 50px;
-            margin: 8px;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1.2;
-        }
-
-        .btn-outline-primary:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline-success {
-            border: 2px solid var(--success);
-            color: var(--success);
-            padding: 12px 32px;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            margin: 8px;
-        }
-
-        .btn-outline-success:hover {
-            background: var(--success);
-            border-color: var(--success);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .navbar {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            padding: 15px 0;
-            margin-top: 32px;
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 24px;
-            color: var(--primary) !important;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            color: var(--dark) !important;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--primary) !important;
-        }
-
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 20px;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: #6b7280;
-            margin-bottom: 50px;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            border: 1px solid #e5e7eb;
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border-color: var(--primary);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 24px;
-        }
-
-        .pricing-card {
-            background: white;
-            border-radius: 24px;
-            padding: 40px 30px;
-            text-align: center;
-            border: 3px solid var(--primary);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pricing-card::before {
-            content: 'ПОПУЛЯРНЫЙ';
-            position: absolute;
-            top: 20px;
-            left: -30px;
-            background: var(--secondary);
-            color: white;
-            padding: 5px 40px;
-            font-size: 12px;
-            font-weight: 700;
-            transform: rotate(-45deg);
-        }
-
-        .price {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .price-old {
-            text-decoration: line-through;
-            color: #9ca3af;
-            font-size: 1.5rem;
-        }
-
-        .download-section {
-            background: var(--light);
-        }
-
-        .app-download-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .app-download-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .steps-section {
-            background: var(--gradient);
-            color: white;
-        }
-
-        .step-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: white;
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 700;
-            margin: 0 auto 20px;
-        }
-
-        .testimonial-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-
-        .cta-section {
-            background: var(--dark);
-            color: white;
-        }
-
-        .floating-phone {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .gradient-text {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .vpn-status-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-            padding: 8px 0;
-            text-align: center;
-            font-size: 14px;
-            font-weight: 600;
-            z-index: 1001;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .vpn-status-bar.protected {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-
-        .status-icon {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: #ffffff;
-            border-radius: 50%;
-            margin-right: 8px;
-            animation: pulse-dot 2s infinite;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .phone-mockup {
-            max-width: 320px;
-            margin: 0 auto;
-        }
-
-        .phone-frame {
-            background: #1f2937;
-            border-radius: 35px;
-            padding: 8px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-            position: relative;
-        }
-
-        .phone-frame::before {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: #374151;
-            border-radius: 2px;
-        }
-
-        .phone-screen {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 27px;
-            padding: 20px 15px;
-            height: auto;
-            min-height: 651px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .phone-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .phone-battery {
-            display: flex;
-            gap: 5px;
-            align-items: center;
-        }
-
-        .app-content {
-            text-align: center;
-            min-height: 580px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            padding-bottom: 20px;
-        }
-
-        .app-logo {
-            margin-bottom: 10px;
-        }
-
-        .vpn-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 10px;
-            font-size: 24px;
-            backdrop-filter: blur(10px);
-        }
-
-        .app-logo h4 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .app-logo p {
-            font-size: 14px;
-            opacity: 0.8;
-            margin: 0;
-        }
-
-        .connection-status {
-            margin: 20px 0;
-        }
-
-        .status-indicator {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 15px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .status-indicator.connected {
-            background: rgba(16, 185, 129, 0.2);
-            border-radius: 50%;
-            color: #10b981;
-            font-size: 26px;
-        }
-
-        .status-indicator.disconnected {
-            background: rgba(239, 68, 68, 0.2);
-            border-radius: 50%;
-            color: #ef4444;
-            font-size: 26px;
-        }
-
-        .status-indicator.connecting {
-            background: rgba(245, 158, 11, 0.2);
-            border-radius: 50%;
-            color: #f59e0b;
-            font-size: 26px;
-            animation: pulse-connecting 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse-connecting {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.7; }
-        }
-
-        .ping-animate {
-            animation: ping-bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes ping-bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-2px); }
-            60% { transform: translateY(-1px); }
-        }
-
-        .stat-value.counting {
-            animation: count-update 0.3s ease-in-out;
-        }
-
-        @keyframes count-update {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); color: var(--primary); }
-            100% { transform: scale(1); }
-        }
-
-        .pulse-ring {
-            border: 2px solid rgba(16, 185, 129, 0.3);
-            border-radius: 50%;
-            height: 90px;
-            width: 90px;
-            position: absolute;
-            animation: pulse 2s ease-out infinite;
-        }
-
-        .pulse-ring.delay-1 {
-            animation-delay: 0.7s;
-        }
-
-        .pulse-ring.delay-2 {
-            animation-delay: 1.4s;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
-        }
-
-        .connection-status h5 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .connection-status p {
-            font-size: 14px;
-            opacity: 0.8;
-            margin: 0;
-        }
-
-        .connection-stats {
-            display: flex;
-            justify-content: space-around;
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 12px 8px;
-            margin: 15px 0;
-            backdrop-filter: blur(10px);
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 10px;
-            opacity: 0.7;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .quick-servers {
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 12px;
-            backdrop-filter: blur(10px);
-        }
-
-        .server-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 0;
-            font-size: 13px;
-        }
-
-        .server-item:not(:last-child) {
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .ping {
-            font-size: 11px;
-            opacity: 0.7;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                text-align: center;
-                padding: 60px 0 40px 0;
-                min-height: auto;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-                line-height: 1.2;
-            }
-
-            .section-subtitle {
-                font-size: 1rem;
-                margin-bottom: 30px;
-            }
-
-            .price {
-                font-size: 2.2rem;
-            }
-
-            .phone-mockup {
-                max-width: 280px;
-                margin-top: 30px;
-            }
-
-            .phone-screen {
-                min-height: 480px;
-                padding: 15px 12px;
-            }
-
-            .app-content {
-                min-height: 410px;
-                padding-bottom: 15px;
-            }
-
-            .d-flex.flex-wrap {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .d-flex.flex-wrap .btn {
-                width: auto;
-                min-width: 200px;
-                margin: 6px 0;
-            }
-
-            .hero-content .d-flex.flex-wrap {
-                gap: 10px !important;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .hero-content .d-flex.flex-wrap .btn {
-                width: 280px;
-                max-width: 100%;
-            }
-
-            /* Навигация на мобильных */
-            .navbar {
-                padding: 10px 0;
-                margin-top: 20px;
-            }
-
-            .navbar-brand {
-                font-size: 20px;
-            }
-
-            .navbar-toggler {
-                border: none;
-                font-size: 18px;
-                padding: 4px 8px;
-            }
-
-            .navbar-collapse {
-                margin-top: 15px;
-            }
-
-            .nav-link {
-                padding: 8px 0 !important;
-                text-align: center;
-            }
-
-            .navbar .btn {
-                margin: 10px auto 0 auto;
-                display: block;
-                width: 200px;
-            }
-
-            /* VPN статус бар */
-            .vpn-status-bar {
-                font-size: 12px;
-                padding: 6px 0;
-                text-align: center;
-            }
-
-            .status-icon {
-                width: 6px;
-                height: 6px;
-            }
-
-            /* Заголовки */
-            .hero-section h1 {
-                font-size: 2.2rem;
-                line-height: 1.1;
-                margin-bottom: 20px;
-            }
-
-            .hero-section .lead {
-                font-size: 1rem;
-                margin-bottom: 25px;
-            }
-
-            .hero-section .badge {
-                font-size: 14px;
-                padding: 8px 16px;
-            }
-
-            /* Карточки возможностей */
-            .feature-card {
-                padding: 30px 20px;
-                margin-bottom: 20px;
-            }
-
-            .feature-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 20px;
-            }
-
-            /* Карточки приложений */
-            .app-download-card {
-                padding: 25px 20px;
-                margin-bottom: 20px;
-            }
-
-            .app-download-card h4 {
-                font-size: 1.4rem;
-            }
-
-            .app-download-card .fab {
-                font-size: 3rem !important;
-            }
-
-            /* Секция шагов */
-            .step-card {
-                padding: 25px 20px;
-                margin-bottom: 20px;
-            }
-
-            .step-number {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-
-            /* Отзывы */
-            .testimonial-card {
-                padding: 20px;
-                margin-bottom: 20px;
-            }
-
-            /* Действия после скачивания */
-            .download-actions {
-                padding: 15px;
-                margin-top: 20px;
-            }
-
-            .download-actions h5 {
-                font-size: 1.1rem;
-                margin-bottom: 15px;
-            }
-
-            .download-actions .btn {
-                width: 100%;
-                margin: 5px 0;
-                font-size: 14px;
-                padding: 12px;
-            }
-
-            /* Кнопка "Вверх" */
-            .scroll-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-
-            /* Секции */
-            .section {
-                padding: 50px 0;
-            }
-
-            /* Альтернативные ссылки */
-            .hero-content .mt-3 {
-                margin-top: 20px !important;
-            }
-
-            .hero-content .btn-sm {
-                font-size: 12px;
-                padding: 6px 12px;
-                margin: 2px;
-                min-width: auto;
-                width: auto;
-            }
-
-            /* Pricing card */
-            .pricing-card {
-                padding: 30px 20px;
-            }
-
-            .pricing-card h3 {
-                font-size: 1.4rem;
-            }
-
-            /* Футер */
-            footer {
-                padding: 30px 0 !important;
-            }
-
-            footer .row {
-                text-align: center;
-            }
-
-            footer .col-md-6 {
-                margin-bottom: 15px;
-            }
-
-            footer .btn {
-                width: auto;
-                margin: 5px;
-            }
-        }
-
-        /* Дополнительные стили для очень маленьких экранов */
-        @media (max-width: 480px) {
-            .hero-section h1 {
-                font-size: 1.9rem;
-            }
-
-            .section-title {
-                font-size: 1.6rem;
-            }
-
-            .phone-mockup {
-                max-width: 260px;
-            }
-
-            .phone-screen {
-                min-height: 440px;
-                padding: 12px 10px;
-            }
-
-            .app-content {
-                min-height: 380px;
-            }
-
-            .hero-content .d-flex.flex-wrap .btn {
-                width: 260px;
-            }
-
-            .container {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            .app-content .stat-value {
-                font-size: 13px;
-            }
-
-            .app-content .stat-label {
-                font-size: 9px;
-            }
-
-            .server-item {
-                font-size: 12px;
-            }
-
-            .connection-stats {
-                padding: 10px 6px;
-            }
-
-            .quick-servers {
-                padding: 10px;
-            }
-        }
-
-        .scroll-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .scroll-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-to-top:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
-        }
-
-        .download-actions {
-            background: rgba(99, 102, 241, 0.05);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        .testimonials-carousel .testimonial-card {
-            margin-bottom: 0;
-        }
-
-        .testimonials-carousel .custom-dots {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .testimonials-carousel .custom-dot {
-            display: inline-block;
-            margin: 0 5px;
-            width: 10px;
-            height: 10px;
-            background: rgba(99, 102, 241, 0.15);
-            border: 2px solid rgba(99, 102, 241, 0.5);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .testimonials-carousel .custom-dot:after {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border-radius: 100%;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .testimonials-carousel .custom-dot.active,
-        .testimonials-carousel .custom-dot:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-            transform: scale(1.2);
-        }
-
-        .testimonials-carousel .custom-dot:hover:after {
-            border-color: rgba(99, 102, 241, 0.3);
-        }
-
-        .testimonials-carousel .owl-stage-outer {
-            padding: 10px 0;
-        }
-
-        /* Fallback стили для случая если карусель не загрузится */
-        .testimonials-carousel .testimonial-card {
-            display: block;
-            max-width: 400px;
-            margin: 0 auto 30px;
-        }
-
-        .testimonials-carousel.owl-loaded .testimonial-card {
-            max-width: none;
-            margin: 0;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/megavpn.css">
 </head>
 <body>
 
@@ -1123,7 +108,7 @@
                             📱 Открыть V2Box
                         </a>
                     </div>
-                    <p class="text-white-50" style="font-size: 12px;">
+                    <p class="text-white-50 text-small-12">
                         💡 Откройте любую ссылку выше и найдите бота: <strong>@megabot_vpnbot</strong>
                     </p>
                 </div>
@@ -1157,7 +142,7 @@
                                         </div>
                                         <h5 id="phone-status-title">Отключено</h5>
                                         <p id="phone-status-server">Нажмите для подключения</p>
-                                        <div id="phone-timer" style="font-size: 14px; color: rgba(255,255,255,0.8); margin-top: 5px; display: none;">
+                                        <div id="phone-timer">
                                             00:00:00
                                         </div>
                                     </div>
@@ -1323,7 +308,7 @@
             <div class="col-lg-6 mb-4" data-aos="fade-right">
                 <div class="app-download-card">
                     <div class="text-center mb-4">
-                        <i class="fab fa-apple text-primary" style="font-size: 4rem;"></i>
+                        <i class="fab fa-apple text-primary icon-size-4"></i>
                     </div>
                     <h4 class="font-weight-bold mb-3">iPhone / iPad</h4>
                     <p class="mb-4">Скачай V2Box из App Store и получи мгновенный доступ ко всем заблокированным сайтам</p>
@@ -1339,7 +324,7 @@
             <div class="col-lg-6 mb-4" data-aos="fade-left">
                 <div class="app-download-card">
                     <div class="text-center mb-4">
-                        <i class="fab fa-google-play text-success" style="font-size: 4rem;"></i>
+                        <i class="fab fa-google-play text-success icon-size-4"></i>
                     </div>
                     <h4 class="font-weight-bold mb-3">Android</h4>
                     <p class="mb-4">Установи V2Box из Google Play и наслаждайся свободным интернетом на своём устройстве</p>
@@ -1361,7 +346,7 @@
             <p class="text-muted mb-4">
                 Для работы V2Box нужна персональная ссылка подписки. Получи её в нашем боте за 30 секунд.
             </p>
-            <div class="d-flex flex-wrap justify-content-center" style="gap: 15px;">
+            <div class="d-flex flex-wrap justify-content-center gap-15">
                 <a href="bot.html" class="btn btn-warning btn-lg">
                     🤖 Получить настройки в боте
                 </a>
@@ -1443,7 +428,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Наконец-то могу смотреть YouTube без тормозов! V2Box работает идеально, настройка заняла 2 минуты"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">А</div>
+                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3 testimonial-avatar">А</div>
                     <div>
                         <div class="font-weight-bold">Алексей М.</div>
                         <small class="text-muted">Программист</small>
@@ -1456,7 +441,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Сэкономил кучу денег, покупая игры через VPN. Окупился за первую же покупку!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Д</div>
+                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Д</div>
                     <div>
                         <div class="font-weight-bold">Дмитрий К.</div>
                         <small class="text-muted">Геймер</small>
@@ -1469,7 +454,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Открыла для себя Netflix США и Disney+. Столько фильмов, которых нет в России!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">М</div>
+                    <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">М</div>
                     <div>
                         <div class="font-weight-bold">Мария С.</div>
                         <small class="text-muted">Студентка</small>
@@ -1482,7 +467,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Работаю фрилансером, нужен был стабильный VPN. MegaVPN не подводит уже полгода!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">И</div>
+                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">И</div>
                     <div>
                         <div class="font-weight-bold">Игорь В.</div>
                         <small class="text-muted">Дизайнер</small>
@@ -1495,7 +480,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Instagram и TikTok работают без задержек. Даже прямые эфиры идут в HD качестве!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Е</div>
+                    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Е</div>
                     <div>
                         <div class="font-weight-bold">Елена Р.</div>
                         <small class="text-muted">Блогер</small>
@@ -1508,7 +493,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Пользуюсь на всей семье - 4 устройства. Цена смешная, а работает отлично!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">В</div>
+                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">В</div>
                     <div>
                         <div class="font-weight-bold">Владимир Л.</div>
                         <small class="text-muted">Менеджер</small>
@@ -1521,7 +506,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Как IT-шник могу сказать - сервис топовый. Протоколы современные, скорость максимальная"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">С</div>
+                    <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">С</div>
                     <div>
                         <div class="font-weight-bold">Сергей Н.</div>
                         <small class="text-muted">Системный администратор</small>
@@ -1534,7 +519,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Путешествую часто, везде нужен VPN. MegaVPN работает даже в Китае и ОАЭ!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">О</div>
+                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">О</div>
                     <div>
                         <div class="font-weight-bold">Ольга К.</div>
                         <small class="text-muted">Travel-блогер</small>
@@ -1547,7 +532,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Стример, для меня важна стабильность. Уже год стримлю через MegaVPN - ни одного разрыва!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Р</div>
+                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Р</div>
                     <div>
                         <div class="font-weight-bold">Роман Т.</div>
                         <small class="text-muted">Стример</small>
@@ -1560,7 +545,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Мама не могла настроить VPN, помог MegaVPN бот. Теперь она смотрит корейские дорамы!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">А</div>
+                    <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">А</div>
                     <div>
                         <div class="font-weight-bold">Анна Ф.</div>
                         <small class="text-muted">Маркетолог</small>
@@ -1573,7 +558,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Покупал подписки на Spotify и Apple Music через VPN. Сэкономил больше 15000 рублей в год!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">П</div>
+                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">П</div>
                     <div>
                         <div class="font-weight-bold">Павел З.</div>
                         <small class="text-muted">Музыкант</small>
@@ -1586,7 +571,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Живу в общаге, интернет плохой. Через MegaVPN даже видео в 4K грузится быстро!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">К</div>
+                    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">К</div>
                     <div>
                         <div class="font-weight-bold">Кирилл Б.</div>
                         <small class="text-muted">Студент</small>
@@ -1599,7 +584,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Работаю с зарубежными клиентами. Без VPN никак - MegaVPN выручает каждый день!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Л</div>
+                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Л</div>
                     <div>
                         <div class="font-weight-bold">Лариса Г.</div>
                         <small class="text-muted">Переводчик</small>
@@ -1612,7 +597,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Геймер со стажем. Пинги низкие, лагов нет. Играю в европейские сервера без проблем!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Н</div>
+                    <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Н</div>
                     <div>
                         <div class="font-weight-bold">Никита Ж.</div>
                         <small class="text-muted">Киберспортсмен</small>
@@ -1625,7 +610,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Фотограф, загружаю работы на зарубежные стоки. MegaVPN ускорил процесс в разы!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ю</div>
+                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Ю</div>
                     <div>
                         <div class="font-weight-bold">Юлия П.</div>
                         <small class="text-muted">Фотограф</small>
@@ -1638,7 +623,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Пробовал 5 других VPN сервисов. MegaVPN лучший по соотношению цена-качество!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Т</div>
+                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Т</div>
                     <div>
                         <div class="font-weight-bold">Тимур А.</div>
                         <small class="text-muted">Аналитик</small>
@@ -1651,7 +636,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Дочка учится за границей, общаемся через заблокированные мессенджеры. Спасибо MegaVPN!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Г</div>
+                    <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Г</div>
                     <div>
                         <div class="font-weight-bold">Галина И.</div>
                         <small class="text-muted">Учитель</small>
@@ -1664,7 +649,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Трейдер, работаю с зарубежными биржами. Стабильность подключения критична - MegaVPN не подводит!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ф</div>
+                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Ф</div>
                     <div>
                         <div class="font-weight-bold">Федор Ц.</div>
                         <small class="text-muted">Трейдер</small>
@@ -1677,7 +662,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Веду бизнес в соцсетях. Instagram Reels теперь загружаются моментально!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Б</div>
+                    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Б</div>
                     <div>
                         <div class="font-weight-bold">Борис Э.</div>
                         <small class="text-muted">SMM-специалист</small>
@@ -1690,7 +675,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Изучаю языки через YouTube каналы. Теперь доступны все обучающие видео!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Х</div>
+                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Х</div>
                     <div>
                         <div class="font-weight-bold">Христина У.</div>
                         <small class="text-muted">Лингвист</small>
@@ -1703,7 +688,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Врач, читаю зарубежные медицинские журналы. MegaVPN открыл доступ к базам данных!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Щ</div>
+                    <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Щ</div>
                     <div>
                         <div class="font-weight-bold">Щербаков А.</div>
                         <small class="text-muted">Врач</small>
@@ -1716,7 +701,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Копирайтер, изучаю зарубежные тренды. Pinterest, Behance - все доступно через MegaVPN!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ч</div>
+                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Ч</div>
                     <div>
                         <div class="font-weight-bold">Чернова Д.</div>
                         <small class="text-muted">Копирайтер</small>
@@ -1729,7 +714,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Подросток, хотел смотреть аниме на Crunchyroll. Родители купили MegaVPN - теперь я счастлив!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ш</div>
+                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Ш</div>
                     <div>
                         <div class="font-weight-bold">Шамиль К.</div>
                         <small class="text-muted">Школьник</small>
@@ -1742,7 +727,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Пенсионер, внуки научили пользоваться VPN. Смотрю европейские новости и фильмы!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ж</div>
+                    <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Ж</div>
                     <div>
                         <div class="font-weight-bold">Жанна М.</div>
                         <small class="text-muted">Пенсионер</small>
@@ -1755,7 +740,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Журналист, нужен доступ к международным источникам. MegaVPN - мой рабочий инструмент!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Э</div>
+                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Э</div>
                     <div>
                         <div class="font-weight-bold">Эдуард Я.</div>
                         <small class="text-muted">Журналист</small>
@@ -1768,7 +753,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Предприниматель, веду переговоры через Zoom с партнерами. Качество связи отличное!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ю</div>
+                    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Ю</div>
                     <div>
                         <div class="font-weight-bold">Юрий Ъ.</div>
                         <small class="text-muted">Предприниматель</small>
@@ -1781,7 +766,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Студентка, пишу диплом. Google Scholar и зарубежные библиотеки теперь доступны!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ы</div>
+                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Ы</div>
                     <div>
                         <div class="font-weight-bold">Ыдырысова А.</div>
                         <small class="text-muted">Студентка</small>
@@ -1794,7 +779,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Психолог, прохожу курсы на зарубежных платформах. Coursera и Udemy работают идеально!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ь</div>
+                    <div class="bg-dark rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Ь</div>
                     <div>
                         <div class="font-weight-bold">Ьльвира О.</div>
                         <small class="text-muted">Психолог</small>
@@ -1807,7 +792,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"IT-директор компании, купил корпоративный доступ. Вся команда довольна скоростью и стабильностью!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Э</div>
+                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Э</div>
                     <div>
                         <div class="font-weight-bold">Эльдар У.</div>
                         <small class="text-muted">IT-директор</small>
@@ -1820,7 +805,7 @@
                 <div class="mb-3">⭐⭐⭐⭐⭐</div>
                 <p class="mb-3">"Мама троих детей, смотрю зарубежные каналы про воспитание. MegaVPN помог стать лучшей мамой!"</p>
                 <div class="d-flex align-items-center">
-                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" style="width: 40px; height: 40px;">Ю</div>
+                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white mr-3" class="testimonial-avatar">Ю</div>
                     <div>
                         <div class="font-weight-bold">Юлианна Я.</div>
                         <small class="text-muted">Домохозяйка</small>
@@ -1840,7 +825,7 @@
                 Присоединись к тысячам пользователей, которые уже наслаждаются безлимитным интернетом
             </p>
 
-            <div class="d-flex flex-wrap justify-content-center mb-4" style="gap: 15px;">
+            <div class="d-flex flex-wrap justify-content-center gap-15">
                 <a href="bot.html" class="btn btn-warning btn-lg">
                     🚀 Начать бесплатный период
                 </a>
@@ -2102,12 +1087,12 @@ document.addEventListener('DOMContentLoaded', function() {
         phoneIndicator.className = 'status-indicator disconnected';
         phoneIndicator.innerHTML = '<i class="fas fa-times"></i>';
     }
-    
+
     // Инициализируем все элементы телефона в начальном состоянии
     const phoneTitle = document.getElementById('phone-status-title');
     const phoneServer = document.getElementById('phone-status-server');
     const phoneTimer = document.getElementById('phone-timer');
-    
+
     if (phoneTitle) phoneTitle.textContent = 'Отключено';
     if (phoneServer) phoneServer.textContent = 'Нажмите для подключения';
     if (phoneTimer) {
@@ -2120,7 +1105,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Обновляем статус каждые 30 секунд
     setInterval(checkVPNStatus, 30000);
-    
+
     // Добавляем клик по телефону для ручного запуска анимации
     const phoneMockup = document.querySelector('.phone-mockup');
     if (phoneMockup) {
@@ -2135,7 +1120,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
-        
+
         // Добавляем стили для интерактивности
         phoneMockup.style.cursor = 'pointer';
         phoneMockup.title = 'Нажмите для подключения к VPN';
@@ -2364,7 +1349,7 @@ function startPhonePingAnimation() {
 function startPhoneTrafficAnimation() {
     const downloadElement = document.getElementById('phone-download');
     const uploadElement = document.getElementById('phone-upload');
-    
+
     // Проверяем существование элементов
     if (!downloadElement || !uploadElement) {
         console.error('Phone traffic elements not found');
