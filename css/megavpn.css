@@ -1,0 +1,1537 @@
+/* MegaVPN Custom Styles */
+
+/* CSS Variables */
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #f59e0b;
+    --success: #10b981;
+    --danger: #ef4444;
+    --dark: #1f2937;
+    --light: #f9fafb;
+    --white: #ffffff;
+    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Typography */
+* {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background: var(--white);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+/* Hero Section */
+.hero-section {
+    background: var(--gradient);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--primary);
+    border: none;
+    padding: 12px 32px;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    font-size: 16px;
+    margin: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+    color: white;
+}
+
+.btn-warning:focus {
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+    color: white;
+}
+
+.btn-outline-light {
+    border: 2px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 12px 32px;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    margin: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.btn-outline-light:hover {
+    background: white;
+    color: var(--primary);
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 25px;
+}
+
+.btn-outline-light.btn-sm {
+    border: 1px solid rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+}
+
+.btn-outline-light.btn-sm:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.6);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.btn-outline-primary {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 10px 24px;
+    font-weight: 600;
+    border-radius: 50px;
+    margin: 8px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-outline-success {
+    border: 2px solid var(--success);
+    color: var(--success);
+    padding: 12px 32px;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    margin: 8px;
+}
+
+.btn-outline-success:hover {
+    background: var(--success);
+    border-color: var(--success);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Navigation */
+.navbar {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    padding: 15px 0;
+    margin-top: 32px;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.01) 50%, rgba(0,0,0,0.02) 100%);
+    pointer-events: none;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--dark) !important;
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+.navbar-brand:hover {
+    color: var(--primary) !important;
+    text-decoration: none !important;
+    transform: translateY(-1px);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand .gradient-text {
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease-in-out infinite;
+    background-size: 200% 200%;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--dark) !important;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 8px 16px !important;
+    border-radius: 25px;
+    z-index: 2;
+}
+
+.nav-link:hover {
+    color: var(--primary) !important;
+    background: rgba(99, 102, 241, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::before {
+    width: 80%;
+}
+
+.navbar-toggler {
+    border: 2px solid rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.navbar-toggler:hover {
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+    outline: none;
+}
+
+.navbar-toggler .fas {
+    color: var(--dark);
+    font-size: 18px;
+}
+
+/* Кастомизация кнопки в навигации */
+.navbar .btn-primary {
+    background: var(--gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    font-size: 14px;
+    margin-left: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.navbar .btn-primary:hover {
+    background: linear-gradient(135deg, #4f46e5 0%, #5b21b6 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    color: white;
+    animation: none;
+}
+
+/* Убираем излишние переопределения для collapse */
+@media (min-width: 992px) {
+    .nav-link {
+        padding: 8px 16px !important;
+    }
+}
+
+/* Sections */
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 20px;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #6b7280;
+    margin-bottom: 50px;
+}
+
+/* Feature Cards */
+.feature-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-color: var(--primary);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: white;
+    font-size: 24px;
+}
+
+/* Pricing Card */
+.pricing-card {
+    background: white;
+    border-radius: 24px;
+    padding: 40px 30px;
+    text-align: center;
+    border: 3px solid var(--primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-card::before {
+    content: 'ПОПУЛЯРНЫЙ';
+    position: absolute;
+    top: 20px;
+    left: -30px;
+    background: var(--secondary);
+    color: white;
+    padding: 5px 40px;
+    font-size: 12px;
+    font-weight: 700;
+    transform: rotate(-45deg);
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.price-old {
+    text-decoration: line-through;
+    color: #9ca3af;
+    font-size: 1.5rem;
+}
+
+/* Download Section */
+.download-section {
+    background: var(--light);
+}
+
+.app-download-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.app-download-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Steps Section */
+.steps-section {
+    background: var(--gradient);
+    color: white;
+}
+
+.step-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: white;
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 auto 20px;
+}
+
+/* Testimonials */
+.testimonial-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+/* CTA Section */
+.cta-section {
+    background: var(--dark);
+    color: white;
+}
+
+/* Animations */
+.floating-phone {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.gradient-text {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* VPN Status Bar */
+.vpn-status-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 1001;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.vpn-status-bar.protected {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    animation: neonGlow 3s ease-in-out infinite;
+    overflow: hidden;
+}
+
+.vpn-status-bar.protected::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: neonSweep 4s ease-in-out infinite;
+}
+
+@keyframes neonGlow {
+    0%, 100% {
+        box-shadow: 
+            0 2px 10px rgba(0,0,0,0.1),
+            0 0 20px rgba(16, 185, 129, 0.6),
+            0 0 40px rgba(16, 185, 129, 0.4),
+            0 0 60px rgba(16, 185, 129, 0.2);
+    }
+    50% {
+        box-shadow: 
+            0 2px 10px rgba(0,0,0,0.1),
+            0 0 30px rgba(16, 185, 129, 0.8),
+            0 0 60px rgba(16, 185, 129, 0.6),
+            0 0 90px rgba(16, 185, 129, 0.4);
+    }
+}
+
+@keyframes neonSweep {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+.status-icon {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #ffffff;
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Phone Mockup */
+.phone-mockup {
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.phone-frame {
+    background: #1f2937;
+    border-radius: 35px;
+    padding: 8px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.phone-frame::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: #374151;
+    border-radius: 2px;
+}
+
+.phone-screen {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 27px;
+    padding: 20px 15px;
+    height: auto;
+    min-height: 651px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.phone-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.phone-battery {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.app-content {
+    text-align: center;
+    min-height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+}
+
+.app-logo {
+    margin-bottom: 10px;
+}
+
+.vpn-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-size: 24px;
+    backdrop-filter: blur(10px);
+}
+
+.app-logo h4 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.app-logo p {
+    font-size: 14px;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.connection-status {
+    margin: 20px 0;
+}
+
+.status-indicator {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-indicator.connected {
+    background: rgba(16, 185, 129, 0.2);
+    border-radius: 50%;
+    color: #10b981;
+    font-size: 26px;
+}
+
+.status-indicator.disconnected {
+    background: rgba(239, 68, 68, 0.2);
+    border-radius: 50%;
+    color: #ef4444;
+    font-size: 26px;
+}
+
+.status-indicator.connecting {
+    background: rgba(245, 158, 11, 0.2);
+    border-radius: 50%;
+    color: #f59e0b;
+    font-size: 26px;
+    animation: pulse-connecting 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-connecting {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+}
+
+.ping-animate {
+    animation: ping-bounce 2s ease-in-out infinite;
+}
+
+@keyframes ping-bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-2px); }
+    60% { transform: translateY(-1px); }
+}
+
+.stat-value.counting {
+    animation: count-update 0.3s ease-in-out;
+}
+
+@keyframes count-update {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); color: var(--primary); }
+    100% { transform: scale(1); }
+}
+
+.pulse-ring {
+    border: 2px solid rgba(16, 185, 129, 0.3);
+    border-radius: 50%;
+    height: 90px;
+    width: 90px;
+    position: absolute;
+    animation: pulse 2s ease-out infinite;
+}
+
+.pulse-ring.delay-1 {
+    animation-delay: 0.7s;
+}
+
+.pulse-ring.delay-2 {
+    animation-delay: 1.4s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.connection-status h5 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.connection-status p {
+    font-size: 14px;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.connection-stats {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 12px 8px;
+    margin: 15px 0;
+    backdrop-filter: blur(10px);
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 10px;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.quick-servers {
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.server-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 13px;
+}
+
+.server-item:not(:last-child) {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.ping {
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+/* Download Actions */
+.download-actions {
+    background: rgba(99, 102, 241, 0.05);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Testimonials Carousel */
+.testimonials-carousel .testimonial-card {
+    margin-bottom: 0;
+}
+
+.testimonials-carousel .custom-dots {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.testimonials-carousel .custom-dot {
+    display: inline-block;
+    margin: 0 5px;
+    width: 10px;
+    height: 10px;
+    background: rgba(99, 102, 241, 0.15);
+    border: 2px solid rgba(99, 102, 241, 0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.testimonials-carousel .custom-dot:after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 100%;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.testimonials-carousel .custom-dot.active,
+.testimonials-carousel .custom-dot:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: scale(1.2);
+}
+
+.testimonials-carousel .custom-dot:hover:after {
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.testimonials-carousel .owl-stage-outer {
+    padding: 10px 0;
+}
+
+/* Fallback стили для случая если карусель не загрузится */
+.testimonials-carousel .testimonial-card {
+    display: block;
+    max-width: 400px;
+    margin: 0 auto 30px;
+}
+
+.testimonials-carousel.owl-loaded .testimonial-card {
+    max-width: none;
+    margin: 0;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    /* Основные контейнеры */
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    /* VPN статус бар */
+    .vpn-status-bar {
+        font-size: 12px;
+        padding: 6px 0;
+        z-index: 1050;
+    }
+
+    .status-icon {
+        width: 6px;
+        height: 6px;
+    }
+
+    /* Навигация на мобильных */
+    .navbar {
+        padding: 10px 0;
+        margin-top: 20px;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .navbar-toggler {
+        border: 2px solid rgba(255,255,255,0.4);
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        padding: 8px 12px;
+    }
+
+    .navbar-toggler:hover {
+        border-color: rgba(255,255,255,0.6);
+        background: rgba(255,255,255,0.25);
+    }
+
+    /* Hero секция на мобильных */
+    .hero-section {
+        text-align: center;
+        padding: 60px 0 40px 0;
+        min-height: auto;
+    }
+
+    /* Заголовки */
+    .hero-section h1 {
+        font-size: 2.2rem;
+        line-height: 1.1;
+        margin-bottom: 20px;
+    }
+
+    .hero-section .lead {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+
+    .hero-section .badge {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    /* Карточки возможностей */
+    .feature-card {
+        padding: 30px 20px;
+        margin-bottom: 20px;
+    }
+
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+    }
+
+    /* Карточки приложений */
+    .app-download-card {
+        padding: 25px 20px;
+        margin-bottom: 20px;
+    }
+
+    .app-download-card h4 {
+        font-size: 1.4rem;
+    }
+
+    .app-download-card .fab {
+        font-size: 3rem !important;
+    }
+
+    /* Секция шагов */
+    .step-card {
+        padding: 25px 20px;
+        margin-bottom: 20px;
+    }
+
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    /* Отзывы */
+    .testimonial-card {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* Действия после скачивания */
+    .download-actions {
+        padding: 15px;
+        margin-top: 20px;
+    }
+
+    .download-actions h5 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+
+    .download-actions .btn {
+        width: 100%;
+        margin: 5px 0;
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    /* Кнопка "Вверх" */
+    .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    /* Секции */
+    .section {
+        padding: 50px 0;
+    }
+
+    /* Альтернативные ссылки */
+    .hero-content .mt-3 {
+        margin-top: 20px !important;
+    }
+
+    .hero-content .btn-sm {
+        font-size: 12px;
+        padding: 6px 12px;
+        margin: 2px;
+        min-width: auto;
+        width: auto;
+    }
+
+    /* Pricing card */
+    .pricing-card {
+        padding: 30px 20px;
+    }
+
+    .pricing-card h3 {
+        font-size: 1.4rem;
+    }
+
+    /* Футер */
+    footer {
+        padding: 30px 0 !important;
+    }
+
+    footer .row {
+        text-align: center;
+    }
+
+    footer .col-md-6 {
+        margin-bottom: 15px;
+    }
+
+    footer .btn {
+        width: auto;
+        margin: 5px;
+    }
+
+    /* Phone mockup */
+    .phone-mockup {
+        max-width: 280px;
+        margin-top: 30px;
+    }
+
+    /* Убираем горизонтальный скролл */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* Исправляем Bootstrap сетку */
+    .container-fluid,
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Фикс для flex элементов */
+    .d-flex {
+        flex-wrap: wrap !important;
+    }
+
+    /* Улучшаем тапабельность */
+    a, button, .btn, .nav-link, input, textarea, select {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        touch-action: manipulation;
+    }
+
+    /* Минимальная высота для кликабельных элементов */
+    .btn, .nav-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Фикс z-index для модальных окон и навигации */
+    .navbar {
+        z-index: 1030;
+    }
+
+    .navbar-collapse {
+        z-index: 1031;
+    }
+}
+
+/* Дополнительные стили для очень маленьких экранов */
+@media (max-width: 480px) {
+    /* VPN статус */
+    .vpn-status-bar {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+
+    /* Навигация */
+    .navbar-brand {
+        font-size: 16px;
+    }
+
+    /* Hero */
+    .hero-section {
+        padding-top: 80px; /* Статус бар + navbar на маленьких экранах */
+    }
+
+    .hero-section h1 {
+        font-size: 1.9rem;
+        margin-bottom: 12px;
+    }
+
+    .hero-section .lead {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .hero-content .btn-lg {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+
+    /* Альтернативные ссылки еще компактнее */
+    .hero-content .btn-sm {
+        font-size: 10px;
+        padding: 6px 10px;
+        min-width: auto;
+        flex: auto;
+    }
+
+    /* Телефон мокап еще меньше */
+    .phone-mockup {
+        max-width: 220px;
+    }
+
+    .phone-screen {
+        min-height: 380px;
+        padding: 10px 8px;
+    }
+
+    .phone-frame {
+        padding: 5px;
+        border-radius: 24px;
+    }
+
+    .phone-frame::before {
+        width: 40px;
+        height: 2px;
+    }
+
+    .app-content {
+        min-height: 330px;
+    }
+
+    .vpn-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+
+    .app-logo h4 {
+        font-size: 18px;
+    }
+
+    .status-indicator {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+    }
+
+    .connection-stats {
+        padding: 8px 4px;
+    }
+
+    .stat-value {
+        font-size: 12px;
+    }
+
+    .stat-label {
+        font-size: 7px;
+    }
+
+    .server-item {
+        font-size: 10px;
+    }
+
+    /* Заголовки секций */
+    .section-title {
+        font-size: 20px;
+    }
+
+    .section-subtitle {
+        font-size: 13px;
+    }
+
+    /* Карточки */
+    .feature-card {
+        padding: 20px 12px;
+    }
+
+    .feature-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+    }
+
+    .feature-card h5 {
+        font-size: 15px;
+    }
+
+    .feature-card p {
+        font-size: 12px;
+    }
+
+    /* Pricing */
+    .price {
+        font-size: 32px;
+    }
+
+    .pricing-card h3 {
+        font-size: 18px;
+    }
+
+    .pricing-card li {
+        font-size: 12px;
+        padding: 6px 0;
+    }
+
+    /* Кнопки в секциях */
+    .download-actions .btn,
+    .cta-section .btn {
+        font-size: 13px;
+        padding: 11px 14px;
+    }
+
+    /* Отзывы */
+    .testimonial-card {
+        padding: 15px 12px;
+    }
+
+    /* Футер */
+    footer .h5 {
+        font-size: 14px;
+    }
+
+    /* Контейнер еще меньше отступы */
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /* Еще компактнее секции */
+    .section {
+        padding: 30px 0;
+    }
+}
+
+/* Стили для очень узких экранов (менее 360px) */
+@media (max-width: 360px) {
+    .hero-section h1 {
+        font-size: 22px;
+    }
+
+    .hero-content .btn-lg {
+        font-size: 13px;
+        padding: 11px 14px;
+    }
+
+    .phone-mockup {
+        max-width: 200px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    /* Альтернативные ссылки в две строки */
+    .hero-content .mt-3 .d-flex {
+        flex-direction: column;
+    }
+
+    .hero-content .btn-sm {
+        width: 100%;
+        margin-bottom: 4px;
+    }
+}
+
+/* Утилиты для мобильных */
+@media (max-width: 768px) {
+    /* Отключаем hover эффекты на тач устройствах */
+    @media (hover: none) {
+        .btn:hover,
+        .nav-link:hover,
+        .feature-card:hover,
+        .app-download-card:hover,
+        .testimonial-card:hover {
+            transform: none !important;
+            box-shadow: none !important;
+        }
+    }
+
+    /* Улучшаем читаемость */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Фикс для изображений */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Убираем лишние margin и padding */
+    .no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .no-gutters > .col,
+    .no-gutters > [class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    /* Улучшаем видимость фокуса */
+    *:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
+
+    /* Специальный класс для скрытия на мобильных */
+    .desktop-only {
+        display: none !important;
+    }
+
+    /* Улучшаем производительность анимаций */
+    * {
+        -webkit-transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+    }
+
+    .text-center-mobile {
+        text-align: center !important;
+    }
+
+    .text-left-mobile {
+        text-align: left !important;
+    }
+
+    .w-100-mobile {
+        width: 100% !important;
+    }
+
+    .mx-auto-mobile {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .d-block-mobile {
+        display: block !important;
+    }
+
+    .d-none-mobile {
+        display: none !important;
+    }
+}
+
+/* Additional styles to replace inline styles */
+
+/* Text styles */
+.text-small-12 {
+    font-size: 12px;
+}
+
+/* Phone timer specific */
+#phone-timer {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    margin-top: 5px;
+    display: none;
+}
+
+/* Icon sizes */
+.icon-size-4 {
+    font-size: 4rem;
+}
+
+/* Flexbox gap */
+.gap-15 {
+    gap: 15px;
+}
+
+/* Testimonial avatars */
+.testimonial-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+/* Стили для мобильного меню collapse */
+.navbar-collapse {
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        margin-top: 15px;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(15px);
+        border-radius: 15px;
+        border: 1px solid rgba(0,0,0,0.1);
+        padding: 20px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+
+    .navbar-nav {
+        padding: 0;
+    }
+
+    .navbar .nav-item {
+        margin: 5px 0;
+    }
+
+    .navbar .nav-link {
+        padding: 12px 20px !important;
+        text-align: center;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        font-size: 16px;
+        margin: 0 !important;
+        display: block;
+        color: var(--dark) !important;
+        border-radius: 10px;
+        background: rgba(0,0,0,0.03);
+        transition: all 0.3s ease;
+        z-index: 1;
+        position: relative;
+    }
+
+    .navbar .nav-link:hover {
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary) !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+    }
+
+    .navbar .nav-link::before {
+        display: none;
+    }
+
+    .navbar .nav-item:last-child .nav-link {
+        border-bottom: none;
+    }
+
+    .navbar .btn-primary {
+        margin: 20px 0 10px 0;
+        display: block;
+        width: 100%;
+        font-size: 16px;
+        padding: 14px 20px;
+        background: var(--gradient);
+        background-size: 200% 200%;
+        animation: gradientShift 6s ease infinite;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .navbar .btn-primary:hover {
+        background: linear-gradient(135deg, #4f46e5 0%, #5b21b6 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        animation: none;
+    }
+} 
