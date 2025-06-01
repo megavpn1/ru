@@ -149,7 +149,7 @@ function checkVPNStatus() {
 
                     if (isRussianIP) {
                         statusBar.classList.remove('protected');
-                        statusText.innerHTML = getAdaptiveStatusText(false);
+                        statusText.innerHTML = '🚨 Ваше подключение НЕ защищено - подключитесь к нашим серверам MegaVPN';
 
                         // Эмуляция подключения через 3 секунды
                         setTimeout(() => {
@@ -157,7 +157,7 @@ function checkVPNStatus() {
                         }, 3000);
                     } else {
                         statusBar.classList.add('protected');
-                        statusText.innerHTML = getAdaptiveStatusText(true);
+                        statusText.innerHTML = '🛡️ Вы защищены серверами MegaVPN - соединение анонимно и безопасно';
                         startConnectionTimer();
                     }
                 })
@@ -217,8 +217,7 @@ function simulateVPNConnection() {
     // Успешное подключение
     setTimeout(() => {
         statusBar.classList.add('protected');
-        const connectionInfo = `| ${currentServer} | Время: 00:00:01`;
-        statusText.innerHTML = getAdaptiveStatusText(true, connectionInfo);
+        statusText.innerHTML = `✅ Подключено к MegaVPN | ${currentServer} | Время: 00:00:01`;
 
         // Запускаем таймер
         connectionStartTime = new Date();
@@ -251,8 +250,7 @@ function startConnectionTimer() {
         const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
         const statusText = document.getElementById('status-text');
-        const connectionInfo = `| ${currentServer} | Время: ${timeString}`;
-        statusText.innerHTML = getAdaptiveStatusText(true, connectionInfo);
+        statusText.innerHTML = `🛡️ Защищено MegaVPN | ${currentServer} | Время: ${timeString}`;
     }, 1000);
 }
 
@@ -625,58 +623,4 @@ function stopPhoneAnimation() {
 
     phoneDownloadMB = 0;
     phoneUploadMB = 0;
-}
-
-// Функция для получения адаптивного текста статуса
-function getAdaptiveStatusText(isProtected, connectionInfo = '') {
-    const isMobile = window.innerWidth <= 768;
-    const isSmallMobile = window.innerWidth <= 480;
-    const isVerySmallMobile = window.innerWidth <= 360;
-    
-    if (isProtected) {
-        if (isVerySmallMobile) {
-            return `🛡️ Защищено MegaVPN ${connectionInfo}`;
-        } else if (isSmallMobile) {
-            return `🛡️ Защищено серверами MegaVPN ${connectionInfo}`;
-        } else if (isMobile) {
-            return `🛡️ Вы защищены MegaVPN ${connectionInfo}`;
-        } else {
-            return `🛡️ Вы защищены серверами MegaVPN - соединение анонимно и безопасно`;
-        }
-    } else {
-        if (isVerySmallMobile) {
-            return '🚨 НЕ защищено - подключись к MegaVPN';
-        } else if (isSmallMobile) {
-            return '🚨 НЕ защищено - подключитесь к MegaVPN';
-        } else if (isMobile) {
-            return '🚨 Подключение НЕ защищено - используйте MegaVPN';
-        } else {
-            return '🚨 Ваше подключение НЕ защищено - подключитесь к нашим серверам MegaVPN';
-        }
-    }
-}
-
-// Обработчик изменения размера окна для адаптации текста статуса
-window.addEventListener('resize', function() {
-    const statusBar = document.getElementById('vpn-status');
-    const statusText = document.getElementById('status-text');
-    
-    if (statusBar && statusText) {
-        const isProtected = statusBar.classList.contains('protected');
-        
-        if (isProtected && currentServer && connectionStartTime) {
-            // Пересчитываем время для защищенного соединения
-            const currentTime = new Date();
-            const elapsedSeconds = Math.floor((currentTime - connectionStartTime) / 1000);
-            const hours = Math.floor(elapsedSeconds / 3600);
-            const minutes = Math.floor((elapsedSeconds % 3600) / 60);
-            const seconds = elapsedSeconds % 60;
-            const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            const connectionInfo = `| ${currentServer} | Время: ${timeString}`;
-            statusText.innerHTML = getAdaptiveStatusText(true, connectionInfo);
-        } else {
-            // Обновляем текст для незащищенного соединения
-            statusText.innerHTML = getAdaptiveStatusText(isProtected);
-        }
-    }
-}); 
+} 
