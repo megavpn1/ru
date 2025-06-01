@@ -363,10 +363,22 @@
             font-weight: 600;
             z-index: 1001;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .vpn-status-bar:hover {
+            opacity: 0.9;
         }
 
         .vpn-status-bar.protected {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .vpn-status-bar.demo-mode::after {
+            content: ' (клик для переключения)';
+            opacity: 0.7;
+            font-size: 11px;
         }
 
         .status-icon {
@@ -1653,23 +1665,54 @@ function checkVPNStatus() {
         });
 }
 
-// Инициализация при загрузке страницы
-document.addEventListener('DOMContentLoaded', function() {
-    // Проверяем VPN статус через 2 секунды после загрузки
-    setTimeout(checkVPNStatus, 2000);
-    
-    // Обновляем статус каждые 30 секунд
-    setInterval(checkVPNStatus, 30000);
-});
-
 // Добавляем клики на статус-бар для ручного обновления
 document.getElementById('vpn-status').addEventListener('click', function() {
+    const statusBar = document.getElementById('vpn-status');
     const statusText = document.getElementById('status-text');
+    
+    // Демо-режим: переключаем статус при двойном клике
+    if (event.detail === 2) {
+        statusBar.classList.add('demo-mode');
+        
+        if (statusBar.classList.contains('protected')) {
+            // Переключаем на НЕ защищено
+            statusBar.classList.remove('protected');
+            statusText.innerHTML = '🚨 Ваше подключение НЕ защищено - подключитесь к нашим серверам MegaVPN';
+            console.log('🔴 Demo: Switched to UNPROTECTED status');
+        } else {
+            // Переключаем на защищено
+            statusBar.classList.add('protected');
+            statusText.innerHTML = '🛡️ Вы защищены серверами MegaVPN - соединение анонимно и безопасно';
+            console.log('🟢 Demo: Switched to PROTECTED status');
+        }
+        return;
+    }
+    
+    // Обычный клик - проверка статуса
     statusText.innerHTML = '🔄 Обновляем статус...';
     
     setTimeout(() => {
         checkVPNStatus();
     }, 1000);
+});
+
+// Добавляем подсказку при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    // Показываем подсказку о демо-режиме на 5 секунд
+    setTimeout(() => {
+        const statusBar = document.getElementById('vpn-status');
+        statusBar.classList.add('demo-mode');
+        
+        setTimeout(() => {
+            statusBar.classList.remove('demo-mode');
+        }, 5000);
+    }, 3000);
+    
+    // Проверяем VPN статус через 2 секунды после загрузки
+    setTimeout(checkVPNStatus, 2000);
+    
+    // Обновляем статус каждые 30 секунд
+    setInterval(checkVPNStatus, 30000);
 });
 
 // Управление плавающей кнопкой "Вверх"
