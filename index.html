@@ -1146,6 +1146,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Logo click - scroll to top
+document.querySelector('.navbar-brand').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
 // Track download clicks
 document.querySelectorAll('a[href*="apps.apple.com"], a[href*="play.google.com"]').forEach(button => {
     button.addEventListener('click', function() {
