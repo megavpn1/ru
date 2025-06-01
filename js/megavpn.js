@@ -239,22 +239,25 @@ function stopConnectionTimer() {
 }
 
 // Добавляем клики на статус-бар для ручного обновления
-document.getElementById('vpn-status').addEventListener('click', function() {
-    const statusBar = document.getElementById('vpn-status');
-    const statusText = document.getElementById('status-text');
+const vpnStatusElement = document.getElementById('vpn-status');
+if (vpnStatusElement) {
+    vpnStatusElement.addEventListener('click', function() {
+        const statusBar = document.getElementById('vpn-status');
+        const statusText = document.getElementById('status-text');
 
-    // Обычный клик - перезапуск проверки статуса
-    if (statusBar.classList.contains('protected')) {
-        stopConnectionTimer();
-        statusBar.classList.remove('protected');
-    }
+        // Обычный клик - перезапуск проверки статуса
+        if (statusBar.classList.contains('protected')) {
+            stopConnectionTimer();
+            statusBar.classList.remove('protected');
+        }
 
-    statusText.innerHTML = '🔄 Обновляем статус...';
+        statusText.innerHTML = '🔄 Обновляем статус...';
 
-    setTimeout(() => {
-        checkVPNStatus();
-    }, 1000);
-});
+        setTimeout(() => {
+            checkVPNStatus();
+        }, 1000);
+    });
+}
 
 // Загрузка страницы
 document.addEventListener('DOMContentLoaded', function() {
@@ -317,21 +320,26 @@ window.addEventListener('scroll', function() {
 });
 
 // Прокрутка наверх при клике на плавающую кнопку
-scrollToTopBtn.addEventListener('click', function() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
-});
+}
 
 // Прокрутка наверх при клике на кнопку "Наверх за настройками"
-document.querySelector('.scroll-top-btn').addEventListener('click', function(e) {
-    e.preventDefault();
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+const scrollTopBtn = document.querySelector('.scroll-top-btn');
+if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
-});
+}
 
 // Инициализация карусели отзывов
 $(document).ready(function() {
